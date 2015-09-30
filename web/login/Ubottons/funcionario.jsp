@@ -43,7 +43,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="MenuInicial.jsp">
+		      <form class="form-login" action="login/Ubottons/MenuInicial.jsp">
 		        <h2 class="form-login-heading">Iniciar Sesion</h2>
 		        <div class="login-wrap">
 		            <input type="text" class="form-control" placeholder="Usuario" autofocus>

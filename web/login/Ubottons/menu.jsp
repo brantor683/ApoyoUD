@@ -3,9 +3,6 @@
     Created on : 23/03/2015, 09:02:16 AM
     Author     : 
 --%>
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
    

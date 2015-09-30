@@ -1,9 +1,8 @@
 <%-- 
-    Document   : menu
-    Created on : 23/03/2015, 09:02:16 AM
-    Author     : 
+    Document   : form_component
+    Created on : 27/09/2015, 07:20:48 PM
+    Author     : LORENA MANZANO
 --%>
-
 <%@page import="Negocio.Usuario"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
@@ -21,12 +20,7 @@
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
     UsuarioDAO u = new UsuarioDAO();
-    try {
-
-        out.println("<tr>");
-        out.print("<td>" + "SI SE ENTRO" + "</td>");
-        out.println("<td>" + u.ingresar(user) + "</td>");
-        out.println("</tr>");%>
+   %>
 
 <html lang="en">
     <head>
@@ -66,14 +60,14 @@
                     <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
                 </div>
                 <!--logo start-->
-                <a href="MenuInicial.jsp" class="logo"><b>Panel Funcionario</b></a>
+                <a href="MenuFuncionario.jsp" class="logo"><b>Panel Funcionario</b></a>
                 <!--logo end-->
                 <div class="nav notify-row" id="top_menu">
                     <!--  notification start -->
                     <ul class="nav top-menu">
                         <!-- settings start -->
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="MenuInicial.jsp#">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="MenuFuncionario.jsp#">
                                 <i class="fa fa-tasks"></i>
                                 <span class="badge bg-theme">4</span>
                             </a>
@@ -83,7 +77,7 @@
                                     <p class="green">You have 4 pending tasks</p>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <div class="task-info">
                                             <div class="desc">DashGum Admin Panel</div>
                                             <div class="percent">40%</div>
@@ -96,7 +90,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <div class="task-info">
                                             <div class="desc">Database Update</div>
                                             <div class="percent">60%</div>
@@ -109,7 +103,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <div class="task-info">
                                             <div class="desc">Product Development</div>
                                             <div class="percent">80%</div>
@@ -122,7 +116,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <div class="task-info">
                                             <div class="desc">Payments Sent</div>
                                             <div class="percent">70%</div>
@@ -142,7 +136,7 @@
                         <!-- settings end -->
                         <!-- inbox dropdown start-->
                         <li id="header_inbox_bar" class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="MenuInicial.jsp#">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="MenuFuncionario.jsp#">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge bg-theme">5</span>
                             </a>
@@ -152,7 +146,7 @@
                                     <p class="green">You have 5 new messages</p>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                                         <span class="subject">
                                             <span class="from">Zac Snider</span>
@@ -164,7 +158,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
                                         <span class="subject">
                                             <span class="from">Divya Manian</span>
@@ -176,7 +170,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
                                         <span class="subject">
                                             <span class="from">Dan Rogers</span>
@@ -188,7 +182,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">
+                                    <a href="MenuFuncionario.jsp#">
                                         <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
                                         <span class="subject">
                                             <span class="from">Dj Sherman</span>
@@ -200,7 +194,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="MenuInicial.jsp#">See all messages</a>
+                                    <a href="MenuFuncionario.jsp#">See all messages</a>
                                 </li>
                             </ul>
                         </li>
@@ -247,7 +241,7 @@
                         <li class="sub-menu">
                             <a class="" href="form_component.jsp" >
                                 <i class="fa fa-tasks"></i>
-                                <span>Solicitud</span>
+                                <span>Consultar Solicitudes</span>
                             </a>
 
                         </li>
@@ -255,11 +249,18 @@
                         <li class="sub-menu">
                             <a class="" href="form_component.jsp" >
                                 <i class="fa fa-tasks"></i>
-                                <span>Solicitud</span>
+                                <span>Asignaciones</span>
                             </a>
+                            <ul class="sub">
+                          <li><a  href="asignarTiquetera.jsp">Asignar Tiquetera</a></li>
+                          <li><a  href="asignarActividades.jsp">Asignar Actividades</a></li>
+                          <li><a  href="asignarPuntaje.jsp">Asignar Puntaje</a></li>
+                      </ul>
 
                         </li>
-
+                        
+                        
+                        
                     </ul>
                     <!-- sidebar menu end-->
                 </div>

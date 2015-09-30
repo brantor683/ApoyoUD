@@ -110,13 +110,6 @@
                                             <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getN_apeEstudiante());%> >
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">ID solicitud</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  value=<%out.print(solicitud.getK_idSolicitud());%>>
-                                        </div>
-                                    </div>
-
                                     <br>
 
                                 </form>

@@ -111,6 +111,7 @@
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
                                 <br>
                                 <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
+                                
                                 <select  name="ingresosfamiliares"  id="ingresosfamiliares" class="form-control">
                                     <option value="1">0-1.0 SMMLV</option>
                                     <option value="2">1.0-2.0 SMMLV</option>
