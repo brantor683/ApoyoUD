@@ -16,28 +16,14 @@
         <title>Programa Apoyo Alimentario UD</title>
 
         <meta name="description" content="Onepage Multipurpose Bootstrap HTML Template">
-
         <meta name="author" content="">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/font-awesome.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/theme.css">
-
-        <!-- Bootstrap core CSS 
-       <link href="assets/css/bootstrap.css" rel="stylesheet">-->
-        <!--external css
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />-->
-
-        <!-- Custom styles for this template 
-    <link href="assets/css/style.css" rel="stylesheet">
-    
-    <link href="assets/css/style-responsive.css" rel="stylesheet">-->
-
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
@@ -70,10 +56,9 @@
                                                 <ul class="nav navbar-nav">
                                                     <li class="menuItem active"><a href="#wrapper">Home</a></li>
                                                     <li class="menuItem"><a href="#aboutus">Acerca de Nosotros</a></li>
-                                                    <li class="menuItem"><a href="#specialties">Informaci√≥n Convocatoria</a></li>
+                                                    <li class="menuItem"><a href="#specialties">InformaciÛn Convocatoria</a></li>
                                                     <li class="menuItem"><a href="#feedback">Registrarse</a></li>
-                                                    <li class="menuItem"><a href="#contact">Iniciar Sesi√≥n</a></li>
-                                                    <li class="menuItem"><a href="#gallery">Galeria</a></li>
+                                                    <li class="menuItem"><a href="#contact">Iniciar SesiÛn</a></li>                                                   
                                                     <li class="menuItem"><a href="login/Ubottons/funcionario.jsp">Portal Funcionarios</a></li>
                                                 </ul>
                                             </div>
@@ -93,9 +78,9 @@
                         <img class="dividerline" src="img/sep.png" alt="">
                         <h2>Acerca de Nosotros</h2>
                         <img class="dividerline" src="img/sep.png" alt="">
-                        <h3>Dentro de la pol√≠tica de la secci√≥n de Bienestar Institucional, de la Universidad Distrital, Francisco Jos√© de Caldas, se han implementado programas deportivos y otros para el mejoramiento de la calidad de vida de la comunidad universitaria, entre ellos el programa de ‚ÄúApoyo alimentario‚Äù.
+                        <h3>Dentro de la polÌtica de la secciÛn de Bienestar Institucional, de la Universidad Distrital, Francisco JosÈ de Caldas, se han implementado programas deportivos y otros para el mejoramiento de la calidad de vida de la comunidad universitaria, entre ellos el programa de Apoyo alimentarioÄù.
 
-                            La ejecuci√≥n de este programa que lleva varios semestres en ejecuci√≥n logrando una amplia cobertura de estudiantes, de diferentes carreras de la Universidad.
+                            La ejecuciÛn de este programa que lleva varios semestres en ejecuciÛn logrando una amplia cobertura de estudiantes, de diferentes carreras de la Universidad.
 
                             Actualmente la Universidad Distrital se encuentra realizando una nueva convocatoria para acceder a este programa, para el cual si usted es estudiante debe cumplir con algunos requisitos</h3>
                     </div>			
@@ -125,9 +110,9 @@
                 <div class="container">
                     <div class="heading text-center">
                         <img class="dividerline" src="img/sep.png" alt="">
-                        <h2>Informaci√≥n Convocatoria</h2>
+                        <h2>InformaciÛn Convocatoria</h2>
                         <img class="dividerline" src="img/sep.png" alt="">
-                        <h3>El apoyo alimentario  para el perioro 2015-III se realizar√° dentro de las fechas Siguientes:</h3>
+                        <h3>El apoyo alimentario  para el perioro 2015-III se realizar· dentro de las fechas Siguientes:</h3>
                     </div>
                    <form>
                     <%
@@ -168,140 +153,7 @@
                     </div>
                 </div>
             </section>
-
-            <!--gallery-->
-            <section class="gallery" id="gallery">
-                <div class="container">
-                    <div class="heading text-center">
-                        <img class="dividerline" src="img/sep.png" alt="">
-                        <h2>Galeria</h2>
-                        <img class="dividerline" src="img/sep.png" alt="">
-                    </div>
-
-                    <div id="grid-gallery" class="grid-gallery">
-
-                        <section class="grid-wrap">
-                            <ul class="grid">
-                                <li class="grid-sizer"></li><!-- for Masonry column width -->				
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/10.jpg" alt=""/>
-                                        <figcaption><h3>Thundercats next level</h3><p>Portland nulla butcher ea XOXO, consequat Bushwick Pinterest elit twee pickled direct. </p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/11.jpg" alt=""/>
-                                        <figcaption><h3>Bushwick selvage synth</h3><p>Bicycle rights flannel Shoreditch, art party laboris Bushwick sriracha.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/12.jpg" alt=""/>
-                                        <figcaption><h3>Bottle wayfarers locavore</h3><p>Once there was a little asparagus, he was green and lonely.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/13.jpg" alt=""/>
-                                        <figcaption><h3>Letterpress asymmetrical</h3><p>Chillwave hoodie ea gentrify aute sriracha consequat.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/14.jpg" alt=""/>
-                                        <figcaption><h3>Vice velit chia</h3><p>Laborum tattooed iPhone, Schlitz irure nulla Tonx retro 90's chia cardigan quis before they sold out. </p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/15.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/16.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/17.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-
-                            </ul>
-                        </section><!-- // end small images -->
-
-                        <section class="slideshow">
-                            <ul>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/10.jpg" alt=""/>
-                                        <figcaption><h3>Thundercats next level</h3><p>Portland nulla butcher ea XOXO, consequat Bushwick Pinterest elit twee pickled direct trade vero. </p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/11.jpg" alt=""/>
-                                        <figcaption><h3>Bushwick selvage synth</h3><p>Bicycle rights flannel Shoreditch, art party laboris Bushwick sriracha authentic chambray hella umami sed distillery master cleanse.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/12.jpg" alt=""/>
-                                        <figcaption><h3>Bottle wayfarers locavore</h3><p>Once there was a little asparagus, he was green and lonely.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/13.jpg" alt=""/>
-                                        <figcaption><h3>Letterpress asymmetrical</h3><p>Chillwave hoodie ea gentrify aute sriracha consequat.</p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/14.jpg" alt=""/>
-                                        <figcaption><h3>Vice velit chia</h3><p>Laborum tattooed iPhone, Schlitz irure nulla Tonx retro 90's chia cardigan quis asymmetrical paleo. </p></figcaption>
-                                    </figure>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/15.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/16.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-
-                                <li>
-                                    <figure>
-                                        <img src="http://wowthemes.net/demo/leroy/img/dummies/17.jpg" alt=""/>
-                                        <figcaption><h3>Brunch semiotics</h3><p>Ex disrupt cray yr, butcher pour-over magna umami kitsch before they sold out commodo.</p></figcaption>
-                                    </figure>
-                                </li>
-                            </ul>
-                            <nav>
-                                <span class="icon nav-prev"></span>
-                                <span class="icon nav-next"></span>
-                                <span class="icon nav-close"></span>
-                            </nav>
-                            <div class="info-keys icon">Navigate with arrow keys</div>
-                        </section><!-- // end slideshow -->
-
-                    </div><!-- // grid-gallery -->
-                </div>
-            </section>
-
+                                                                        
             <!--feedback-->
             <section class="feedback" id="feedback">
                 <div class="container w960">
