@@ -131,17 +131,10 @@
                                     %>
                                     <div class="form-group">
 
-                                        <label for="CedulaInput">Año Convocatoria </label>
-                                        <input name="nombresocio" style="width:200px;height:25px" type="text" readonly="readonly" value=<%out.print(c.getD_anoConvocatoria());%> class="form-control" id="cedulaInput">
-
-                                        <label for="CedulaInput">Periodo Convocatoria</label>
-                                        <input name="nombresocio" style="width:200px;height:25px" type="text" readonly="readonly" value=<%out.print(c.getPeriodo());%> class="form-control" id="cedulaInput">
-
-                                        <label for="CedulaInput">Fecha de Inicio (yyyy-mm-dd)</label>
-                                        <input name="nombresocio" style="width:200px;height:25px" type="text" readonly="readonly" value=<%out.print(c.getF_inicioConvocatoria());%> class="form-control" id="cedulaInput">
-
-                                        <label for="CedulaInput">Fecha de finalizacion (yyyy-mm-dd)</label>
-                                        <input name="nombresocio" style="width:200px;height:25px" type="text" readonly="readonly" value=<%out.print(c.getF_finConvocatoria());%> class="form-control" id="cedulaInput">
+                                        <label for="CedulaInput">Año Convocatoria:  <%out.print(c.getD_anoConvocatoria());%> </label><br>
+                                        <label for="CedulaInput">Periodo Convocatoria:  <%out.print(c.getPeriodo());%></label><br>
+                                        <label for="CedulaInput">Fecha de Inicio (yyyy-mm-dd):  <%out.print(c.getF_inicioConvocatoria());%></label><br>
+                                        <label for="CedulaInput">Fecha de finalizacion (yyyy-mm-dd):  <%out.print(c.getF_finConvocatoria());%></label><br>
 
                                        
                                     </div>
