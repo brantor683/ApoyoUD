@@ -65,7 +65,7 @@
 
                       <%
                      SolicitudDAO solicituddao = new SolicitudDAO();
-                        solicitud.setK_est_codEstudiante(Integer.parseInt(request.getParameter("idEstudiante")));
+                 
                         solicitud.setD_diasbeneficio(Integer.parseInt(request.getParameter("dias_beneficio")));
                         solicitud.setK_conv_convocatoria(20151);
                         String codEstudiante = user.getUser().substring(1);
