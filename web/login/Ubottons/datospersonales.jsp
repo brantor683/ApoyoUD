@@ -4,7 +4,20 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Datos.EstudianteDAO"%>
+<%@page import="Negocio.Estudiante"%>
+<%@page import="Datos.UsuarioDAO"%>
+<%@page import="Negocio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    Usuario user = new Usuario();
+    UsuarioDAO u = new UsuarioDAO();
+    user.setUser((String) session.getAttribute("USUARIO"));
+    user.setPasswd((String) session.getAttribute("CONT"));
+
+
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,22 +50,20 @@
     <body>
 
         <section id="container" >
-             <!-- **********************************************************************************************************************************************************
-            Menu
-            *********************************************************************************************************************************************************** -->
-           
             <%@ include file="menu.jsp" %>  
 
+            <%   Estudiante estuser = new Estudiante();
+                EstudianteDAO estu = new EstudianteDAO();
 
+                String codEstudiante = user.getUser().substring(1);
+                estuser = estu.buscarEstudiante(codEstudiante, user);%>
             <!-- **********************************************************************************************************************************************************
             MAIN CONTENT
             *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                   
-                    <br>
-                    
+
                     <!-- BASIC FORM ELELEMNTS -->
                     <div class="row mt">
                         <div class="col-lg-12">
@@ -62,78 +73,127 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getK_codEstudiante());%> >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de Identificación</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly" >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_identificacion());%>>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Promedio Académico</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly"  value=<%out.print(estuser.getD_promedio());%>>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getN_nomEstudiante());%> >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Apellidos</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly" >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getN_apeEstudiante());%> >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Telefono</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getT_telefono());%> >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Direccion</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_direccion());%> >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Materias Perdidas</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_materias_perdidas());%> >
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Facultad</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Proyecto Curricular</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
+                                            <input type="text" class="form-control" readonly="readonly"  value=<%out.print(estuser.getK_est_ProyCurricular());%>>
                                         </div>
                                     </div>
 
                                     <br>
-                                    <br><button type="button" class="btn btn-round btn-success"  ><a href="MenuInicial.jsp"> Regresar</a></button>
 
-                                    
                                 </form>
 
 
                             </div>
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->
-                  
+                    <!-- INPUT MESSAGES -->
+                    <div class="row mt">
+                        <div class="col-lg-12">
+                            <div class="form-panel">
+                                <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
+                                <br>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
+                                </div>
+                                <br>
+                                <br><div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
+                                </div>
+                                <br>
+
+                                <br><div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
+                                </div>
+
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
+                                </div>
+                                <br>
+                                <br><button type="button" class="btn btn-round btn-success"  ><a href="MenuInicial.jsp"> Regresar</a></button>
+
+
+
+
+                            </div><!-- /form-panel -->
+                        </div><!-- /col-lg-12 -->
+
+
+
+                    </div><!-- /row -->
+
+
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 
@@ -185,7 +245,7 @@
         <script>
             //custom select box
 
-            $(function() {
+            $(function () {
                 $('select.styled').customSelect();
             });
 

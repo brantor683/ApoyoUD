@@ -4,26 +4,20 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Negocio.Estudiante"%>
+<%@page import="Datos.SolicitudDAO"%>
+<%@page import="Negocio.Solicitud"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
 <%@page import="Util.ServiceLocator"%>
 <%@page import="Negocio.Usuario"%>
-<%@page import="Negocio.Estudiante"%>
+
 <%@page import="Datos.EstudianteDAO"%>
 <%@page import="java.sql.*"%>
 
-<%  
-        Usuario user = new Usuario();
-        UsuarioDAO u = new UsuarioDAO();
-        user.setUser((String) session.getAttribute("USUARIO"));
-        user.setPasswd((String) session.getAttribute("CONT"));
 
-        Estudiante estuser = new Estudiante();
-        EstudianteDAO estu = new EstudianteDAO();
-        estuser=estu.buscarEstudiante(estu.consultarIdEstudiante(user.getUser(), user), user);
-%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -65,32 +59,45 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-               
+          
+
                     <!-- BASIC FORM ELELEMNTS -->
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Personales</h4>
-                                <form class="form-horizontal style-form" method="get">
+                                <h4 class="mb"><i class="fa fa-angle-right"></i>Informacion solicitud</h4>
+                                <form class="form-horizontal style-form" method="post">
+                                              <%
+                        Usuario user = new Usuario();
+                        UsuarioDAO u = new UsuarioDAO();
+
+                        user.setUser((String) session.getAttribute("USUARIO"));
+                        user.setPasswd((String) session.getAttribute("CONT"));
+
+                        Solicitud solicitud = new Solicitud();
+                        SolicitudDAO soliDAO = new SolicitudDAO();
+                        Estudiante estuser = new Estudiante();
+                        EstudianteDAO estu = new EstudianteDAO();
+                            
+                        String codEstudiante = user.getUser().substring(1);
+                        estuser = estu.buscarEstudiante(codEstudiante, user);
+                   // solicitud=soliDAO.buscarSolicitud(codEstudiante, user); %>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getK_codEstudiante());%> >
                                         </div>
                                     </div>
+                                       
+                                       
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de Identificación</label>
                                         <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_identificacion());%>>
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_identificacion());%>>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Promedio Académico</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly"  value=<%out.print(estuser.getD_promedio());%>>
-                                        </div>
-                                    </div>
-                                    
+
+
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                                         <div class="col-sm-5">
@@ -104,40 +111,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Telefono</label>
+                                        <label class="col-sm-2 col-sm-2 control-label">ID solicitud</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getT_telefono());%> >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Direccion</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_direccion());%> >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Materias Perdidas</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_materias_perdidas());%> >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Facultad</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Proyecto Curricular</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  value=<%out.print(estuser.getK_est_ProyCurricular());%>>
+                                            <input type="text" class="form-control" readonly="readonly"  value=<%out.print(solicitud.getK_idSolicitud());%>>
                                         </div>
                                     </div>
 
                                     <br>
-                                    
+
                                 </form>
 
 
@@ -150,39 +131,39 @@
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
                                 <br>
-                                
+
                                 <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
-                                        </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
                                 </div>
                                 <br>
                                 <br><div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
-                                        </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
                                 </div>
                                 <br>
-                               
+
                                 <br><div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
-                                        </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
                                 </div>
 
                                 <br>
-                               <br>
-                               <br>
+                                <br>
+                                <br>
                                 <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
-                                        <div class="col-sm-5">
-                                           <input type="text" class="form-control" readonly="readonly"  >
-                                        </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" readonly="readonly"  >
+                                    </div>
                                 </div>
-                               <br>
+                                <br>
                                 <br><button type="button" class="btn btn-round btn-success"  ><a href="MenuInicial.jsp"> Regresar</a></button>
 
 
@@ -247,7 +228,7 @@
         <script>
             //custom select box
 
-            $(function() {
+            $(function () {
                 $('select.styled').customSelect();
             });
 

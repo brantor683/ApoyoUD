@@ -19,12 +19,17 @@ import javax.swing.JOptionPane;
  * @author Brandon
  */
 public class SolicitudDAO {
+    
+    public SolicitudDAO(){
+        
+    }
+    
         public String registrarSolicitud(Solicitud s, Usuario user) {
         String error ="";
       
         try {
 
-            String strSQL = "INSERT INTO SOLICITUD(k_idSolicitud, e_estSolicitud, k_est_codEstudiante, k_conv_convocatoria, d_diasbeneficio, f_solicitud) VALUES(SEQ_SOLICITUD.NEXTVAL,'Recibida',?,?,?,SYSDATE)";
+            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, e_estSolicitud, k_est_codEstudiante, k_conv_convocatoria, d_diasbeneficio, f_solicitud) VALUES(SEQ_SOLICITUD.NEXTVAL,'Recibida',?,?,?,SYSDATE)";
 
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
@@ -51,15 +56,15 @@ public class SolicitudDAO {
         return error;
     }
         
-        public Solicitud buscarSolicitud(String id_solicitud, Usuario user) {
+        public Solicitud buscarSolicitud(String id_estudiante, Usuario user) {
         Solicitud solicitud = new Solicitud();
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT * FROM solicitud WHERE K_IdSolicitud=?";
+            String strSQL = "SELECT * FROM S_SOLICITUD WHERE K_est_codestudiante=? and k_idSolicitud=5";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setInt(1, Integer.parseInt(id_solicitud));
+            prepStmt.setInt(1, Integer.parseInt(id_estudiante));
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 solicitud.setK_idSolicitud(rs.getInt(1));

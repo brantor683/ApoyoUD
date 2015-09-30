@@ -143,8 +143,6 @@
                                         c = conv.buscarConvocatoria("Activa", user);
                                        
 
-                                       
-
                                     %>
                                     <div class="form-group">
 

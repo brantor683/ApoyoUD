@@ -23,8 +23,10 @@ public class EstudianteDAO {
     
     public Estudiante buscarEstudiante(String id_estudiante, Usuario user) {
         Estudiante estudiante = new Estudiante();
+    
+         String error="";
         try {
-
+        
             //Instancia el objeto para retornar los datos del empleado
             String strSQL = "SELECT * FROM S_ESTUDIANTE WHERE K_codEstudiante=?";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
@@ -36,17 +38,19 @@ public class EstudianteDAO {
                 estudiante.setD_identificacion(rs.getInt(2));
                 estudiante.setN_nomEstudiante(rs.getString(3));
                 estudiante.setD_sexo(rs.getString(4));
-                estudiante.setT_telefono(rs.getInt(5));
+                estudiante.setT_telefono(Integer.toString(rs.getInt(5)));
                 estudiante.setD_direccion(rs.getString(6));
                 estudiante.setN_apeEstudiante(rs.getString(7));
-                estudiante.setK_est_ProyCurricular(rs.getInt(8));
-                estudiante.setD_promedio(rs.getInt(9));
-                estudiante.setD_materias_perdidas(rs.getInt(10));
-                estudiante.setD_tipodocumento(rs.getString(11));       
+                estudiante.setD_promedio(rs.getInt(8));
+                estudiante.setD_materias_perdidas(rs.getInt(9));
+                estudiante.setD_tipodocumento(rs.getString(10));
+                estudiante.setK_est_ProyCurricular(rs.getInt(11));
+              
+                    
             }
             return estudiante;
         } catch (SQLException e) {
-
+            error = "Estudiante DAO " + "Buscar Id Estudiante " + e.getMessage();
           
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
@@ -75,7 +79,7 @@ public class EstudianteDAO {
             ServiceLocator.getInstance(user).commit();
 
         } catch (SQLException ex) {
-            error = "Usuario DAO " + "Consultar Id Estudiante " + ex.getMessage();
+            error = "Estudiante DAO " + "Consultar Id Estudiante " + ex.getMessage();
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
 

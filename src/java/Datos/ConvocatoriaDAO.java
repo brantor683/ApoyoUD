@@ -59,7 +59,7 @@ public class ConvocatoriaDAO {
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT * FROM apoyoud.convocatoria WHERE e_estadoconvocatoria=?";
+            String strSQL = "SELECT * FROM s_convocatoria WHERE e_estadoconvocatoria=?";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, (estado_convocatoria));

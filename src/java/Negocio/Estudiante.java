@@ -15,7 +15,7 @@ public class Estudiante {
 	private int d_identificacion;      
 	private String n_nomEstudiante;       
 	private String d_sexo;                
-	private int t_telefono;           
+	private String t_telefono;           
 	private String d_direccion;          
 	private String n_apeEstudiante;       
 	private int k_est_ProyCurricular; 
@@ -59,13 +59,15 @@ public class Estudiante {
         this.d_sexo = d_sexo;
     }
 
-    public int getT_telefono() {
+    public String getT_telefono() {
         return t_telefono;
     }
 
-    public void setT_telefono(int t_telefono) {
+    public void setT_telefono(String t_telefono) {
         this.t_telefono = t_telefono;
     }
+
+  
 
     public String getD_direccion() {
         return d_direccion;

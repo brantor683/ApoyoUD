@@ -76,12 +76,7 @@
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Personales</h4>
                                      <form class="form-horizontal style-form" action="componente2.jsp" method="post">
                                     
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
-                                        <div class="col-sm-5">
-                                            <input type="number" name="idEstudiante" class="form-control"  required >
-                                        </div>
-                                    </div>
+                                  
                                 
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Cantidad dias de beneficio en la semana</label>
