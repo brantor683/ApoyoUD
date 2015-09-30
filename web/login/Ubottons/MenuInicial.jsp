@@ -14,7 +14,7 @@
 
 <%
     if (request.getParameter("user") != null && request.getParameter("passwd") != null) {
-        session.setAttribute("USUARIO", request.getParameter("user"));
+        session.setAttribute("USUARIO", "e"+request.getParameter("user"));
         session.setAttribute("CONT", request.getParameter("passwd"));
     }
     Usuario user = new Usuario();
