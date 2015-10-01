@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Negocio.Estudiante;
 import Negocio.Usuario;
 import Util.RHException;
 import Util.ServiceLocator;
@@ -50,15 +51,15 @@ public class UsuarioDAO {
 
        public String crearUsuarioEstudiante(Usuario userInicial, Usuario nuevoUsuario) {
         String error = null;
-        String id = consultarIdEstudiante(nuevoUsuario.getUser(), userInicial);
+      
         try {
-            String strSQL = "CREATE USER " + nuevoUsuario.getUser()+ id + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE USERAPOYOALIMENTARIODEF TEMPORARY TABLESPACE USERAPOYOALIMENTARIOTEMP";
+            String strSQL = "CREATE USER " + "e"+nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
             Connection conexion = ServiceLocator.getInstance(userInicial).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance(userInicial).commit();
-            error = "Usuario Registrado: " +  nuevoUsuario.getUser()+ id;
+            error = "Usuario Registrado: " +  nuevoUsuario.getUser();
 
         } catch (SQLException e) {
      
@@ -68,35 +69,51 @@ public class UsuarioDAO {
         }
         return error;
     }
-
-public String consultarIdEstudiante(String username, Usuario user) {
-
+       
+          public String asignarConnect(String idEstudiante,  Usuario user) {
         String error = null;
-        ResultSet tabla = null;
-
+       
         try {
-            String strSQL = "SELECT K_CODESTUDIANTE FROM ESTUDIANTE WHERE K_CODESTUDIANTE='" + username + "'";
+            String strSQL = "GRANT CONNECT TO " + "e"+idEstudiante;
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
-            PreparedStatement prepStmt;
-            prepStmt = conexion.prepareStatement(strSQL);
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
-            tabla = prepStmt.getResultSet();
-            while (tabla.next()) {
-                error = tabla.getString(1);
-            }
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();
-
-        } catch (SQLException ex) {
-            error = "Usuario DAO " + "Consultar Id Estudiante" + ex.getMessage();
+            error = "Se puede CONECTAR";
+        } catch (SQLException e) {
+            // throw new RHException("Socio_DAO", "No pudo crear el USER" + e.getMessage());
+            error = "Usuario_DAO " + "Asignar CONNECT " + e.getMessage();
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
-
         }
-
-        //   System.out.println(error);
+        //  System.out.println(error);
         return error;
     }
+
+           public String asignarRolEstudiante(String idEstudiante, Usuario user) {
+        String error = null;
+       
+        try {
+            String strSQL = "GRANT ROL_ESTUDIANTE TO " + "e"+idEstudiante;
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+            error = "¡ asignado rol estudiante " + idEstudiante+ " !";
+        } catch (SQLException e) {
+            // throw new RHException("Socio_DAO", "No pudo crear el USER" + e.getMessage());
+            error = "Usuario_DAO " + "Asignar ROLE " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        // System.out.println(error);
+        return error;
+    }
+          
+          
+
 
 
 

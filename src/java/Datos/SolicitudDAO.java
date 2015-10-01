@@ -36,8 +36,9 @@ public class SolicitudDAO {
 
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             
-            prepStmt.setInt(1, s.getK_est_codEstudiante());
-            prepStmt.setInt(2, s.getK_conv_convocatoria());
+           
+            prepStmt.setInt(1, s.getK_conv_convocatoria());
+             prepStmt.setInt(2, s.getK_est_codEstudiante());
            
            
             

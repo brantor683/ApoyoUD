@@ -160,9 +160,9 @@
                     <div class="row">
                         <form class="form-login" action="login/registrarUsuario.jsp" method="post" >
 
-                            <input type="text" name='user' class="form-control" placeholder="Código Estudiante"  required>
+                            <input type="text" name='ruser' class="form-control" placeholder="Código Estudiante"  required>
                             <br>
-                            <input type="password" name='passwd' class="form-control" placeholder="Contraseña"  required>
+                            <input type="password" name='rpasswd' class="form-control" placeholder="Contraseña"  required>
                             <button class="btn btn-theme btn-block" href="#" type="submit"><i class="fa fa-lock"></i>Enviar</button>
                             <hr>	         		         
                         </form>

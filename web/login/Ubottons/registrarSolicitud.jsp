@@ -75,17 +75,7 @@
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Personales</h4>
                                      <form class="form-horizontal style-form" action="componente2.jsp" method="post">
-                                    
-                                  
-                                
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Cantidad dias de beneficio en la semana</label>
-                                        <div class="col-sm-5">
-                                            <input type="number" name="dias_beneficio" class="form-control" placeholder="0-5"  >
-                                        </div>
-                                    </div>
-                                    
-                                                                   
+                                                                 
 
                                     <br>
                                     
@@ -110,6 +100,7 @@
                                     <option value="3">2.0-3.0 SMMLV</option>		                         
                                     <option value="4">3.0 SMMLV</option>                  	  
                                 </select>
+                                <input type="file" name="file1"/> 
                                 <br>
                                 <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
                                 <select  name="condicionesfamiliares"  id="condicionesfamiliares" class="form-control">
@@ -117,6 +108,7 @@
                                     <option value="2">Se sotiene a sí mismo</option>
                                     <option value="3">Vive fuera de su núcleo familiar inmediato</option>		                          <option value="4">Tiene conyuge, hijos y/u otras personas a cargo</option>                  	  
                                 </select> 
+                                <input type="file" name="file2"/> 
                                 <br>
                                 <label class="col-sm-3 col-sm-3 control-label">Procedencia y lugar de residencia</label>
                                 <select  name="procedencia"  id="procedencia" class="form-control">
@@ -124,13 +116,14 @@
                                     <option value="2">Se encuentra en condición de desplazamiento forzado</option>
                                     <option value="3">Proviene de municipios distintos a Bogotá </option>		                          <option value="4">Reside en zonas de alto grado de vulnerabilidad</option>                                      	  
                                 </select> 
-
+                                <input type="file" name="file3"/> 
                                 <br>
                                 <label class="col-sm-3 col-sm-3 control-label">Condiciones de salud</label>
                                 <select  name="salud"  id="salud" class="form-control">
                                     <option value="1">Presenta algún tipo de discapacidad física o mental</option>
                                     <option value="2">Sufre alguna patología o sintomatología asociada con problemas de alimentación</option>                                        	  
                                 </select>
+                                <input type="file" name="file4"/> 
                                 <br><button type="submit" class="btn btn-round btn-success"  >Enviar Solicitud</button>
 
 

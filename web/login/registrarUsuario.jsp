@@ -21,30 +21,36 @@
     </body>
 </html>
 
-<%if (request.getParameter("user") != null && request.getParameter("passwd") != null) {
-        session.setAttribute("USUARIO", request.getParameter("user"));
-        session.setAttribute("CONT", request.getParameter("passwd"));
+<%if (request.getParameter("ruser") != null && request.getParameter("rpasswd") != null) {
+        session.setAttribute("USUARIO", request.getParameter("ruser"));
+        session.setAttribute("CONT", request.getParameter("rpasswd"));
 }
          Usuario user = new Usuario();
          Usuario user2 = new Usuario();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    EstudianteDAO e = new EstudianteDAO();
+
     
         
-        user2.setUser("validador");
-        user2.setPasswd("validador");
+        user2.setUser("APOYOUD");
+        user2.setPasswd("APOYOUD");
      
     
         
         EstudianteDAO estu = new EstudianteDAO();
+        UsuarioDAO us = new UsuarioDAO();
         Estudiante estuser = new Estudiante();      
-        String codEstudiante = user.getUser().substring(1);
-        estuser = estu.buscarEstudiante(codEstudiante, user);
-        out.print(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante());
-         out.print(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante());
-        if(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante() == Integer.valueOf(codEstudiante)){
+        String codEstudiante = user.getUser();
+        estuser = estu.buscarEstudiante(codEstudiante, user2);
+        out.print(estu.buscarEstudiante(codEstudiante, user2).getK_codEstudiante());
+     
+        if(estuser.getK_codEstudiante() == Integer.valueOf(codEstudiante)){
              out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
+             out.print("<td>" + "crear usuario" +  us.crearUsuarioEstudiante(user2, user) + "</td>");
+           out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>"+  us.asignarConnect(user.getUser(), user2) + "</td>");
+            out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>"+ us.asignarRolEstudiante(user.getUser(), user2) + "</td>");
+             
+                  
         }
          else {
            
