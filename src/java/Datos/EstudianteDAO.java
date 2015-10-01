@@ -35,15 +35,15 @@ public class EstudianteDAO {
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 estudiante.setK_codEstudiante(rs.getInt(1));
-                estudiante.setD_identificacion(rs.getInt(2));
-                estudiante.setN_nomEstudiante(rs.getString(3));
-                estudiante.setD_sexo(rs.getString(4));
-                estudiante.setT_telefono(Integer.toString(rs.getInt(5)));
-                estudiante.setD_direccion(rs.getString(6));
-                estudiante.setN_apeEstudiante(rs.getString(7));
-                estudiante.setD_promedio(rs.getInt(8));
-                estudiante.setD_materias_perdidas(rs.getInt(9));
-                estudiante.setD_tipodocumento(rs.getString(10));
+                estudiante.setN_nomEstudiante(rs.getString(2));
+                estudiante.setN_apeEstudiante(rs.getString(3));
+                estudiante.setD_tipodocumento(rs.getString(4));
+                estudiante.setD_identificacion(rs.getInt(5));
+                estudiante.setD_sexo(rs.getString(6));
+                estudiante.setD_direccion(rs.getString(7));
+                estudiante.setT_telefono(rs.getInt(8));
+                estudiante.setD_promedio(rs.getInt(9));
+                estudiante.setD_materias_perdidas(rs.getInt(10));
                 estudiante.setK_est_ProyCurricular(rs.getInt(11));
               
                     

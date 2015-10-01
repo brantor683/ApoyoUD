@@ -11,11 +11,11 @@ package Negocio;
  */
 public class Estudiante {
     
-    	private long k_codEstudiante;      
+    	private int k_codEstudiante;      
 	private int d_identificacion;      
 	private String n_nomEstudiante;       
 	private String d_sexo;                
-	private String t_telefono;           
+	private int t_telefono;           
 	private String d_direccion;          
 	private String n_apeEstudiante;       
 	private int k_est_ProyCurricular; 
@@ -27,13 +27,15 @@ public class Estudiante {
             
         }
 
-    public long getK_codEstudiante() {
+    public int getK_codEstudiante() {
         return k_codEstudiante;
     }
 
     public void setK_codEstudiante(int k_codEstudiante) {
         this.k_codEstudiante = k_codEstudiante;
     }
+
+
 
     public int getD_identificacion() {
         return d_identificacion;
@@ -59,15 +61,15 @@ public class Estudiante {
         this.d_sexo = d_sexo;
     }
 
-    public String getT_telefono() {
+    public int getT_telefono() {
         return t_telefono;
     }
 
-    public void setT_telefono(String t_telefono) {
+    public void setT_telefono(int t_telefono) {
         this.t_telefono = t_telefono;
     }
 
-  
+    
 
     public String getD_direccion() {
         return d_direccion;

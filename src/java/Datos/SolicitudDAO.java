@@ -29,7 +29,7 @@ public class SolicitudDAO {
       
         try {
 
-            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, e_estSolicitud, k_est_codEstudiante, k_conv_convocatoria, d_diasbeneficio, f_solicitud) VALUES(SEQ_SOLICITUD.NEXTVAL,'Recibida',?,?,?,SYSDATE)";
+            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, e_estSolicitud, k_conv_convocatoria, k_est_codEstudiante) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
 
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
@@ -38,7 +38,7 @@ public class SolicitudDAO {
             
             prepStmt.setInt(1, s.getK_est_codEstudiante());
             prepStmt.setInt(2, s.getK_conv_convocatoria());
-            prepStmt.setInt(3, s.getD_diasbeneficio());
+           
            
             
             prepStmt.executeUpdate();

@@ -4,6 +4,7 @@
     Author     : Brandon
 --%>
 
+<%@page import="Negocio.Estudiante"%>
 <%@page import="Datos.EstudianteDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="Datos.UsuarioDAO"%>
@@ -33,13 +34,21 @@
         
         user2.setUser("validador");
         user2.setPasswd("validador");
-        out.println("<tr>");
-        out.print("<td>" + "SI SE ENTRO" + "</td>");
-        if(e.buscarEstudiante(user.getUser(), user2)!= null){
-                 out.print("<td>" + "SI SE ENTRO if" + "</td>");
-        out.println("<td>" + e.buscarEstudiante(user.getUser(), user2) + "</td>");
-        } else 
-             out.println( "nada");
+     
+    
+        
+        EstudianteDAO estu = new EstudianteDAO();
+        Estudiante estuser = new Estudiante();      
+        String codEstudiante = user.getUser().substring(1);
+        estuser = estu.buscarEstudiante(codEstudiante, user);
+        out.print(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante());
+         out.print(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante());
+        if(estu.buscarEstudiante(codEstudiante, user).getK_codEstudiante() == Integer.valueOf(codEstudiante)){
+             out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
+        }
+         else {
+           
+             out.println( "NO SE PUEDE REGISTRAR");}
         out.println("</tr>");%>
     <!DOCTYPE html>
 <html>
