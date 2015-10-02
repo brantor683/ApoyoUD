@@ -74,13 +74,11 @@
                         <div class="col-lg-12">
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Personales</h4>
-                                     <form class="form-horizontal style-form" action="componente2.jsp" method="post">
+                                    
                                                                  
 
                                     <br>
-                                    
-                                    <button  class="btn btn-round btn-success" type="submit" name="bEnviarSolicitud" >Enviar Solicitud</a></button>
-                                      </form>
+                                                
 
 
                             </div>
@@ -91,6 +89,7 @@
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
+                                 <form class="form-horizontal style-form" action="upload_file_multipale.jsp" method="post" enctype="multipart/form-data">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
                                 <br>
                                 <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
@@ -126,7 +125,7 @@
                                 <input type="file" name="file4"/> 
                                 <br><button type="submit" class="btn btn-round btn-success"  >Enviar Solicitud</button>
 
-
+                               </form>
 
 
                             </div><!-- /form-panel -->
