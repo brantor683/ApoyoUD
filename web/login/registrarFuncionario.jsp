@@ -37,8 +37,8 @@
     FuncionarioDAO funci = new FuncionarioDAO();
     UsuarioDAO us = new UsuarioDAO();
     Funcionario funciUser = new Funcionario();
-    funci.buscarFuncionario(user.getUser(), user2);
-    out.print(funci.buscarFuncionario(user.getUser(), user2));
+    funciUser = funci.buscarFuncionario(user.getUser(), user2);
+    out.print(funci.buscarFuncionario(user.getUser(), user2).getK_idFuncionario());
 
     if (funciUser.getK_idFuncionario() == Integer.valueOf(user.getUser())) {
         out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
@@ -46,7 +46,6 @@
         out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarConnect(user.getUser(), user2) + "</td>");
         out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarRolEstudiante(user.getUser(), user2) + "</td>");
     } else {
-
         out.println("NO SE PUEDE REGISTRAR");
         out.println(funciUser.getK_idFuncionario()+ "+" +Integer.valueOf(user.getUser()));
     }

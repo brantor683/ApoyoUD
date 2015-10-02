@@ -117,16 +117,13 @@
                     <form>
                         <%
                             Usuario user = new Usuario();
-
                             user.setUser("validador");
                             user.setPasswd("validador");
 
                             ConvocatoriaDAO conv = new ConvocatoriaDAO();
                             Convocatoria c = new Convocatoria();
                             //Buscar convocatoria activa
-
                             c = conv.buscarConvocatoria("Activa", user);
-
                         %>
                         <div class="convocatoria">
                             <label for="CedulaInput">Año Convocatoria:  <%out.print(c.getD_anoConvocatoria());%> </label><br>
