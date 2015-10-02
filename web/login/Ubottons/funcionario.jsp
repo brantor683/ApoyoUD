@@ -87,20 +87,20 @@
                         </form>
                     </td>
                     <td>   	  	
-                        <form class="form-login" action="login/Ubottons/MenuFuncionario.jsp" method="post">
+                        <form class="form-login" action="MenuFuncionario.jsp" method="post">
 
                             <h2 class="form-login-heading">Iniciar Sesion</h2>
                             <div class="login-wrap">
-                                <input type="text" class="form-control" placeholder="Usuario" autofocus>
+                                <input type="text" name="fluser" class="form-control" placeholder="Usuario" autofocus>
                                 <br>
-                                <input type="password" class="form-control" placeholder="Contraseña">
+                                <input type="password" name="flpass" class="form-control" placeholder="Contraseña">
                                 <label class="checkbox">
                                     <span class="pull-right">
                                         <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>
-                                <button class="btn btn-theme btn-block" href="MenuInicial.jsp" type="submit"><i class="fa fa-lock"></i>Iniciar Sesión</button>
+                                <button class="btn btn-theme btn-block" href="#" type="submit"><i class="fa fa-lock"></i>Iniciar Sesión</button>
                             </div>
 
                             <!-- Modal -->

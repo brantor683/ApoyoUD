@@ -8,8 +8,8 @@
 <%@page import="java.io.IOException"%>
 <%@page import="Util.ServiceLocator"%>
 <%@page import="Negocio.Usuario"%>
-<%@page import="Negocio.Estudiante"%>
-<%@page import="Datos.EstudianteDAO"%>
+<%@page import="Negocio.Convocatoria"%>
+<%@page import="Datos.ConvocatoriaDAO"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -59,95 +59,51 @@
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
             
-            <%@ include file="menu.jsp" %>  
+            <%@ include file="menuFuncionarios.jsp" %>  
             <!-- **********************************************************************************************************************************************************
             MAIN CONTENT
             *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
+                    <h3><i class="fa fa-angle-right"></i>Ver Socilitudes</h3>
                     <br>
-                    Diligencie el formulario para poder acceder al apoyo alimentario
+                    Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
                      <div class="row mt">
                         <div class="col-lg-12">
-                            <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Personales</h4>
-                                    
-                                                                 
-
-                                    <br>
-                                                
-
-
-                            </div>
+                            <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
+                                <select  name="ingresosfamiliares"  id="ingresosfamiliares" class="form-control">
+                                    <option value="Ingenieria">Ingenieria</option>
+                                    <option value="Ciencias y Educacion">Ciencia de la Educacion</option>
+                                    <option value="Artes">ASAB</option>		                         
+                                    <option value="Medio Ambiente">Vivero</option>
+                                    <option value="Tecnologica">Tecnológica</option> 
+                                </select>
+                            <button type="button" class="btn btn-round btn-success"  ><a href="convocatoria.jsp">Ver Solicitudes</a></button>
+                                
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->
                     
-                    <!-- INPUT MESSAGES -->
-                    <div class="row mt">
-                        <div class="col-lg-12">
-                            <div class="form-panel">
-                                 <form class="form-horizontal style-form" action="upload_file_multipale.jsp" method="post" enctype="multipart/form-data">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
-                                <br>
-                                <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
-                                <select  name="ingresosfamiliares"  id="ingresosfamiliares" class="form-control">
-                                    <option value="1">0-1.0 SMMLV</option>
-                                    <option value="2">1.0-2.0 SMMLV</option>
-                                    <option value="3">2.0-3.0 SMMLV</option>		                         
-                                    <option value="4">3.0 SMMLV</option>
-                                    <option value="15">Otro</option> 
-                                </select>
-                                <input type="file" name="file1"/> 
-                                <br>
-                                <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
-                                <select  name="condicionesfamiliares"  id="condicionesfamiliares" class="form-control">
-                                    <option value="5">Sostiene el hogar en que vive</option>
-                                    <option value="6">Se sotiene a sí mismo</option>
-                                    <option value="7">Vive fuera de su núcleo familiar inmediato</option>
-                                    <option value="8">Tiene conyuge, hijos y/u otras personas a cargo</option>
-                                    <option value="15">Otro</option> 
-                                </select> 
-                                <input type="file" name="file2"/> 
-                                <br>
-                                <label class="col-sm-3 col-sm-3 control-label">Procedencia y lugar de residencia</label>
-                                <select  name="procedencia"  id="procedencia" class="form-control">
-                                    <option value="9">Vive en cada del empleador</option>
-                                    <option value="10">Se encuentra en condición de desplazamiento forzado</option>
-                                    <option value="11">Proviene de municipios distintos a Bogotá </option>
-                                    <option value="12">Reside en zonas de alto grado de vulnerabilidad</option>
-                                    <option value="15">Otro</option> 
-                                </select> 
-                                <input type="file" name="file3"/> 
-                                <br>
-                                <label class="col-sm-3 col-sm-3 control-label">Condiciones de salud</label>
-                                <select  name="salud"  id="salud" class="form-control">
-                                    <option value="13">Presenta algún tipo de discapacidad física o mental</option>
-                                    <option value="14">Sufre alguna patología o sintomatología asociada con problemas de alimentación</option>  
-                                    <option value="15">Otro</option> 
-                                </select>
-                                <input type="file" name="file4"/> 
-                                <br><button type="submit" class="btn btn-round btn-success"  >Enviar Solicitud</button>
-
-                               </form>
-
-
-                            </div><!-- /form-panel -->
-                        </div><!-- /col-lg-12 -->
-                    </div><!-- /row -->
 
 
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 
+            <%
+                                    ConvocatoriaDAO convocatoria = new ConvocatoriaDAO();
+                                    out.println("<tr>");
+                                    out.print("<td>" + privilegio.buscarPrivilegio2(request.getParameter("privilegio"), user) + "</td>");
+                                    out.println("</tr>");
+
+
+                                %>
             <!--main content end-->
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
                     2015 
-                    <a href="form_component.html#" class="go-top">
+                    <a href="MenuFuncionario.jsp#" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>

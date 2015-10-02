@@ -17,13 +17,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
 
 <%if (request.getParameter("fruser") != null && request.getParameter("frpass") != null) {
-      session.setAttribute("USUARIO", request.getParameter("fruser"));
-      session.setAttribute("CONT", request.getParameter("frpass"));
+        session.setAttribute("USUARIO", request.getParameter("fruser"));
+        session.setAttribute("CONT", request.getParameter("frpass"));
     }
     Usuario user = new Usuario();
     Usuario user2 = new Usuario();
@@ -40,24 +38,17 @@
     funciUser = funci.buscarFuncionario(user.getUser(), user2);
     out.print(funci.buscarFuncionario(user.getUser(), user2).getK_idFuncionario());
 
-    if (funciUser.getK_idFuncionario() == Integer.valueOf(user.getUser())) {
-        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
-        out.print("<td>" + "crear usuario" + us.crearUsuarioFuncionario(user2, user) + "</td>");
-        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarConnectFuncionario(user.getUser(), user2) + "</td>");
-        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarRolFuncionario(user.getUser(), user2) + "</td>");
-    } else {
-        out.println("NO SE PUEDE REGISTRAR");
-        out.println(funciUser.getK_idFuncionario()+ "+" +Integer.valueOf(user.getUser()));
-    }
-    out.println("</tr>");%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
+    if (funciUser.getK_idFuncionario() == Integer.valueOf(user.getUser())) {%>
+        <center><h3>Se registró correctamente, ya puedes iniciar sesión </h3>
+        <button class="bg-success" type="submit" ><a href="funcionario.jsps">Regresar</a></button></center>
+
+<%} else {%>
+         <center><h3>No se puede registrar</h3>
+        <button class="bg-success" type="submit" ><a href="Ubottons/funcionario.jsp">Regresar</a></button></center>
+
+        <%}%>
+    
+
     </body>
 </html>
 
