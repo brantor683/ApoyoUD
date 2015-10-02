@@ -90,7 +90,26 @@ public class UsuarioDAO {
         }
         return error;
     }
+     public String asignarConnectFuncionario(String idFuncionario, Usuario user) {
+        String error = null;
 
+        try {
+            String strSQL = "GRANT CONNECT TO " + "f" + idFuncionario;
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+            error = "Se puede CONECTAR";
+        } catch (SQLException e) {
+            // throw new RHException("Socio_DAO", "No pudo crear el USER" + e.getMessage());
+            error = "Usuario_DAO " + "Asignar CONNECT " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        //  System.out.println(error);
+        return error;
+    }
     public String asignarConnect(String idEstudiante, Usuario user) {
         String error = null;
 
@@ -112,6 +131,7 @@ public class UsuarioDAO {
         return error;
     }
 
+    
     public String asignarRolEstudiante(String idEstudiante, Usuario user) {
         String error = null;
 
@@ -132,6 +152,8 @@ public class UsuarioDAO {
         // System.out.println(error);
         return error;
     }
+    
+    
 
     public String asignarRolFuncionario(String idFuncionario, Usuario user) {
         String error = null;

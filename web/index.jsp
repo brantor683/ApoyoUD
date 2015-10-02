@@ -117,8 +117,8 @@
                     <form>
                         <%
                             Usuario user = new Usuario();
-                            user.setUser("validador");
-                            user.setPasswd("validador");
+                            user.setUser("APOYOUD");
+                            user.setPasswd("APOYOUD");
 
                             ConvocatoriaDAO conv = new ConvocatoriaDAO();
                             Convocatoria c = new Convocatoria();

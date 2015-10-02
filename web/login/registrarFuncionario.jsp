@@ -43,8 +43,8 @@
     if (funciUser.getK_idFuncionario() == Integer.valueOf(user.getUser())) {
         out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
         out.print("<td>" + "crear usuario" + us.crearUsuarioFuncionario(user2, user) + "</td>");
-        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarConnect(user.getUser(), user2) + "</td>");
-        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarRolEstudiante(user.getUser(), user2) + "</td>");
+        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarConnectFuncionario(user.getUser(), user2) + "</td>");
+        out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarRolFuncionario(user.getUser(), user2) + "</td>");
     } else {
         out.println("NO SE PUEDE REGISTRAR");
         out.println(funciUser.getK_idFuncionario()+ "+" +Integer.valueOf(user.getUser()));
