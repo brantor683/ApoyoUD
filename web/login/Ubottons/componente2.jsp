@@ -4,17 +4,80 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Negocio.Socioeconomico"%>
+<%@page import="Datos.SocioeconomicoDAO"%>
+<%@page import="Util.Directorio"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="Negocio.Usuario"%>
 <%@page import="Negocio.Solicitud"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.io.File" %>
+<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+<%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@ page import="org.apache.commons.fileupload.*"%>
+
 <%
     Usuario user = new Usuario();
     Solicitud solicitud = new Solicitud();
+    SolicitudDAO solicituddao = new SolicitudDAO();
+    Socioeconomico socioeconomi = new Socioeconomico();
+    SocioeconomicoDAO soli_sociDAO = new SocioeconomicoDAO();
 
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    
+
+    solicitud.setK_conv_convocatoria(20153);
+    String codEstudiante = user.getUser().substring(1);
+    solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
+
+
+%>
+
+<h3>  <%  out.println(solicitud.getE_estSolicitud()); %></h3>
+<h3>    <% out.println(solicitud.getK_conv_convocatoria()); %></h3>
+<H3><%out.println(solicitud.getD_diasbeneficio());%></H3>
+<h3>     <% out.println(solicitud.getK_est_codEstudiante()); %></h3>
+<h3>     <% out.println(user.getUser()); %></h3>
+
+<h3><%solicituddao.registrarSolicitud(solicitud, user);%></h3>
+<h3><%out.println("ENHORABUENA !!!!");%></h3>
+
+<%
+    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+
+    if (!isMultipart) {
+    } else {
+
+        Directorio dir = new Directorio();
+        String directorio = "C:/PRUEBA/" + user.getUser() + "/Soportes/";
+        dir.generarDirectorio(directorio);
+
+        FileItemFactory factory = new DiskFileItemFactory();
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        List items = null;
+        try {
+            items = upload.parseRequest(request);
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+        Iterator itr = items.iterator();
+        while (itr.hasNext()) {
+            FileItem item = (FileItem) itr.next();
+            if (item.isFormField()) {
+            } else {
+                try {
+                    String itemName = item.getName();
+                    File savedFile = new File(directorio + itemName);
+                    item.write(savedFile);
+                    out.println("<tr><td><b>Your file has been saved at the loaction:</b></td></tr><tr><td><b>" + "uploadedFiles" + "\\" + itemName + "</td></tr>");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 %>
 
 <!DOCTYPE html>
@@ -52,7 +115,7 @@
             <!-- **********************************************************************************************************************************************************
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
-            
+
             <%@ include file="menu.jsp" %> 
 
             <!-- **********************************************************************************************************************************************************
@@ -60,26 +123,10 @@
             *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
-                
-                    <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
 
-                      <%
-                     SolicitudDAO solicituddao = new SolicitudDAO();
-                 
-                        
-                        solicitud.setK_conv_convocatoria(20153);
-                        String codEstudiante = user.getUser().substring(1);
-                        solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
-                         %>
-                         
-                          <h3>  <%  out.println(solicitud.getE_estSolicitud()); %></h3>
-                       <h3>    <% out.println(solicitud.getK_conv_convocatoria()); %></h3>
-                       <H3><%out.println(solicitud.getD_diasbeneficio());%></H3>
-                     <h3>     <% out.println(solicitud.getK_est_codEstudiante()); %></h3>
-                      <h3>     <% out.println(user.getUser()); %></h3>
-                         
-                    <h3><%solicituddao.registrarSolicitud(solicitud, user);%></h3>
-                    <h3><%out.println("ENHORABUENA !!!!");%></h3>
+                <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
+
+
 
 
                 <! --/wrapper -->
@@ -133,7 +180,7 @@
         <script>
             //custom select box
 
-            $(function () {
+            $(function() {
                 $('select.styled').customSelect();
             });
 
