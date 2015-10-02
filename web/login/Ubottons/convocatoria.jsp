@@ -8,8 +8,8 @@
 <%@page import="java.io.IOException"%>
 <%@page import="Util.ServiceLocator"%>
 <%@page import="Negocio.Usuario"%>
-<%@page import="Negocio.Convocatoria"%>
-<%@page import="Datos.ConvocatoriaDAO"%>
+<%@page import="Negocio.Solicitud"%>
+<%@page import="Datos.SolicitudDAO"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -90,10 +90,10 @@
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 
-            <%
-                                    ConvocatoriaDAO convocatoria = new ConvocatoriaDAO();
+            <%                         //request.getParameter("privilegio")
+                                    SolicitudDAO solicitud = new SolicitudDAO();
                                     out.println("<tr>");
-                                    out.print("<td>" + privilegio.buscarPrivilegio2(request.getParameter("privilegio"), user) + "</td>");
+                                    out.print("<td>" + solicitud.buscarSolicitudFuncionario("Todos", user) + "</td>");
                                     out.println("</tr>");
 
 

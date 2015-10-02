@@ -86,4 +86,123 @@ public class SolicitudDAO {
         }
         return solicitud;
     }
+        
+        public String buscarSolicitudFuncionario(String consulta, Usuario user) {
+        String error = "<table  style='border: 1px solid black;'>";
+        ResultSet tabla = null;
+        if (consulta.equals("Todos")) {
+            try {
+                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                        + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
+                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
+                        + "s.k_est_codestudiante=e.k_codestudiante AND "
+                        + "e.k_est_proycurricular=pc.k_proycurricular AND "
+                        + "pc.k_proy_facultad=f.k_facultad";
+                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+                PreparedStatement prepStmt;
+                prepStmt = conexion.prepareStatement(strSQL);
+                prepStmt.executeUpdate();
+                tabla = prepStmt.getResultSet();
+                error = error + "<tr style='width:80%;  border: 1px solid black;'>"
+                            + "     <td style='width:40%; border: 1px solid black;'>" + "Codigo Solicitud" + " </td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Estado Solicitud" + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Codigo Estudiante" + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Nombres" + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Apellidos" + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Facultad" + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + "Proyecto Currciular" + "</td>"
+                            + "</tr>";
+                while (tabla.next()) {
+                    error = error + "<tr style='width:80%;  border: 1px solid black;'>"
+                            + "     <td style='width:40%; border: 1px solid black;'>" + tabla.getInt(1) + " </td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getInt(3) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(4) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(5) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(6) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(7) + "</td>"
+                            + "</tr>";
+                }
+                error = error + "</table>";
+                prepStmt.close();
+                ServiceLocator.getInstance(user).commit();
+            } catch (SQLException ex) {
+                error = "Privilegio DAO " + "Consultar priveligos Sistema" + ex.getMessage();
+            } finally {
+                ServiceLocator.getInstance(user).liberarConexion();
+            }
+
+        } else if (consulta.equals("Ingenieria")) {
+
+            try {
+                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
+                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
+                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+                PreparedStatement prepStmt;
+                prepStmt = conexion.prepareStatement(strSQL);
+                prepStmt.executeUpdate();
+                tabla = prepStmt.getResultSet();
+                while (tabla.next()) {
+                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
+                }
+                error = error + "</table>";
+                prepStmt.close();
+                ServiceLocator.getInstance(user).commit();
+            } catch (SQLException ex) {
+                error = "Privilegio DAO " + "Consultar priveligos Objeto" + ex.getMessage();
+            } finally {
+                ServiceLocator.getInstance(user).liberarConexion();
+            }
+
+        }
+        else if (consulta.equals("Ciencia")) {
+
+            try {
+                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
+                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
+                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+                PreparedStatement prepStmt;
+                prepStmt = conexion.prepareStatement(strSQL);
+                prepStmt.executeUpdate();
+                tabla = prepStmt.getResultSet();
+                while (tabla.next()) {
+                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
+                }
+                error = error + "</table>";
+                prepStmt.close();
+                ServiceLocator.getInstance(user).commit();
+            } catch (SQLException ex) {
+                error = "Privilegio DAO " + "Consultar priveligos Objeto" + ex.getMessage();
+            } finally {
+                ServiceLocator.getInstance(user).liberarConexion();
+            }
+
+        }
+        else if (consulta.equals("ASAB")) {
+
+            try {
+                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
+                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
+                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+                PreparedStatement prepStmt;
+                prepStmt = conexion.prepareStatement(strSQL);
+                prepStmt.executeUpdate();
+                tabla = prepStmt.getResultSet();
+                while (tabla.next()) {
+                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
+                }
+                error = error + "</table>";
+                prepStmt.close();
+                ServiceLocator.getInstance(user).commit();
+            } catch (SQLException ex) {
+                error = "Privilegio DAO " + "Consultar priveligos Objeto" + ex.getMessage();
+            } finally {
+                ServiceLocator.getInstance(user).liberarConexion();
+            }
+
+        }
+        return error;
+    }
+//Vivero,Tecnologica
 }
