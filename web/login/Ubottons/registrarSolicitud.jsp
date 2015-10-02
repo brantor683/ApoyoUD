@@ -89,7 +89,7 @@
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
-                                 <form class="form-horizontal style-form" action="upload_file_multipale.jsp" method="post" enctype="multipart/form-data">
+                                 <form class="form-horizontal style-form" action="componente2.jsp" method="post" enctype="multipart/form-data">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
                                 <br>
                                 <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>

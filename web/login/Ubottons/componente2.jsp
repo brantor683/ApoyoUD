@@ -4,18 +4,61 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Util.Directorio"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="Negocio.Usuario"%>
 <%@page import="Negocio.Solicitud"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+   <%@ page import="java.util.Iterator" %>
+   <%@ page import="java.io.File" %>
+   <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+   <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+   <%@ page import="org.apache.commons.fileupload.*"%>
+ 
 <%
-    Usuario user = new Usuario();
+
+    
+
+ boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+     Usuario user = new Usuario();
     Solicitud solicitud = new Solicitud();
 
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    
-%>
+ if (!isMultipart) {
+ } else {
+     
+   
+    Directorio dir = new Directorio();
+    String directorio = "C:/PRUEBA/"+user.getUser()+"/Soportes/";
+    dir.generarDirectorio(directorio);     
+     
+	   FileItemFactory factory = new DiskFileItemFactory();
+	   ServletFileUpload upload = new ServletFileUpload(factory);
+	   List items = null;
+	   try {
+		   items = upload.parseRequest(request);
+	   } catch (FileUploadException e) {
+		   e.printStackTrace();
+	   }
+	   Iterator itr = items.iterator();
+	   while (itr.hasNext()) {
+	   FileItem item = (FileItem) itr.next();
+	   if (item.isFormField()) {
+	   } else {
+		   try {
+			   String itemName = item.getName();
+			    File savedFile = new File(directorio+itemName);
+                             item.write(savedFile);  
+		          out.println("<tr><td><b>Your file has been saved at the loaction:</b></td></tr><tr><td><b>"+"uploadedFiles"+"\\"+itemName+"</td></tr>");
+		   } catch (Exception e) {
+			   e.printStackTrace();
+		   }
+	   }
+	   }
+   }
+   %>
 
 <!DOCTYPE html>
 <html lang="en">

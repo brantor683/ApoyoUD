@@ -29,7 +29,7 @@
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
     Directorio dir = new Directorio();
-    String directorio = "C:/PRUEBA/"+user.getUser()+"/IngresosFamiliares/";
+    String directorio = "C:/PRUEBA/"+user.getUser()+"/Soportes/";
     dir.generarDirectorio(directorio);     
      
 	   FileItemFactory factory = new DiskFileItemFactory();
