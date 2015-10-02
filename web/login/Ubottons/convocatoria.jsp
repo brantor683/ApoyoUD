@@ -13,16 +13,16 @@
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%  
-        Usuario user = new Usuario();
-        UsuarioDAO u = new UsuarioDAO();
-        user.setUser((String) session.getAttribute("USUARIO"));
-        user.setPasswd((String) session.getAttribute("CONT"));
-        
+<%
+    Usuario user = new Usuario();
+    UsuarioDAO u = new UsuarioDAO();
+    user.setUser((String) session.getAttribute("USUARIO"));
+    user.setPasswd((String) session.getAttribute("CONT"));
+
 %>
 
 
-    
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,7 +58,7 @@
             <!-- **********************************************************************************************************************************************************
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
-            
+
             <%@ include file="menuFuncionarios.jsp" %>  
             <!-- **********************************************************************************************************************************************************
             MAIN CONTENT
@@ -70,9 +70,11 @@
                     <br>
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
-                     <div class="row mt">
-                        <div class="col-lg-12">
-                            <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
+                    <form class="form-group">
+
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
                                 <select  name="ingresosfamiliares"  id="ingresosfamiliares" class="form-control">
                                     <option value="Ingenieria">Ingenieria</option>
                                     <option value="Ciencias y Educacion">Ciencia de la Educacion</option>
@@ -80,24 +82,26 @@
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                            <button type="button" class="btn btn-round btn-success"  ><a href="convocatoria.jsp">Ver Solicitudes</a></button>
-                                
-                        </div><!-- col-lg-12-->      	
-                    </div><!-- /row -->
-                    
+                                <button type="button" class="btn btn-round btn-success"  ><a href="convocatoria.jsp">Ver Solicitudes</a></button>
 
+                            </div><!-- col-lg-12-->      	
+                        </div><!-- /row -->
+                    </form>
+                    <div class="container" aling="center">
+                        <table class="table-responsive">
+                            <%                         //request.getParameter("privilegio")
+                                SolicitudDAO solicitud = new SolicitudDAO();
+                                out.println("<tr>");
+                                out.print("<td>" + solicitud.buscarSolicitudFuncionario("Todos", user) + "</td>");
+                                out.println("</tr>");
+
+
+                            %>
+                        </table></div>
 
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 
-            <%                         //request.getParameter("privilegio")
-                                    SolicitudDAO solicitud = new SolicitudDAO();
-                                    out.println("<tr>");
-                                    out.print("<td>" + solicitud.buscarSolicitudFuncionario("Todos", user) + "</td>");
-                                    out.println("</tr>");
-
-
-                                %>
             <!--main content end-->
             <!--footer start-->
             <footer class="site-footer">
