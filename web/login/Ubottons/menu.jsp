@@ -32,7 +32,7 @@
         <div id="sidebar"  class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="perfil.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>              
+                <p class="centered"><a href="#"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
                 <h5 class="centered">Hola, <%out.print(session.getAttribute("USUARIO"));%></h5>
 
 

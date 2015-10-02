@@ -114,188 +114,186 @@
                         <img class="dividerline" src="img/sep.png" alt="">
                         <h3>El apoyo alimentario  para el perioro 2015-III se realizará dentro de las fechas Siguientes:</h3>
                     </div>
-                   <form>
-                    <%
-                                        Usuario user = new Usuario();
+                    <form>
+                        <%
+                            Usuario user = new Usuario();
 
-                                        user.setUser("validador");
-                                        user.setPasswd("validador");
+                            user.setUser("validador");
+                            user.setPasswd("validador");
 
-                                        ConvocatoriaDAO conv = new ConvocatoriaDAO();
-                                        Convocatoria c = new Convocatoria();
-                                        //Buscar convocatoria activa
+                            ConvocatoriaDAO conv = new ConvocatoriaDAO();
+                            Convocatoria c = new Convocatoria();
+                            //Buscar convocatoria activa
 
-                                        c = conv.buscarConvocatoria("Activa", user);
-                                       
+                            c = conv.buscarConvocatoria("Activa", user);
 
-                                    %>
-                                    <div class="convocatoria">
-                                        <label for="CedulaInput">Año Convocatoria:  <%out.print(c.getD_anoConvocatoria());%> </label><br>
-                                        <label for="CedulaInput">Periodo Convocatoria:  <%out.print(c.getPeriodo());%></label><br>
-                                        <label for="CedulaInput">Fecha de Inicio:  <%out.print(c.getF_inicioConvocatoria());%></label><br>
-                                        <label for="CedulaInput">Fecha de finalizacion:  <%out.print(c.getF_finConvocatoria());%></label><br>      
-                                    </div>
-                                </form>
-                    
+                        %>
+                        <div class="convocatoria">
+                            <label for="CedulaInput">Año Convocatoria:  <%out.print(c.getD_anoConvocatoria());%> </label><br>
+                            <label for="CedulaInput">Periodo Convocatoria:  <%out.print(c.getPeriodo());%></label><br>
+                            <label for="CedulaInput">Fecha de Inicio:  <%out.print(c.getF_inicioConvocatoria());%></label><br>
+                            <label for="CedulaInput">Fecha de finalizacion:  <%out.print(c.getF_finConvocatoria());%></label><br>      
                         </div>
-                       
-                       
-                    </div>
+                    </form>
+
                 </div>
-            </section>
-                                                                        
-            <!--feedback-->
-            <section class="feedback" id="feedback">
-                <div class="container w960">
-                    <div class="heading">
-                        <img class="dividerline" src="img/sep.png" alt="">
-                        <h2>Registrarse</h2>
-                        <img class="dividerline" src="img/sep.png" alt="">
-                        <h3>Digite su codigo para iniciar el proceso de Registro al Apoyo Alimentario de la Universidad Distrital Francisco JosÃ© de Caldas<br>
-                        </h3>
-                    </div>
-                    <div class="row">
-                        <form class="form-login" action="login/registrarUsuario.jsp" method="post" >
-
-                            <input type="text" name='ruser' class="form-control" placeholder="Código Estudiante"  required>
-                            <br>
-                            <input type="password" name='rpasswd' class="form-control" placeholder="Contraseña"  required>
-                            <button class="btn btn-theme btn-block" href="#" type="submit"><i class="fa fa-lock"></i>Enviar</button>
-                            <hr>	         		         
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!--feedback-->
-            <section class="contact" id="contact">
-                <div class="container">
-                    <div class="heading">
-                        <img class="dividerline" src="img/sep.png" alt="">
-                        <h2>Iniciar Sesion</h2>
-                        <img class="dividerline" src="img/sep.png" alt="">
-                    </div>
-                </div>
-                <div class="container w960">
-                    <div class="row">
-
-                        <form class="form-login" action="login/Ubottons/MenuInicial.jsp" method="post">
-
-                            <input type="text" class="form-control" name="user" placeholder="Código Estudiante" required>
 
 
-                            <br>
-                            <input type="password" name='passwd' class="form-control" placeholder="Contraseña"  required>
+        </div>
+    </div>
+</section>
+
+<!--feedback-->
+<section class="feedback" id="feedback">
+    <div class="container w960">
+        <div class="heading">
+            <img class="dividerline" src="img/sep.png" alt="">
+            <h2>Registrarse</h2>
+            <img class="dividerline" src="img/sep.png" alt="">
+            <h3>Digite su codigo para iniciar el proceso de Registro al Apoyo Alimentario de la Universidad Distrital Francisco JosÃ© de Caldas<br>
+            </h3>
+        </div>
+        <div class="row">
+            <form class="form-login" action="login/registrarUsuario.jsp" method="post" >
+
+                <input type="text" name='ruser' class="form-control" placeholder="Código Estudiante"  required>
+                <br>
+                <input type="password" name='rpasswd' class="form-control" placeholder="Contraseña"  required>
+                <button class="btn btn-theme btn-block" href="#" type="submit"><i class="fa fa-lock"></i>Enviar</button>
+                <hr>	         		         
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--feedback-->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="heading">
+            <img class="dividerline" src="img/sep.png" alt="">
+            <h2>Iniciar Sesion</h2>
+            <img class="dividerline" src="img/sep.png" alt="">
+        </div>
+    </div>
+    <div class="container w960">
+        <div class="row">
+
+            <form class="form-login" action="login/Ubottons/MenuInicial.jsp" method="post">
+
+                <input type="text" class="form-control" name="user" placeholder="Código Estudiante" required>
 
 
-                            <label class="checkbox">
-                                <span class="pull-right">
-                                    <a data-toggle="modal" href="login.html#myModal"> Olvido su contraseña?</a>
-
-                                </span>
-                            </label>
-                            <button class="btn btn-theme btn-block"  type="submit" name="submit"><i class="fa fa-lock"></i>Iniciar Sesión</button>
-                            <hr>
-
-                        </form>
+                <br>
+                <input type="password" name='passwd' class="form-control" placeholder="Contraseña"  required>
 
 
-                        <div class="login-social-link centered">
-                            <p>Siganos en nuestras redes sociales</p>
-                            <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                            <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                <label class="checkbox">
+                    <span class="pull-right">
+                        <a data-toggle="modal" href="login.html#myModal"> Olvido su contraseña?</a>
+
+                    </span>
+                </label>
+                <button class="btn btn-theme btn-block"  type="submit" name="submit"><i class="fa fa-lock"></i>Iniciar Sesión</button>
+                <hr>
+
+            </form>
+
+
+            <div class="login-social-link centered">
+                <p>Siganos en nuestras redes sociales</p>
+                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
+                <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+            </div>
+            <div class="registration">
+                No te has registrado?<br/>
+                <a href="#feedback">
+                    Registrate aquí
+                </a>
+            </div>
+            <!-- Modal -->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Olvido su Contraseña ?</h4>
                         </div>
-                        <div class="registration">
-                            No te has registrado?<br/>
-                            <a href="#feedback">
-                                Registrate aquí
-                            </a>
-                        </div>
-                        <!-- Modal -->
-                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Olvido su Contraseña ?</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Digite su email para recuperar su contraseña.</p>
-                                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                        <div class="modal-body">
+                            <p>Digite su email para recuperar su contraseña.</p>
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                        <button class="btn btn-theme" type="button">Enviar</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <!-- modal -->
-
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-theme" type="button">Enviar</button>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+            <!-- modal -->
 
-            <!--footer-->
-            <section class="footer" id="footer">
-                <p class="text-center">
-                    <a href="#wrapper" class="gototop"><i class="fa fa-angle-double-up fa-2x"></i></a>
-                </p>
-                <div class="container">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                    </ul>
-                    <p>
-                        &copy; 2015 Copyright<br>
+        </div>
+    </div>
+</section>
 
-                    </p>
-                </div>
-            </section>
+<!--footer-->
+<section class="footer" id="footer">
+    <p class="text-center">
+        <a href="#wrapper" class="gototop"><i class="fa fa-angle-double-up fa-2x"></i></a>
+    </p>
+    <div class="container">
+        <ul>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+        </ul>
+        <p>
+            &copy; 2015 Copyright<br>
 
-        </div><!--wrapper end-->
+        </p>
+    </div>
+</section>
 
-        <!--Javascripts-->
-        <script src="js/jquery.js"></script>
-        <script src="js/modernizr.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/menustick.js"></script>
-        <script src="js/parallax.js"></script>
-        <script src="js/easing.js"></script>
-        <script src="js/wow.js"></script>
-        <script src="js/smoothscroll.js"></script>
-        <script src="js/masonry.js"></script>
-        <script src="js/imgloaded.js"></script>
-        <script src="js/classie.js"></script>
-        <script src="js/colorfinder.js"></script>
-        <script src="js/gridscroll.js"></script>
-        <script src="js/contact.js"></script>
-        <script src="js/common.js"></script>
+</div><!--wrapper end-->
 
-        <script type="text/javascript">
-            jQuery(function($) {
-                $(document).ready(function() {
-                    //enabling stickUp on the '.navbar-wrapper' class
-                    $('.navbar-wrapper').stickUp({
-                        parts: {
-                            0: 'banner',
-                            1: 'aboutus',
-                            2: 'specialties',
-                            3: 'gallery',
-                            4: 'feedback',
-                            5: 'contact',
-                         
-                        },
-                        itemClass: 'menuItem',
-                        itemHover: 'active',
-                        topMargin: 'auto'
-                    });
-                });
+<!--Javascripts-->
+<script src="js/jquery.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/menustick.js"></script>
+<script src="js/parallax.js"></script>
+<script src="js/easing.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/masonry.js"></script>
+<script src="js/imgloaded.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/colorfinder.js"></script>
+<script src="js/gridscroll.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/common.js"></script>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        $(document).ready(function() {
+            //enabling stickUp on the '.navbar-wrapper' class
+            $('.navbar-wrapper').stickUp({
+                parts: {
+                    0: 'banner',
+                    1: 'aboutus',
+                    2: 'specialties',
+                    3: 'gallery',
+                    4: 'feedback',
+                    5: 'contact',
+                },
+                itemClass: 'menuItem',
+                itemHover: 'active',
+                topMargin: 'auto'
             });
-        </script>
-    </body>
+        });
+    });
+</script>
+</body>
 </html>
