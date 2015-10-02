@@ -3,6 +3,7 @@
     Created on : 23/03/2015, 09:02:16 AM
     Author     : 
 --%>
+
 <!DOCTYPE html>
 <html lang="en">
    
@@ -108,7 +109,7 @@
 
                         <p class="centered"><a href="perfil.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                         
-                        <h5 class="centered">hola</h5>
+                        <h5 class="centered">Hola</h5>
 
 
                         <li class="sub-menu">

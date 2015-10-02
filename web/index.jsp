@@ -129,14 +129,11 @@
                                        
 
                                     %>
-                                    <div class="form-group">
-
+                                    <div class="convocatoria">
                                         <label for="CedulaInput">Año Convocatoria:  <%out.print(c.getD_anoConvocatoria());%> </label><br>
                                         <label for="CedulaInput">Periodo Convocatoria:  <%out.print(c.getPeriodo());%></label><br>
-                                        <label for="CedulaInput">Fecha de Inicio (yyyy-mm-dd):  <%out.print(c.getF_inicioConvocatoria());%></label><br>
-                                        <label for="CedulaInput">Fecha de finalizacion (yyyy-mm-dd):  <%out.print(c.getF_finConvocatoria());%></label><br>
-
-                                       
+                                        <label for="CedulaInput">Fecha de Inicio:  <%out.print(c.getF_inicioConvocatoria());%></label><br>
+                                        <label for="CedulaInput">Fecha de finalizacion:  <%out.print(c.getF_finConvocatoria());%></label><br>      
                                     </div>
                                 </form>
                     

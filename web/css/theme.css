@@ -678,3 +678,13 @@ blockquote cite {
 blockquote cite:before {
 	content: "\2014 \2009";
 }
+
+.convocatoria{
+        color:#cc580c;
+        font-family:'Playball',cursive;
+	font-size:30px;
+	display:block;
+	margin-top:5px;
+	text-align: center;
+    
+}

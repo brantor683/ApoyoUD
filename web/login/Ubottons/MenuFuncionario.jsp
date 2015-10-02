@@ -30,7 +30,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Panel de Usuario</title>
+        <title>Panel de Funcionarios</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -731,15 +731,3 @@
 
     </body>
 </html>
-
-
-
-<%
-    } catch (RHException ex) {
-        out.println("<tr>");
-        out.print("<td>" + ex.getMessage() + "</td>");
-        out.println("</tr>");
-
-    }
-
-%>
