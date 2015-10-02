@@ -46,20 +46,20 @@
                 
                 <table class="table">
                     <td>
-                        <form class="form-login" action="login/Ubottons/MenuFuncionario.jsp" method="post">
+                        <form class="form-login" action="../../login/registrarFuncionario.jsp" method="post">
 
                             <h2 class="form-login-heading">Registrese Aquí</h2>
                             <div class="login-wrap">
-                                <input type="text" class="form-control" placeholder="Usuario" autofocus>
+                                <input type="text" class="form-control"  name="fruser"   autofocus>
                                 <br>
-                                <input type="password" class="form-control" placeholder="Contraseña">
+                                <input type="password" class="form-control"  name="frpass" >
                                 <label class="checkbox">
                                     <span class="pull-right">
                                         <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>
-                                <button class="btn btn-theme btn-block" href="MenuFuncionario.jsp" type="submit"><i class="fa fa-lock"></i>Registrarse</button>
+                                <button class="btn btn-theme btn-block" href="#" type="submit"><i class="fa fa-lock"></i>Registrarse</button>
                             </div>
 
                             <!-- Modal -->

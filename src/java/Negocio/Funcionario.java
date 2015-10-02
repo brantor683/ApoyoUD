@@ -10,12 +10,13 @@ package Negocio;
  * @author Brandon
  */
 public class Funcionario {
-        private int k_idFuncionario;
-	private String n_nomFuncionario;
-        
-        Funcionario(){
-            
-        }
+
+    private int k_idFuncionario;
+    private String n_nomFuncionario;
+
+     public Funcionario() {
+
+    }
 
     public int getK_idFuncionario() {
         return k_idFuncionario;
@@ -32,6 +33,5 @@ public class Funcionario {
     public void setN_nomFuncionario(String n_nomFuncionario) {
         this.n_nomFuncionario = n_nomFuncionario;
     }
-        
-        
+
 }

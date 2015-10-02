@@ -25,13 +25,12 @@
         session.setAttribute("USUARIO", request.getParameter("ruser"));
         session.setAttribute("CONT", request.getParameter("rpasswd"));
 }
-         Usuario user = new Usuario();
-         Usuario user2 = new Usuario();
-    user.setUser((String) session.getAttribute("USUARIO"));
-    user.setPasswd((String) session.getAttribute("CONT"));
-
-    
+        Usuario user = new Usuario();
+        Usuario user2 = new Usuario();
         
+        user.setUser((String) session.getAttribute("USUARIO"));
+        user.setPasswd((String) session.getAttribute("CONT"));
+   
         user2.setUser("APOYOUD");
         user2.setPasswd("APOYOUD");
      
@@ -43,7 +42,8 @@
         String codEstudiante = user.getUser();
         estuser = estu.buscarEstudiante(codEstudiante, user2);
         out.print(estu.buscarEstudiante(codEstudiante, user2).getK_codEstudiante());
-     
+     out.print(session.getAttribute("USUARIO"));
+     out.print(session.getAttribute("CONT"));
         if(estuser.getK_codEstudiante() == Integer.valueOf(codEstudiante)){
              out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
              out.print("<td>" + "crear usuario" +  us.crearUsuarioEstudiante(user2, user) + "</td>");

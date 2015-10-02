@@ -6,7 +6,7 @@
 package Datos;
 
 
-import Negocio.Estudiante;
+import Negocio.Funcionario;
 import Negocio.Usuario;
 import Util.ServiceLocator;
 import java.sql.Connection;
@@ -14,51 +14,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-/**
- *
- * @author 
- */
-public class EstudianteDAO {
+public class FuncionarioDAO {
     
-    public Estudiante buscarEstudiante(String id_estudiante, Usuario user) {
-        Estudiante estudiante = new Estudiante();
-    
+    public String buscarFuncionario(String id_funcionario, Usuario user) {
+        Funcionario funcionario = new Funcionario();  
          String error="";
-        try {
-        
+        try {       
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT * FROM S_ESTUDIANTE WHERE K_codEstudiante=?";
+            String strSQL = "SELECT user FROM dual";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setInt(1, Integer.parseInt(id_estudiante));
+            //prepStmt.setInt(1, Integer.parseInt(id_funcionario));
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-                estudiante.setK_codEstudiante(rs.getInt(1));
-                estudiante.setN_nomEstudiante(rs.getString(2));
-                estudiante.setN_apeEstudiante(rs.getString(3));
-                estudiante.setD_tipodocumento(rs.getString(4));
-                estudiante.setD_identificacion(rs.getInt(5));
-                estudiante.setD_sexo(rs.getString(6));
-                estudiante.setD_direccion(rs.getString(7));
-                estudiante.setT_telefono(rs.getInt(8));
-                estudiante.setD_promedio(rs.getInt(9));
-                estudiante.setD_materias_perdidas(rs.getInt(10));
-                estudiante.setK_est_ProyCurricular(rs.getInt(11));
-             
+                //funcionario.setK_idFuncionario(rs.getInt(1));
+                funcionario.setN_nomFuncionario(rs.getString(1));
+                error=funcionario.getN_nomFuncionario();
             }
-            return estudiante;
+            return error;
         } catch (SQLException e) {
-            error = "Estudiante DAO " + "Buscar Id Estudiante " + e.getMessage();
+            error = "Funcionario DAO " + "Buscar Id Funcionario " + e.getMessage();
           
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
         }
-          System.out.println(estudiante.getK_codEstudiante());
-        return estudiante;
+        return error;
     }
     
-    public String consultarIdEstudiante(String username, Usuario user) {
+    public String consultarIdFuncionario(String username, Usuario user) {
 
         String error = null;
         ResultSet tabla = null;
@@ -78,7 +61,7 @@ public class EstudianteDAO {
             ServiceLocator.getInstance(user).commit();
 
         } catch (SQLException ex) {
-            error = "Estudiante DAO " + "Consultar Id Estudiante " + ex.getMessage();
+            error = "Funcionario DAO " + "Consultar Id Funcionario " + ex.getMessage();
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
 
@@ -87,5 +70,4 @@ public class EstudianteDAO {
         //   System.out.println(error);
         return error;
     }
-    
 }

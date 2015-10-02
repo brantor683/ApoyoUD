@@ -49,32 +49,53 @@ public class UsuarioDAO {
         return sa;
     }
 
-       public String crearUsuarioEstudiante(Usuario userInicial, Usuario nuevoUsuario) {
+    public String crearUsuarioFuncionario(Usuario userInicial, Usuario nuevoUsuario) {
         String error = null;
-      
+
         try {
-            String strSQL = "CREATE USER " + "e"+nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
+            String strSQL = "CREATE USER " + "f" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
             Connection conexion = ServiceLocator.getInstance(userInicial).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance(userInicial).commit();
-            error = "Usuario Registrado: " +  nuevoUsuario.getUser();
+            error = "Usuario Registrado: " + nuevoUsuario.getUser();
 
         } catch (SQLException e) {
-     
+
+            error = "Usuario_DAO_Funcionario " + " Crear USER " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(userInicial).liberarConexion();
+        }
+        return error;
+    }
+
+    public String crearUsuarioEstudiante(Usuario userInicial, Usuario nuevoUsuario) {
+        String error = null;
+
+        try {
+            String strSQL = "CREATE USER " + "e" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
+            Connection conexion = ServiceLocator.getInstance(userInicial).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance(userInicial).commit();
+            error = "Usuario Registrado: " + nuevoUsuario.getUser();
+
+        } catch (SQLException e) {
+
             error = "Usuario_DAO " + " Crear USER " + e.getMessage();
         } finally {
             ServiceLocator.getInstance(userInicial).liberarConexion();
         }
         return error;
     }
-       
-          public String asignarConnect(String idEstudiante,  Usuario user) {
+
+    public String asignarConnect(String idEstudiante, Usuario user) {
         String error = null;
-       
+
         try {
-            String strSQL = "GRANT CONNECT TO " + "e"+idEstudiante;
+            String strSQL = "GRANT CONNECT TO " + "e" + idEstudiante;
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
@@ -91,17 +112,17 @@ public class UsuarioDAO {
         return error;
     }
 
-           public String asignarRolEstudiante(String idEstudiante, Usuario user) {
+    public String asignarRolEstudiante(String idEstudiante, Usuario user) {
         String error = null;
-       
+
         try {
-            String strSQL = "GRANT ROL_ESTUDIANTE TO " + "e"+idEstudiante;
+            String strSQL = "GRANT ROL_ESTUDIANTE TO " + "e" + idEstudiante;
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();
-            error = "¡ asignado rol estudiante " + idEstudiante+ " !";
+            error = "¡ asignado rol estudiante " + idEstudiante + " !";
         } catch (SQLException e) {
             // throw new RHException("Socio_DAO", "No pudo crear el USER" + e.getMessage());
             error = "Usuario_DAO " + "Asignar ROLE " + e.getMessage();
@@ -111,10 +132,26 @@ public class UsuarioDAO {
         // System.out.println(error);
         return error;
     }
-          
-          
 
+    public String asignarRolFuncionario(String idFuncionario, Usuario user) {
+        String error = null;
 
-
+        try {
+            String strSQL = "GRANT ROL_FUNCIONARIO TO " + "f" + idFuncionario;
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+            error = "¡ asignado rol funcionario " + idFuncionario + " !";
+        } catch (SQLException e) {
+            // throw new RHException("Socio_DAO", "No pudo crear el USER" + e.getMessage());
+            error = "Usuario_DAO_Funcionario " + "Asignar ROLE " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        // System.out.println(error);
+        return error;
+    }
 
 }
