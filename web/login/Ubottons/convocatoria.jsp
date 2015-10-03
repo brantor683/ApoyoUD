@@ -19,6 +19,14 @@
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
 
+    String filtro = request.getParameter("FiltroSolicitud");
+    if (filtro == null) {
+        filtro = "Todos";
+    } else {
+        filtro = request.getParameter("FiltroSolicitud");
+    }
+
+
 %>
 
 
@@ -70,19 +78,20 @@
                     <br>
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
-                    <form class="form-group">
+                    <form class="form-group" action="convocatoria.jsp">
 
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
-                                <select  name="ingresosfamiliares"  id="ingresosfamiliares" class="form-control">
+                                <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
+                                    <option value="Todos">Todos</option>
                                     <option value="Ingenieria">Ingenieria</option>
                                     <option value="Ciencias y Educacion">Ciencia de la Educacion</option>
                                     <option value="Artes">ASAB</option>		                         
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                                <button type="button" class="btn btn-round btn-success"  ><a href="convocatoria.jsp">Ver Solicitudes</a></button>
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Ver Solicitudes</a></button>
 
                             </div><!-- col-lg-12-->      	
                         </div><!-- /row -->
@@ -92,7 +101,7 @@
                             <%                         //request.getParameter("privilegio")
                                 SolicitudDAO solicitud = new SolicitudDAO();
                                 out.println("<tr>");
-                                out.print("<td>" + solicitud.buscarSolicitudFuncionario("Todos", user) + "</td>");
+                                out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtro, user) + "</td>");
                                 out.println("</tr>");
 
 

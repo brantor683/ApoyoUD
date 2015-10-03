@@ -19,36 +19,32 @@ import javax.swing.JOptionPane;
  * @author Brandon
  */
 public class SolicitudDAO {
-    
-    public SolicitudDAO(){
-        
+
+    public SolicitudDAO() {
+
     }
-    
-        public String registrarSolicitud(Solicitud s, Usuario user) {
-        String error ="";
-      
+
+    public String registrarSolicitud(Solicitud s, Usuario user) {
+        String error = "";
+
         try {
 
             String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, e_estSolicitud, k_conv_convocatoria, k_est_codEstudiante) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
 
-
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            
-           
+
             prepStmt.setInt(1, s.getK_conv_convocatoria());
-             prepStmt.setInt(2, s.getK_est_codEstudiante());
-           
-           
-            
+            prepStmt.setInt(2, s.getK_est_codEstudiante());
+
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();
 
-          //  error = error + " Registrar solicitud: " +  s.getK_idSolicitud() ;
+            //  error = error + " Registrar solicitud: " +  s.getK_idSolicitud() ;
         } catch (SQLException e) {
-     
+
             error = "Solictud_DAO " + "Registrar Solicitud " + e.getMessage();
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
@@ -56,8 +52,8 @@ public class SolicitudDAO {
 
         return error;
     }
-        
-        public Solicitud buscarSolicitud(String id_estudiante, Usuario user) {
+
+    public Solicitud buscarSolicitud(String id_estudiante, Usuario user) {
         Solicitud solicitud = new Solicitud();
         try {
 
@@ -75,7 +71,7 @@ public class SolicitudDAO {
                 solicitud.setK_conv_convocatoria(rs.getInt(5));
                 solicitud.setD_diasbeneficio(rs.getInt(6));
                 solicitud.setF_solicitud(rs.getString(7));
-                         
+
             }
             return solicitud;
         } catch (SQLException e) {
@@ -86,8 +82,8 @@ public class SolicitudDAO {
         }
         return solicitud;
     }
-        
-        public String buscarSolicitudFuncionario(String consulta, Usuario user) {
+
+    public String buscarSolicitudFuncionario(String consulta, Usuario user) {
         String error = "<table  style='border: 1px solid black;'>";
         ResultSet tabla = null;
         if (consulta.equals("Todos")) {
@@ -98,21 +94,21 @@ public class SolicitudDAO {
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad";
+                        + "pc.k_proy_facultad=f.k_facultad ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
                 prepStmt = conexion.prepareStatement(strSQL);
                 prepStmt.executeUpdate();
                 tabla = prepStmt.getResultSet();
                 error = error + "<tr style='width:80%;  border: 1px solid black;'>"
-                            + "     <td style='width:40%; border: 1px solid black;'>" + "Codigo Solicitud" + " </td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Estado Solicitud" + "</td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Codigo Estudiante" + "</td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Nombres" + "</td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Apellidos" + "</td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Facultad" + "</td>"
-                            + "     <td style='width:40%; border: 1px solid black;'> " + "Proyecto Currciular" + "</td>"
-                            + "</tr>";
+                        + "     <td style='width:40%; border: 1px solid black;'>" + "Codigo Solicitud" + " </td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Estado Solicitud" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Codigo Estudiante" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Nombres" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Apellidos" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Facultad" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Proyecto Currciular" + "</td>"
+                        + "</tr>";
                 while (tabla.next()) {
                     error = error + "<tr style='width:80%;  border: 1px solid black;'>"
                             + "     <td style='width:40%; border: 1px solid black;'>" + tabla.getInt(1) + " </td>"
@@ -133,18 +129,41 @@ public class SolicitudDAO {
                 ServiceLocator.getInstance(user).liberarConexion();
             }
 
-        } else if (consulta.equals("Ingenieria")) {
-
+        } else {
             try {
-                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
-                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
+                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                        + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
+                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
+                        + "s.k_est_codestudiante=e.k_codestudiante AND "
+                        + "e.k_est_proycurricular=pc.k_proycurricular AND "
+                        + "pc.k_proy_facultad=f.k_facultad AND f.n_nomfacultad=?"
+                        + "ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
                 prepStmt = conexion.prepareStatement(strSQL);
+                prepStmt.setString(1, consulta);
                 prepStmt.executeUpdate();
                 tabla = prepStmt.getResultSet();
+                error = error + "<tr style='width:80%;  border: 1px solid black;'>"
+                        + "     <td style='width:40%; border: 1px solid black;'>" + "Codigo Solicitud" + " </td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Estado Solicitud" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Codigo Estudiante" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Nombres" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Apellidos" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Facultad" + "</td>"
+                        + "     <td style='width:40%; border: 1px solid black;'> " + "Proyecto Currciular" + "</td>"
+                        + "</tr>";
                 while (tabla.next()) {
-                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
+                    error = error + "<tr style='width:80%;  border: 1px solid black;'>"
+                            + "     <td style='width:40%; border: 1px solid black;'>" + tabla.getInt(1) + " </td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getInt(3) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(4) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(5) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(6) + "</td>"
+                            + "     <td style='width:40%; border: 1px solid black;'> " + tabla.getString(7) + "</td>"
+                            + "</tr>";
                 }
                 error = error + "</table>";
                 prepStmt.close();
@@ -156,53 +175,7 @@ public class SolicitudDAO {
             }
 
         }
-        else if (consulta.equals("Ciencia")) {
 
-            try {
-                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
-                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
-                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
-                PreparedStatement prepStmt;
-                prepStmt = conexion.prepareStatement(strSQL);
-                prepStmt.executeUpdate();
-                tabla = prepStmt.getResultSet();
-                while (tabla.next()) {
-                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
-                }
-                error = error + "</table>";
-                prepStmt.close();
-                ServiceLocator.getInstance(user).commit();
-            } catch (SQLException ex) {
-                error = "Privilegio DAO " + "Consultar priveligos Objeto" + ex.getMessage();
-            } finally {
-                ServiceLocator.getInstance(user).liberarConexion();
-            }
-
-        }
-        else if (consulta.equals("ASAB")) {
-
-            try {
-                String strSQL = "Select grantee, privilege from DBA_TAB_PRIVS where "
-                        + "Grantee LIKE 'ROL_%' or Grantee = 'FACIS' order by grantee";
-                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
-                PreparedStatement prepStmt;
-                prepStmt = conexion.prepareStatement(strSQL);
-                prepStmt.executeUpdate();
-                tabla = prepStmt.getResultSet();
-                while (tabla.next()) {
-                    error = error + "<tr style='width:80%;  border: 1px solid black;'><td style='width:40%; border: 1px solid black;'>" + tabla.getString(1) + " </td> <td style='width:40%; border: 1px solid black;'> " + tabla.getString(2) + "</td></tr>";
-                }
-                error = error + "</table>";
-                prepStmt.close();
-                ServiceLocator.getInstance(user).commit();
-            } catch (SQLException ex) {
-                error = "Privilegio DAO " + "Consultar priveligos Objeto" + ex.getMessage();
-            } finally {
-                ServiceLocator.getInstance(user).liberarConexion();
-            }
-
-        }
         return error;
     }
-//Vivero,Tecnologica
 }

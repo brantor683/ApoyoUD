@@ -40,7 +40,7 @@
 
     if (funciUser.getK_idFuncionario() == Integer.valueOf(user.getUser())) {%>
         <center><h3>Se registró correctamente, ya puedes iniciar sesión </h3>
-        <button class="bg-success" type="submit" ><a href="funcionario.jsps">Regresar</a></button></center>
+        <button class="bg-success" type="submit" ><a href="Ubottons/funcionario.jsp">Regresar</a></button></center>
 
 <%} else {%>
          <center><h3>No se puede registrar</h3>

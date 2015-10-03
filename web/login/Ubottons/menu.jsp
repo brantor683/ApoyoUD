@@ -4,6 +4,19 @@
     Author     : 
 --%>
 
+<%@page import="Datos.EstudianteDAO"%>
+<%@page import="Negocio.Estudiante"%>
+<%@page import="Negocio.Usuario"%>
+
+<%
+    Usuario userEstu = new Usuario();
+    userEstu.setUser((String) session.getAttribute("USUARIO"));
+    userEstu.setPasswd((String) session.getAttribute("CONT"));
+    
+    Estudiante estuMenu = new Estudiante();
+    EstudianteDAO estuDAOMenu = new EstudianteDAO();
+    estuMenu=estuDAOMenu.buscarEstudiante(estuDAOMenu.consultarIdEstudiante(userEstu.getUser(), userEstu),userEstu);
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +46,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="#"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
-                <h5 class="centered">Hola, <%out.print(session.getAttribute("USUARIO"));%></h5>
+                <h5 class="centered">Hola, <%out.print(estuMenu.getN_nomEstudiante()+" "+estuMenu.getN_apeEstudiante());%></h5>
 
 
                 <li class="sub-menu">

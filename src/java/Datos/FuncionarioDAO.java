@@ -29,7 +29,6 @@ public class FuncionarioDAO {
             while (rs.next()) {
                 funcionario.setK_idFuncionario(rs.getInt(1));
                 funcionario.setN_nomFuncionario(rs.getString(2));
-                error=funcionario.getN_nomFuncionario();
             }
             return funcionario;
         } catch (SQLException e) {
@@ -48,7 +47,7 @@ public class FuncionarioDAO {
         String sSubCadena = username.substring(1);
 
         try {
-            String strSQL = "SELECT K_CODESTUDIANTE FROM S_ESTUDIANTE WHERE K_CODESTUDIANTE='" + sSubCadena + "'";
+            String strSQL = "SELECT K_IDFUNCIONARIO FROM S_FUNCIONARIO WHERE K_IDFUNCIONARIO='" + sSubCadena + "'";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt;
             prepStmt = conexion.prepareStatement(strSQL);

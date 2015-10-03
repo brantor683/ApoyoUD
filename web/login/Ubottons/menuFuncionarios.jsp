@@ -3,8 +3,20 @@
     Created on : 23/03/2015, 09:02:16 AM
     Author     : 
 --%>
-
+<%@page import="Negocio.Usuario"%>
+<%@page import="Negocio.Funcionario"%>
+<%@page import="Datos.FuncionarioDAO"%>
 <!DOCTYPE html>
+
+<%       
+    Usuario userFunc = new Usuario();
+    userFunc.setUser((String) session.getAttribute("USUARIO"));
+    userFunc.setPasswd((String) session.getAttribute("CONT"));
+    
+    Funcionario func = new Funcionario();
+    FuncionarioDAO funcDAO = new FuncionarioDAO();
+    func=funcDAO.buscarFuncionario(funcDAO.consultarIdFuncionario(userFunc.getUser(), userFunc),userFunc);
+%>
 <html lang="en">
 
     <!-- **********************************************************************************************************************************************************
@@ -33,7 +45,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="#"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
-                <h5 class="centered">Hola, <%out.print(session.getAttribute("USUARIO"));%></h5>
+                <h5 class="centered">Hola, <%out.print(func.getN_nomFuncionario());%></h5>
 
 
                 <li class="sub-menu">
@@ -48,8 +60,8 @@
                         <span>Consultar</span>
                     </a>
                     <ul class="sub">
-                          <li><a  href="convocatoria.jsp">Consultar Información</a></li>
-                          <li><a  href="convocatoria.jsp">Consultar Solicitudes</a></li>                       
+                        <li><a  href="convocatoria.jsp">Consultar Información</a></li>
+                        <li><a  href="convocatoria.jsp">Consultar Solicitudes</a></li>                       
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -58,8 +70,8 @@
                         <span>Asignar</span>
                     </a>
                     <ul class="sub">
-                          <li><a  href="convocatoria.jsp">Asignar Puntaje</a></li>
-                          <li><a  href="convocatoria.jsp">Asignar Actividad</a></li>
+                        <li><a  href="convocatoria.jsp">Asignar Puntaje</a></li>
+                        <li><a  href="convocatoria.jsp">Asignar Actividad</a></li>
                     </ul>
 
                 </li>
