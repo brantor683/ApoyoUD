@@ -32,27 +32,23 @@
     String codEstudiante = user.getUser().substring(1);
     solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
 
+    solicituddao.registrarSolicitud(solicitud, user);
+    out.print("REGISTRO EXITOSO");
+
 
 %>
 
-<h3>  <%  out.println(solicitud.getE_estSolicitud()); %></h3>
-<h3>    <% out.println(solicitud.getK_conv_convocatoria()); %></h3>
-<H3><%out.println(solicitud.getD_diasbeneficio());%></H3>
-<h3>     <% out.println(solicitud.getK_est_codEstudiante()); %></h3>
-<h3>     <% out.println(user.getUser()); %></h3>
 
-<h3><%solicituddao.registrarSolicitud(solicitud, user);%></h3>
-<h3><%out.println("ENHORABUENA !!!!");%></h3>
 
-<%
-    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+
+<%    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
     if (!isMultipart) {
     } else {
 
         Directorio dir = new Directorio();
-        String directorio = "C:/PRUEBA/" + user.getUser() + "/Soportes/";
-        dir.generarDirectorio(directorio);
+        String directorio = "";
+        String directorioFinal="";
 
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -64,18 +60,37 @@
         }
         Iterator itr = items.iterator();
         while (itr.hasNext()) {
+            String name = "";
+            
             FileItem item = (FileItem) itr.next();
             if (item.isFormField()) {
+                
+                name = item.getFieldName();
+              
+                String valor = item.getString();
+               directorioFinal="C:/DatosAPOYO/"+user.getUser()+"/"+name+"/";
+                    dir.generarDirectorio(directorio);
+                
+                socioeconomi.setK_soc_socioeconomica(Integer.parseInt(valor));
+              
             } else {
+
                 try {
+                        
                     String itemName = item.getName();
-                    File savedFile = new File(directorio + itemName);
+                    
+                    directorioFinal = "C:/DatosAPOYO/"+user.getUser()+"/"+name+"/" + itemName;
+                    
+                    File savedFile = new File(directorioFinal);
                     item.write(savedFile);
-                    out.println("<tr><td><b>Your file has been saved at the loaction:</b></td></tr><tr><td><b>" + "uploadedFiles" + "\\" + itemName + "</td></tr>");
+                   
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+             
+             socioeconomi.setD_soporte(directorioFinal);
+             soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
         }
     }
 %>

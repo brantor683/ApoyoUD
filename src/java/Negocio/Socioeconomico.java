@@ -51,6 +51,6 @@ public class Socioeconomico {
     public void setE_estado_validacion(String e_estado_validacion) {
         this.e_estado_validacion = e_estado_validacion;
     }
-    
+
     
 }
