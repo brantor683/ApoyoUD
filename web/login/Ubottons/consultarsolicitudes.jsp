@@ -78,11 +78,12 @@
                     <br>
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
-                    <form class="form-group" action="convocatoria.jsp">
-
+                    <form class="form-group" action="consultarsolicitudes.jsp">
+                        <table class="table-condensed">
+                            <td>
                         <div class="row mt">
-                            <div class="col-lg-12">
-                                <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
+                            <div class="col-lg-10">
+                                <label >Filtrar por Facultad</label>
                                 <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option>
                                     <option value="Ingenieria">Ingenieria</option>
@@ -91,10 +92,62 @@
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Ver Solicitudes</a></button>
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>consultar Solicitudes</a></button>
 
-                            </div><!-- col-lg-12-->      	
+                            </div><!-- col-lg-12-->
+                        </div>
+                            </td>
+                            <td>
+                        <div class="row mt">
+                            <div class="col-lg-11">
+                                <label >Filtrar por Proyecto Curricular</label>
+                                <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
+                                    <option value="Todos">Todos</option>
+                                    <option value="Ingenieria de Sistema">Ingenieria de Sistemas</option>
+                                    <option value="Ingenieria Catastral">Ingeniería Catastral</option>
+                                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>		                         
+                                    <option value="Ingenieria Electronica">Ingenieria Electrónica</option>
+                                    <option value="Ingenieria Electrica">Ingenieria Electrica</option>
+
+                                    <option value="Administracion Deportiva">Administración Deportiva</option>
+                                    <option value="Administracion Ambiental">Administración Ambiental</option>
+                                    <option value="Ingenieria Ambiental">Ingenieria Ambiental</option>
+                                    <option value="Ingenieria Forestal">Ingenieria Forestal</option>
+                                    <option value="Ingenieria Sanitaria">Ingenieria Sanitaria</option>
+                                    <option value="Ingenieria Topografica">Ingenieria Topografica</option>
+                                    
+                                    <option value="Arte Danzario">Arte Danzario</option>		                         
+                                    <option value="Artes Escenicas">Artes Escenicas</option>
+                                    <option value="Artes Musicales">Artes Musicales</option>
+                                    <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
+                                    
+                                    <option value="Tecnologia Industrial">Tecnología Industrial</option>
+                                    <option value="Tecnologia Electrónica">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
+                                    <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
+                                    <option value="Tecnologia en Sistematizacion de Datos">Tecnologia en Sistematizacion de Datos</option>
+                                    
+                                    <option value="Licenciatura en Biología">Licenciatura en Biología</option>		                         
+                                    <option value="Licenciatura en Ciencias Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
+                                    <option value="Licenciatura en Artistica">Licenciatura en Educación Básica con Enfasis en Artistica</option>
+                                    <option value="Licenciatura en Humanidades">Licenciatura en Educación Básica con Enfasis en Humanidades y Lengua Castellana</option>		                         
+                                    <option value="Licenciatura en Ingles">Licenciatura en Educación Básica con Enfasis en Inglés</option>
+                                    <option value="Licenciatura en Matematica">Licenciatura en Educación Básica con Enfasis en Matemática</option> 
+                                    <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>		                         
+                                    <option value="Licenciatura en Pedagogia Infantil">Licenciatura en Pedagogia Infantil</option>
+                                    <option value="Licenciatura en Quimica">Licenciatura en Quimica</option> 
+                                     <option value="Matematicas">Matemáticas</option> 
+                                   
+                                    
+                                </select>
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Consultar Solicitudes</a></button>
+
+                            </div><!-- col-lg-12-->
+
                         </div><!-- /row -->
+                        </td>
+                        </table>
                     </form>
                     <div class="container" aling="center">
                         <table class="table-responsive">

@@ -28,7 +28,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menu Apoyo Alimentario"></div>
         </div>
         <!--logo start-->
-        <a href="MenuFuncionario.jsp" class="logo"><b>Panel Usuario</b></a>
+        <a href="MenuFuncionario.jsp" class="logo"><b>Panel de Funcionarios</b></a>
         <!--logo end--> 
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
@@ -44,7 +44,7 @@
         <div id="sidebar"  class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="#"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
+                <p class="centered"><a href="MenuFuncionario.jsp"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
                 <h5 class="centered">Hola, <%out.print(func.getN_nomFuncionario());%></h5>
 
 
