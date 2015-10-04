@@ -135,6 +135,8 @@
                                     </div>
 
                                     <br>
+                                    <button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
+
 
                                 </form>
 
@@ -142,58 +144,6 @@
                             </div>
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->
-                    <!-- INPUT MESSAGES -->
-                    <div class="row mt">
-                        <div class="col-lg-12">
-                            <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
-                                <br>
-
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
-                                    </div>
-                                </div>
-                                <br>
-                                <br><div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
-                                    </div>
-                                </div>
-                                <br>
-
-                                <br><div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
-                                    </div>
-                                </div>
-
-                                <br>
-                                <br>
-                                <br>
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
-                                    </div>
-                                </div>
-                                <br>
-                                <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
-
-
-
-
-                            </div><!-- /form-panel -->
-                        </div><!-- /col-lg-12 -->
-
-
-
-                    </div><!-- /row -->
-
-
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 

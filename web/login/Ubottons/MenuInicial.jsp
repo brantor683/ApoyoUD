@@ -19,6 +19,7 @@
         session.setAttribute("USUARIO", "e"+request.getParameter("user"));
         session.setAttribute("CONT", request.getParameter("passwd"));
     }
+    
     Usuario user = new Usuario();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));

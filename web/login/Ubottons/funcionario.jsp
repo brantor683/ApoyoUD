@@ -41,7 +41,7 @@
         *********************************************************************************************************************************************************** -->
 
         <div id="login-page">
-            <label class="portalfuncionario">BIENVENIDO AL PORTAL DE FUNCIONARIOS</label>
+            <center><label class="portalfuncionario">BIENVENIDO AL PORTAL DE FUNCIONARIOS</label></center>
             <div class="container">
                 
                 <table class="table">
