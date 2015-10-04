@@ -55,13 +55,13 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a class="" href="convocatoria.jsp" >
+                    <a class="" href="consultarsolicitudes.jsp" >
                         <i class="fa fa-tasks"></i>
                         <span>Consultar</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="convocatoria.jsp">Consultar Información</a></li>
-                        <li><a  href="convocatoria.jsp">Consultar Solicitudes</a></li>                       
+                        <li><a  href="consultarsolicitudes.jsp">Consultar Información</a></li>
+                        <li><a  href="consultarsolicitudes.jsp">Consultar Solicitudes</a></li>                       
                     </ul>
                 </li>
                 <li class="sub-menu">

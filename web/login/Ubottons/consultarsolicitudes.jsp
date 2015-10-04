@@ -74,53 +74,39 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Abrir Convocatoria Apoyo Alimentario</h3>
+                    <h3><i class="fa fa-angle-right"></i>Ver Socilitudes</h3>
                     <br>
-
+                    Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
+                    <form class="form-group" action="convocatoria.jsp">
 
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Año Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Periodo Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Cupos Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                     <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
-                   <br>
-                   <br>
-                    <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
-                    <br>
-                    <br>
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <label class="col-sm-2 col-sm-2 control-label">Filtrar por Proyecto Curricular</label>
+                                <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
+                                    <option value="Todos">Todos</option>
+                                    <option value="Ingenieria">Ingenieria</option>
+                                    <option value="Ciencias y Educacion">Ciencia de la Educacion</option>
+                                    <option value="Artes">ASAB</option>		                         
+                                    <option value="Medio Ambiente">Vivero</option>
+                                    <option value="Tecnologica">Tecnológica</option> 
+                                </select>
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Ver Solicitudes</a></button>
 
-                    <button type="submit" href="abrirconvocatoria.jsp" class="btn btn-round btn-success"  ><a href="abrirconvocatoria.jsp">Abrir Convocatoria</a></button>
+                            </div><!-- col-lg-12-->      	
+                        </div><!-- /row -->
+                    </form>
+                    <div class="container" aling="center">
+                        <table class="table-responsive">
+                            <%                         //request.getParameter("privilegio")
+                                SolicitudDAO solicitud = new SolicitudDAO();
+                                out.println("<tr>");
+                                out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtro, user) + "</td>");
+                                out.println("</tr>");
 
 
-
+                            %>
+                        </table></div>
 
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
@@ -144,7 +130,7 @@
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script type="text/javascript" src="bootstrap-datepicker.de.js" charset="UTF-8"></script>
+
 
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
@@ -170,6 +156,14 @@
         <script src="assets/js/form-component.js"></script>    
 
 
+        <script>
+            //custom select box
+
+            $(function() {
+                $('select.styled').customSelect();
+            });
+
+        </script>
 
     </body>
 </html>

@@ -56,9 +56,9 @@
                                                 <ul class="nav navbar-nav">
                                                     <li class="menuItem active"><a href="#wrapper">Home</a></li>
                                                     <li class="menuItem"><a href="#aboutus">Acerca de Nosotros</a></li>
-                                                    <li class="menuItem"><a href="#specialties">Información Convocatoria</a></li>
-                                                    <li class="menuItem"><a href="#feedback">Registrarse</a></li>
-                                                    <li class="menuItem"><a href="#contact">Iniciar Sesión</a></li>                                                   
+                                                    <li class="menuItem"><a href="#informacion">Información Convocatoria</a></li>
+                                                    <li class="menuItem"><a href="#registrarse">Registrarse</a></li>
+                                                    <li class="menuItem"><a href="#iniciosesion">Iniciar Sesión</a></li>                                                   
                                                     <li class="menuItem"><a href="login/Ubottons/funcionario.jsp">Portal Funcionarios</a></li>
                                                 </ul>
                                             </div>
@@ -105,8 +105,8 @@
                 </div>
             </section>
 
-            <!--specialties-->
-            <section class="specialties" id="specialties">
+            <!--informacion-->
+            <section class="informacion" id="informacion">
                 <div class="container">
                     <div class="heading text-center">
                         <img class="dividerline" src="img/sep.png" alt="">
@@ -140,8 +140,8 @@
     </div>
 </section>
 
-<!--feedback-->
-<section class="feedback" id="feedback">
+<!---->
+<section class="registrarse" id="registrarse">
     <div class="container w960">
         <div class="heading">
             <img class="dividerline" src="img/sep.png" alt="">
@@ -163,8 +163,8 @@
     </div>
 </section>
 
-<!--feedback-->
-<section class="contact" id="contact">
+<!--iniciosesion-->
+<section class="iniciosesion" id="iniciosesion">
     <div class="container">
         <div class="heading">
             <img class="dividerline" src="img/sep.png" alt="">
@@ -203,7 +203,7 @@
             </div>
             <div class="registration">
                 No te has registrado?<br/>
-                <a href="#feedback">
+                <a href="#registrarse">
                     Registrate aquí
                 </a>
             </div>
@@ -280,10 +280,9 @@
                 parts: {
                     0: 'banner',
                     1: 'aboutus',
-                    2: 'specialties',
-                    3: 'gallery',
-                    4: 'feedback',
-                    5: 'contact',
+                    2: 'informacion',
+                    3: 'registrarse',
+                    4: 'iniciosesion',
                 },
                 itemClass: 'menuItem',
                 itemHover: 'active',

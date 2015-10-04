@@ -74,51 +74,9 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Abrir Convocatoria Apoyo Alimentario</h3>
-                    <br>
-
-                    <!-- BASIC FORM ELELEMNTS -->
-
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Año Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
+                    <h3><i class="fa fa-angle-right"></i>Se abrio la Convocatoria Correctamente</h3>
                     
                     <br>
-                    <br>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Periodo Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Cupos Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                     <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
-                   <br>
-                   <br>
-                    <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
-                    <br>
-                    <br>
-
-                    <button type="submit" href="abrirconvocatoria.jsp" class="btn btn-round btn-success"  ><a href="abrirconvocatoria.jsp">Abrir Convocatoria</a></button>
-
 
 
 
