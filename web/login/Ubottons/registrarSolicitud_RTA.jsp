@@ -33,11 +33,7 @@
     solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
 
     solicituddao.registrarSolicitud(solicitud, user);
-    out.print("REGISTRO EXITOSO");
-
-
-%>
-
+%> 
 
 
 
@@ -48,7 +44,7 @@
 
         Directorio dir = new Directorio();
         String directorio = "";
-        String directorioFinal="";
+        String directorioFinal = "";
 
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -61,36 +57,36 @@
         Iterator itr = items.iterator();
         while (itr.hasNext()) {
             String name = "";
-            
+
             FileItem item = (FileItem) itr.next();
             if (item.isFormField()) {
-                
+
                 name = item.getFieldName();
-              
+
                 String valor = item.getString();
-               directorioFinal="C:/DatosAPOYO/"+user.getUser()+"/"+name+"/";
-                    dir.generarDirectorio(directorio);
-                
+                directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/";
+                dir.generarDirectorio(directorio);
+
                 socioeconomi.setK_soc_socioeconomica(Integer.parseInt(valor));
-              
+
             } else {
 
                 try {
-                        
+
                     String itemName = item.getName();
-                    
-                    directorioFinal = "C:/DatosAPOYO/"+user.getUser()+"/"+name+"/" + itemName;
-                    
+
+                    directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/" + itemName;
+
                     File savedFile = new File(directorioFinal);
                     item.write(savedFile);
-                   
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-             
-             socioeconomi.setD_soporte(directorioFinal);
-             soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
+
+            socioeconomi.setD_soporte(directorioFinal);
+            soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
         }
     }
 %>
@@ -138,20 +134,34 @@
             *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
+                <section class="wrapper">
 
-                <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
+                    <div class="row">
+                        <div class="col-lg-9 main-chart">                         
+                            <div class="row mt">
+                                <!--CUSTOM CHART START -->
+                                <div class="border-head">
+                                    <center><h3>Su Solicitud se registró exitosamente</h3> 
+                                    <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
+
+                                </div><!-- /border-head -->	
+
+                            </div><!-- /row -->	
+
+                        </div><!-- /col-lg-9 END SECTION MIDDLE -->
 
 
 
+                    </div><!--/row -->
+                </section>
+            </section>
 
-                <! --/wrapper -->
-            </section><!-- /MAIN CONTENT -->
 
             <!--main content end-->
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
-                    2015 
+                    2015 - Apoyo Alimentario Universidad Distrital
                     <a href="form_component.html#" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>

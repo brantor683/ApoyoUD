@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <br><button type="button" class="btn btn-round btn-success"  ><a href="MenuInicial.jsp"> Regresar</a></button>
+                                <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
 
 
 
