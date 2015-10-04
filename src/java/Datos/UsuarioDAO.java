@@ -53,7 +53,7 @@ public class UsuarioDAO {
         String error = null;
 
         try {
-            String strSQL = "CREATE USER " + "f" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
+            String strSQL = "CREATE USER " + "f" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE USERAPOYOALIMENTARIODEF TEMPORARY TABLESPACE USERAPOYOALIMENTARIOTEMP";
             Connection conexion = ServiceLocator.getInstance(userInicial).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();
@@ -74,7 +74,7 @@ public class UsuarioDAO {
         String error = null;
 
         try {
-            String strSQL = "CREATE USER " + "e" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE APOYOALIMENTARIODEF TEMPORARY TABLESPACE APOYOALIMENTARIOTEMP";
+            String strSQL = "CREATE USER " + "e" + nuevoUsuario.getUser() + " IDENTIFIED BY " + nuevoUsuario.getPasswd() + " DEFAULT TABLESPACE USERAPOYOALIMENTARIODEF TEMPORARY TABLESPACE USERAPOYOALIMENTARIOTEMP";
             Connection conexion = ServiceLocator.getInstance(userInicial).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.executeUpdate();

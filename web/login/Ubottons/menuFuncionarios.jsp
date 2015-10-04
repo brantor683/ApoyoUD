@@ -16,6 +16,7 @@
     Funcionario func = new Funcionario();
     FuncionarioDAO funcDAO = new FuncionarioDAO();
     func=funcDAO.buscarFuncionario(funcDAO.consultarIdFuncionario(userFunc.getUser(), userFunc),userFunc);
+    
 %>
 <html lang="en">
 
