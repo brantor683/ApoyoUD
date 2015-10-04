@@ -18,12 +18,20 @@
     UsuarioDAO u = new UsuarioDAO();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-
-    String filtro = request.getParameter("FiltroSolicitud");
-    if (filtro == null) {
-        filtro = "Todos";
+    
+    
+    String filtroF = request.getParameter("FiltroSolicitudF");
+    if (filtroF == null) {
+        filtroF = "Todos";
     } else {
-        filtro = request.getParameter("FiltroSolicitud");
+        filtroF = request.getParameter("FiltroSolicitudF");
+    }
+    
+    String filtroPC = request.getParameter("FiltroSolicitudPC");
+    if (filtroPC == null) {
+        filtroPC = "Todos";
+    } else {
+        filtroPC = request.getParameter("FiltroSolicitudPC");
     }
 
 
@@ -84,7 +92,7 @@
                         <div class="row mt">
                             <div class="col-lg-10">
                                 <label >Filtrar por Facultad</label>
-                                <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
+                                <select  name="FiltroSolicitudF"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option>
                                     <option value="Ingenieria">Ingenieria</option>
                                     <option value="Ciencias y Educacion">Ciencia de la Educacion</option>
@@ -101,11 +109,11 @@
                         <div class="row mt">
                             <div class="col-lg-11">
                                 <label >Filtrar por Proyecto Curricular</label>
-                                <select  name="FiltroSolicitud"  id="FiltroSolicitud" class="form-control">
-                                    <option value="Todos">Todos</option>
-                                    <option value="Ingenieria de sistemas">Ingenieria de Sistemas</option>
+                                <select  name="FiltroSolicitudPC"  id="FiltroSolicitud" class="form-control">
+                                    <option value="Todos">Todos</option> 
+                                    <option value="Ingenieria de Sistema">Ingenieria de Sistemas</option>
                                     <option value="Ingenieria Catastral">Ingeniería Catastral</option>
-                                    <option value="Ingenieria industrial">Ingenieria Industrial</option>		                         
+                                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>		                         
                                     <option value="Ingenieria Electronica">Ingenieria Electrónica</option>
                                     <option value="Ingenieria Electrica">Ingenieria Electrica</option>
 
@@ -122,27 +130,25 @@
                                     <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
                                     
                                     <option value="Tecnologia Industrial">Tecnología Industrial</option>
-                                    <option value="Tecnologia Electronica">Ingenieria Electronica</option>
-                                    <option value="Tecnologia en Contrucciones">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia Electrónica">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
                                     <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
-                                    <option value="Tecnologia en Sistematizacion">Tecnologia en Sistematizacion de Datos</option>
+                                    <option value="Tecnologia en Sistematizacion de Datos">Tecnologia en Sistematizacion de Datos</option>
                                     
-                                    <option value="Licenciatura en Biologia">Licenciatura en Biología</option>		                         
-                                    <option value="Licenciatura en Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
+                                    <option value="Licenciatura en Biología">Licenciatura en Biología</option>		                         
+                                    <option value="Licenciatura en Ciencias Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
                                     <option value="Licenciatura en Artistica">Licenciatura en Educación Básica con Enfasis en Artistica</option>
                                     <option value="Licenciatura en Humanidades">Licenciatura en Educación Básica con Enfasis en Humanidades y Lengua Castellana</option>		                         
                                     <option value="Licenciatura en Ingles">Licenciatura en Educación Básica con Enfasis en Inglés</option>
                                     <option value="Licenciatura en Matematica">Licenciatura en Educación Básica con Enfasis en Matemática</option> 
                                     <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>		                         
-                                    <option value="Licenciatura en Pedagogia">Licenciatura en Pedagogia Infantil</option>
+                                    <option value="Licenciatura en Pedagogia Infantil">Licenciatura en Pedagogia Infantil</option>
                                     <option value="Licenciatura en Quimica">Licenciatura en Quimica</option> 
                                      <option value="Matematicas">Matemáticas</option> 
                                    
                                     
                                 </select>
-                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Consultar Solicitudes</a></button>
-
                             </div><!-- col-lg-12-->
 
                         </div><!-- /row -->
@@ -154,10 +160,8 @@
                             <%                         //request.getParameter("privilegio")
                                 SolicitudDAO solicitud = new SolicitudDAO();
                                 out.println("<tr>");
-                                out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtro, user) + "</td>");
+                                out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtroF, filtroPC, user) + "</td>");
                                 out.println("</tr>");
-
-
                             %>
                         </table></div>
 
