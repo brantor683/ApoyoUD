@@ -147,7 +147,7 @@
             <img class="dividerline" src="img/sep.png" alt="">
             <h2>Registrarse</h2>
             <img class="dividerline" src="img/sep.png" alt="">
-            <h3>Digite su codigo para iniciar el proceso de Registro al Apoyo Alimentario de la Universidad Distrital Francisco JosÃ© de Caldas<br>
+            <h3>Digite su codigo para iniciar el proceso de Registro al Apoyo Alimentario de la Universidad Distrital Francisco José de Caldas<br>
             </h3>
         </div>
         <div class="row">
