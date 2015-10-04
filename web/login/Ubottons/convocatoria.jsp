@@ -3,6 +3,8 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
+<%@page import="Datos.ConvocatoriaDAO"%>
+<%@page import="Negocio.Convocatoria"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
@@ -18,13 +20,6 @@
     UsuarioDAO u = new UsuarioDAO();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-
-    String filtro = request.getParameter("FiltroSolicitud");
-    if (filtro == null) {
-        filtro = "Todos";
-    } else {
-        filtro = request.getParameter("FiltroSolicitud");
-    }
 
 
 %>
@@ -76,50 +71,61 @@
                 <section class="wrapper">
                     <h3><i class="fa fa-angle-right"></i>Abrir Convocatoria Apoyo Alimentario</h3>
                     <br>
-
+                    <form  action="abrirconvocatoria.jsp" method="post" >
                     <!-- BASIC FORM ELELEMNTS -->
 
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Año Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <br>
-                    <br>
-                    <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Periodo Convocatoria:</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control">
+                            <select   name="periodoConvocatoria"  id="periodoConvocatoria" class="form-control">
+                                <option value="1">Primer semestre</option>
+                                <option value="3">Segundo semestre</option>
+                            </select>
+
                         </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Cupos Convocatoria:</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Cupos Categoria A:</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="cuposConvocatoriaA" value="0" id="cuposConvocatoriaA">
                         </div>
                     </div>
                     <br>
                     <br>
-                     <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
-                   <br>
-                   <br>
                     <div class="form-group">
-                    <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
-                    <input name="fechain"style="width:200px;height:25px" type="date" class="form-control" id="cedulaInput"><br>
-                     </div>
+                        <label class="col-sm-2 col-sm-2 control-label">Cupos Categoria B:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="cuposConvocatoriaB" value="0" id="cuposConvocatoriaB">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Cupos Categoria C:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="cuposConvocatoriaC" value="0" id="cuposConvocatoriaC">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
+                        <input style="width:200px;height:25px" type="date" class="form-control"  name="fInicioConvocatoria"  id="fInicioConvocatoria"><br>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
+                        <input style="width:200px;height:25px" type="date" data-date-format="DD MMMM YYYY" class="form-control" name="fFinConvocatoria"  id="fFinConvocatoria"><br>
+                    </div>
                     <br>
                     <br>
 
-                    <button type="submit" href="abrirconvocatoria.jsp" class="btn btn-round btn-success"  ><a href="abrirconvocatoria.jsp">Abrir Convocatoria</a></button>
+                    <button type="submit"  class="btn btn-round btn-success"  >Abrir Convocatoria</button>
 
-
+  </form>
 
 
                 </section><! --/wrapper -->

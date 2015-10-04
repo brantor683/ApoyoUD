@@ -24,7 +24,7 @@ public class ConvocatoriaDAO {
 
         try {
 
-            String strSQL = "INSERT INTO S_convocatoria VALUES(?,?,?,?,?,?)";
+            String strSQL = "INSERT INTO S_convocatoria VALUES(?,?,?,?,?,'Inactiva',?,?,?)";
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 
@@ -35,7 +35,10 @@ public class ConvocatoriaDAO {
             prepStmt.setString(3, c.getF_inicioConvocatoria());
             prepStmt.setString(4, c.getF_finConvocatoria());
             prepStmt.setInt(5, c.getPeriodo());
-            prepStmt.setString(6, c.getE_estadoconvocatoria());
+            prepStmt.setInt(6, c.getD_cuposCategoriaA());
+            prepStmt.setInt(7, c.getD_cuposCategoriaB());
+            prepStmt.setInt(8, c.getD_cuposCategoriaC());
+      
 
             prepStmt.executeUpdate();
             prepStmt.close();

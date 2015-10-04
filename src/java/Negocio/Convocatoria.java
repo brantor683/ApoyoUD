@@ -16,6 +16,9 @@ public class Convocatoria {
 	private int periodo;
 	private String e_estadoconvocatoria;
 	private int k_convocatoria;
+        private int d_cuposCategoriaA;
+        private int d_cuposCategoriaB;
+        private int d_cuposCategoriaC;
 
 public Convocatoria(){
     
@@ -68,6 +71,30 @@ public Convocatoria(){
 
     public void setK_convocatoria(int k_convocatoria) {
         this.k_convocatoria = k_convocatoria;
+    }
+
+    public int getD_cuposCategoriaA() {
+        return d_cuposCategoriaA;
+    }
+
+    public void setD_cuposCategoriaA(int d_cuposCategoriaA) {
+        this.d_cuposCategoriaA = d_cuposCategoriaA;
+    }
+
+    public int getD_cuposCategoriaB() {
+        return d_cuposCategoriaB;
+    }
+
+    public void setD_cuposCategoriaB(int d_cuposCategoriaB) {
+        this.d_cuposCategoriaB = d_cuposCategoriaB;
+    }
+
+    public int getD_cuposCategoriaC() {
+        return d_cuposCategoriaC;
+    }
+
+    public void setD_cuposCategoriaC(int d_cuposCategoriaC) {
+        this.d_cuposCategoriaC = d_cuposCategoriaC;
     }
 
 

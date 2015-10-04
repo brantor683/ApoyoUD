@@ -3,6 +3,9 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="Negocio.Convocatoria"%>
+<%@page import="Datos.ConvocatoriaDAO"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
@@ -11,6 +14,7 @@
 <%@page import="Negocio.Solicitud"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="java.sql.*"%>
+<%@page import="java.lang.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -18,15 +22,40 @@
     UsuarioDAO u = new UsuarioDAO();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
+    String periodo="";
+    String ano="";
+    String codConvocatoria="";
+    String fechaInicio, fInicio="";
+    String fechaFin, fFin="";
+    Convocatoria nConvocatoria = new Convocatoria();
+    ConvocatoriaDAO nConvDAO = new ConvocatoriaDAO();
 
-    String filtro = request.getParameter("FiltroSolicitud");
-    if (filtro == null) {
-        filtro = "Todos";
-    } else {
-        filtro = request.getParameter("FiltroSolicitud");
-    }
+ 
+    periodo=request.getParameter("periodoConvocatoria");
+    nConvocatoria.setPeriodo(Integer.valueOf(periodo));
+  
+      
+    fechaInicio = request.getParameter("fInicioConvocatoria");
+    fInicio = fechaInicio.substring(8)+'/'+fechaInicio.substring(5,7)+'/'+fechaInicio.substring(0,4);
+     nConvocatoria.setF_inicioConvocatoria(fInicio);
+  
+    
+    ano=fechaInicio.substring(0,4);
+         nConvocatoria.setD_anoConvocatoria(Integer.valueOf(ano));
+         
+      fechaFin = request.getParameter("fFinConvocatoria");
+    fFin = fechaFin.substring(8)+'/'+fechaFin.substring(5,7)+'/'+fechaFin.substring(0,4);
+     
+    nConvocatoria.setF_finConvocatoria(fFin);
+        
+    codConvocatoria = ano+periodo;
+     nConvocatoria.setK_convocatoria(Integer.valueOf(codConvocatoria));
+      nConvocatoria.setD_cuposCategoriaA(Integer.valueOf(request.getParameter("cuposConvocatoriaA")));
+      nConvocatoria.setD_cuposCategoriaB(Integer.valueOf(request.getParameter("cuposConvocatoriaB")));
+      nConvocatoria.setD_cuposCategoriaC(Integer.valueOf(request.getParameter("cuposConvocatoriaC")));
+      
 
-
+    nConvDAO.registarConvocatoria(nConvocatoria, user);  
 %>
 
 
@@ -75,7 +104,7 @@
             <section id="main-content">
                 <section class="wrapper">
                     <h3><i class="fa fa-angle-right"></i>Se abrio la Convocatoria Correctamente</h3>
-                    
+
                     <br>
 
 

@@ -29,20 +29,8 @@
     Estudiante estuser = new Estudiante();
     String codEstudiante = user.getUser();
     estuser = estu.buscarEstudiante(codEstudiante, user2);
-    /*out.print(estu.buscarEstudiante(codEstudiante, user2).getK_codEstudiante());
-    out.print(session.getAttribute("USUARIO"));
-    out.print(session.getAttribute("CONT"));
-     if (estuser.getK_codEstudiante() == Integer.valueOf(codEstudiante)) {
-     out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>");
-     out.print("<td>" + "crear usuario" + us.crearUsuarioEstudiante(user2, user) + "</td>");
-     out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarConnect(user.getUser(), user2) + "</td>");
-     out.print("<td>" + "SI SE PUEDE REGISTRAR" + "</td>" + us.asignarRolEstudiante(user.getUser(), user2) + "</td>");
-
-     } else {
-
-     out.println("NO SE PUEDE REGISTRAR");
-     }
-     out.println("</tr>");*/%>
+   
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,6 +40,11 @@
     <body>
         <%
             if (estuser.getK_codEstudiante() == Integer.valueOf(codEstudiante)) {
+                
+
+     us.crearUsuarioEstudiante(user2, user);
+     us.asignarConnect(user.getUser(), user2);
+     us.asignarRolEstudiante(user.getUser(), user2);
         %>
     <center><h3>Se registró correctamente, ya puedes iniciar sesión </h3>
         <button class="bg-success" type="submit" ><a href="../index.jsp#iniciosesion">Regresar</a></button></center>
