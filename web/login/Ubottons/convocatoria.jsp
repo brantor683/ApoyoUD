@@ -74,15 +74,16 @@
                     <form  action="abrirconvocatoria.jsp" method="post" >
                     <!-- BASIC FORM ELELEMNTS -->
 
+                    <br>
+                    <br>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Periodo Convocatoria:</label>
-                        <div class="col-sm-5">
-                            <select   name="periodoConvocatoria"  id="periodoConvocatoria" class="form-control">
-                                <option value="1">Primer semestre</option>
-                                <option value="3">Segundo semestre</option>
-                            </select>
-
-                        </div>
+                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
+                        <input style="width:200px;height:25px" type="date" class="form-control"  name="fInicioConvocatoria"  id="fInicioConvocatoria"><br>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
+                        <input style="width:200px;height:25px" type="date" data-date-format="DD MMMM YYYY" class="form-control" name="fFinConvocatoria"  id="fFinConvocatoria"><br>
                     </div>
                     <br>
                     <br>
@@ -110,18 +111,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class="form-group">
-                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Inicio:</label>
-                        <input style="width:200px;height:25px" type="date" class="form-control"  name="fInicioConvocatoria"  id="fInicioConvocatoria"><br>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <label   class="col-sm-3 col-sm-3" for="CedulaInput">Fecha de Fin Convocatoria:</label>
-                        <input style="width:200px;height:25px" type="date" data-date-format="DD MMMM YYYY" class="form-control" name="fFinConvocatoria"  id="fFinConvocatoria"><br>
-                    </div>
-                    <br>
-                    <br>
+                    
 
                     <button type="submit"  class="btn btn-round btn-success"  >Abrir Convocatoria</button>
 

@@ -31,15 +31,18 @@
     ConvocatoriaDAO nConvDAO = new ConvocatoriaDAO();
 
  
-    periodo=request.getParameter("periodoConvocatoria");
-    nConvocatoria.setPeriodo(Integer.valueOf(periodo));
   
       
     fechaInicio = request.getParameter("fInicioConvocatoria");
     fInicio = fechaInicio.substring(8)+'/'+fechaInicio.substring(5,7)+'/'+fechaInicio.substring(0,4);
      nConvocatoria.setF_inicioConvocatoria(fInicio);
-  
-    
+   int mes= Integer.valueOf(fechaInicio.substring(5,7));
+    if(mes >=0 && mes <= 6){
+    periodo="1";}else{
+        periodo="3";
+    }
+    nConvocatoria.setPeriodo(Integer.valueOf(periodo));
+     
     ano=fechaInicio.substring(0,4);
          nConvocatoria.setD_anoConvocatoria(Integer.valueOf(ano));
          
