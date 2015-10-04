@@ -124,12 +124,12 @@
                                     <option value="Ingenieria Topografica">Ingenieria Topografica</option>
                                     
                                     <option value="Arte Danzario">Arte Danzario</option>		                         
-                                    <option value="Artes Escénicas">Artes Escénicas</option>
+                                    <option value="Artes Escenicas">Artes Escénicas</option>
                                     <option value="Artes Musicales">Artes Musicales</option>
                                     <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
                                     
                                     <option value="Tecnologia Industrial">Tecnología Industrial</option>
-                                    <option value="Tecnologia Electrónica">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia Electronica">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
                                     <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
