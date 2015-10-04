@@ -98,7 +98,11 @@
 
                                     <%
                                     } else {
-                                        solicituddao.registrarSolicitud(solicitud, user);
+                                        solicituddao.registrarSolicitud(solicitud, user);%>
+                                         <center><h3>Se registró correctamente</h3> 
+                                        <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
+
+                                        
                                     %> 
 
 

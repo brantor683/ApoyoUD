@@ -124,7 +124,7 @@
                                     <option value="Ingenieria Topografica">Ingenieria Topografica</option>
                                     
                                     <option value="Arte Danzario">Arte Danzario</option>		                         
-                                    <option value="Artes Escenicas">Artes Escenicas</option>
+                                    <option value="Artes Escénicas">Artes Escénicas</option>
                                     <option value="Artes Musicales">Artes Musicales</option>
                                     <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
                                     
