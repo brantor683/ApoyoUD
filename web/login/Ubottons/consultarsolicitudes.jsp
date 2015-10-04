@@ -87,10 +87,10 @@
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
                     <form class="form-group" action="consultarsolicitudes.jsp">
-                        <table class="table-condensed">
+                        <table class="table-responsive">
                             <td>
                         <div class="row mt">
-                            <div class="col-lg-10">
+                            <div class="col-lg-11">
                                 <label >Filtrar por Facultad</label>
                                 <select  name="FiltroSolicitudF"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option>
@@ -100,8 +100,7 @@
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>consultar Solicitudes</a></button>
-
+                               
                             </div><!-- col-lg-12-->
                         </div>
                             </td>
@@ -111,7 +110,7 @@
                                 <label >Filtrar por Proyecto Curricular</label>
                                 <select  name="FiltroSolicitudPC"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option> 
-                                    <option value="Ingenieria de Sistema">Ingenieria de Sistemas</option>
+                                    <option value="Ingenieria de sistemas">Ingenieria de Sistemas</option>
                                     <option value="Ingenieria Catastral">Ingeniería Catastral</option>
                                     <option value="Ingenieria Industrial">Ingenieria Industrial</option>		                         
                                     <option value="Ingenieria Electronica">Ingenieria Electrónica</option>
@@ -150,8 +149,14 @@
                                     
                                 </select>
                             </div><!-- col-lg-12-->
-
+ 
                         </div><!-- /row -->
+                        
+                        </td>
+                        <td><br>
+                            <br>
+                            <br>
+                            <button type="submit" href="#" class="btn btn-round"  ><a>Consultar</a></button>
                         </td>
                         </table>
                     </form>
