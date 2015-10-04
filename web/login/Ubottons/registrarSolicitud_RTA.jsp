@@ -4,6 +4,8 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Datos.ConvocatoriaDAO"%>
+<%@page import="Negocio.Convocatoria"%>
 <%@page import="Negocio.Socioeconomico"%>
 <%@page import="Datos.SocioeconomicoDAO"%>
 <%@page import="Util.Directorio"%>
@@ -21,17 +23,30 @@
 <%
     Usuario user = new Usuario();
     Solicitud solicitud = new Solicitud();
+    Solicitud solicitudValidar=new Solicitud();;
     SolicitudDAO solicituddao = new SolicitudDAO();
     Socioeconomico socioeconomi = new Socioeconomico();
     SocioeconomicoDAO soli_sociDAO = new SocioeconomicoDAO();
-
-    user.setUser((String) session.getAttribute("USUARIO"));
+    Convocatoria convActual = new Convocatoria();
+    ConvocatoriaDAO convDAO = new  ConvocatoriaDAO();
+    
+       user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
 
-    solicitud.setK_conv_convocatoria(20153);
+    convActual = convDAO.buscarConvocatoria("Activa", user);
+    
+    solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
     String codEstudiante = user.getUser().substring(1);
     solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
+    solicitudValidar=solicituddao.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
+   if(solicitudValidar.getK_est_codEstudiante()== Integer.valueOf(codEstudiante)){
+      %> <div class="border-head">
+                                    <center><h3>Ud ya tiene un solicitud registrada en esta convocatoria</h3> 
+                                    <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
 
+                                </div><!-- /border-head -->	
+       <%
+   }else{
     solicituddao.registrarSolicitud(solicitud, user);
 %> 
 
@@ -88,7 +103,7 @@
             socioeconomi.setD_soporte(directorioFinal);
             soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
         }
-    }
+    } }
 %>
 
 <!DOCTYPE html>
