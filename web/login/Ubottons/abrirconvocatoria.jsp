@@ -22,43 +22,16 @@
     UsuarioDAO u = new UsuarioDAO();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    String periodo="";
-    String ano="";
-    String codConvocatoria="";
-    String fechaInicio, fInicio="";
-    String fechaFin, fFin="";
+    String periodo = "";
+    String ano = "";
+    String codConvocatoria = "";
+    String fechaInicio, fInicio = "";
+    String fechaFin, fFin = "";
     Convocatoria nConvocatoria = new Convocatoria();
+    Convocatoria nConvValidar = new Convocatoria();
     ConvocatoriaDAO nConvDAO = new ConvocatoriaDAO();
 
- 
-  
-      
-    fechaInicio = request.getParameter("fInicioConvocatoria");
-    fInicio = fechaInicio.substring(8)+'/'+fechaInicio.substring(5,7)+'/'+fechaInicio.substring(0,4);
-     nConvocatoria.setF_inicioConvocatoria(fInicio);
-   int mes= Integer.valueOf(fechaInicio.substring(5,7));
-    if(mes >=0 && mes <= 6){
-    periodo="1";}else{
-        periodo="3";
-    }
-    nConvocatoria.setPeriodo(Integer.valueOf(periodo));
-     
-    ano=fechaInicio.substring(0,4);
-         nConvocatoria.setD_anoConvocatoria(Integer.valueOf(ano));
-         
-      fechaFin = request.getParameter("fFinConvocatoria");
-    fFin = fechaFin.substring(8)+'/'+fechaFin.substring(5,7)+'/'+fechaFin.substring(0,4);
-     
-    nConvocatoria.setF_finConvocatoria(fFin);
-        
-    codConvocatoria = ano+periodo;
-     nConvocatoria.setK_convocatoria(Integer.valueOf(codConvocatoria));
-      nConvocatoria.setD_cuposCategoriaA(Integer.valueOf(request.getParameter("cuposConvocatoriaA")));
-      nConvocatoria.setD_cuposCategoriaB(Integer.valueOf(request.getParameter("cuposConvocatoriaB")));
-      nConvocatoria.setD_cuposCategoriaC(Integer.valueOf(request.getParameter("cuposConvocatoriaC")));
-      
 
-    nConvDAO.registarConvocatoria(nConvocatoria, user);  
 %>
 
 
@@ -106,9 +79,45 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Se abrio la Convocatoria Correctamente</h3>
 
-                    <br>
+                    <%          fechaInicio = request.getParameter("fInicioConvocatoria");
+                        fInicio = fechaInicio.substring(8) + '/' + fechaInicio.substring(5, 7) + '/' + fechaInicio.substring(0, 4);
+                        nConvocatoria.setF_inicioConvocatoria(fInicio);
+                        int mes = Integer.valueOf(fechaInicio.substring(5, 7));
+                        if (mes >= 0 && mes <= 6) {
+                            periodo = "1";
+                        } else {
+                            periodo = "3";
+                        }
+                        nConvocatoria.setPeriodo(Integer.valueOf(periodo));
+
+                        ano = fechaInicio.substring(0, 4);
+                        nConvocatoria.setD_anoConvocatoria(Integer.valueOf(ano));
+
+                        fechaFin = request.getParameter("fFinConvocatoria");
+                        fFin = fechaFin.substring(8) + '/' + fechaFin.substring(5, 7) + '/' + fechaFin.substring(0, 4);
+
+                        nConvocatoria.setF_finConvocatoria(fFin);
+
+                        codConvocatoria = ano + periodo;
+                        nConvocatoria.setK_convocatoria(Integer.valueOf(codConvocatoria));
+                        nConvocatoria.setD_cuposCategoriaA(Integer.valueOf(request.getParameter("cuposConvocatoriaA")));
+                        nConvocatoria.setD_cuposCategoriaB(Integer.valueOf(request.getParameter("cuposConvocatoriaB")));
+                        nConvocatoria.setD_cuposCategoriaC(Integer.valueOf(request.getParameter("cuposConvocatoriaC")));
+                        nConvValidar = nConvDAO.buscarConvocatoriaId(codConvocatoria, user);
+                        if (nConvValidar.getK_convocatoria() == Integer.valueOf(codConvocatoria)) {
+                    %>
+
+                    <center><h3>La convocatoria para ese periodo ya se encuentra registrada</h3> 
+                        <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
+                        <%  } else {
+
+                            nConvDAO.registarConvocatoria(nConvocatoria, user);
+                        %>
+
+                    <center><h3>La convocatoria ha sido registada con ÉXITO!</h3> 
+                        <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
+                        <% }%>
 
 
 

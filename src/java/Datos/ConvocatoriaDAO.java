@@ -84,5 +84,28 @@ public class ConvocatoriaDAO {
         return convocatoria;
     }
 
-    
+     public Convocatoria buscarConvocatoriaId(String idConvocatoria, Usuario user) {
+        Convocatoria convocatoria = new Convocatoria();
+        try {
+
+            //Instancia el objeto para retornar los datos del empleado
+            String strSQL = "SELECT k_convocatoria FROM s_convocatoria WHERE k_convocatoria=?";
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setInt(1, Integer.valueOf(idConvocatoria));
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                convocatoria.setK_convocatoria(rs.getInt(1));
+                
+            }
+
+            return convocatoria;
+        } catch (SQLException e) {
+
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        System.out.println(convocatoria.getK_convocatoria());
+        return convocatoria;
+    }
 }

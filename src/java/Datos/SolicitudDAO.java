@@ -88,7 +88,7 @@ public class SolicitudDAO {
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT k_est_codestudiante, k_conv_convocatoria  FROM S_SOLICITUD s WHERE K_est_codestudiante=? and k_conv_convocatoria=?" ;
+            String strSQL = "SELECT k_est_codestudiante, k_conv_convocatoria, k_idsolicitud   FROM S_SOLICITUD s WHERE K_est_codestudiante=? and k_conv_convocatoria=?" ;
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setInt(1, Integer.parseInt(id_estudiante));
@@ -97,7 +97,7 @@ public class SolicitudDAO {
             while (rs.next()) {
                 solicitud.setK_est_codEstudiante(rs.getInt(1));
                 solicitud.setK_conv_convocatoria(rs.getInt(2));
-             
+                solicitud.setK_idSolicitud(rs.getInt(3));
 
             }
             return solicitud;
