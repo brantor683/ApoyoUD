@@ -21,7 +21,8 @@ public class Estudiante {
 	private int k_est_ProyCurricular; 
 	private int d_promedio;            
 	private int d_materias_perdidas;   
-	private String d_tipodocumento;       
+	private String d_tipodocumento;  
+        private String n_nomProyCurricular;  
         
        public  Estudiante(){
             
@@ -40,6 +41,7 @@ public class Estudiante {
     public int getD_identificacion() {
         return d_identificacion;
     }
+    
 
     public void setD_identificacion(int d_identificacion) {
         this.d_identificacion = d_identificacion;
@@ -48,6 +50,7 @@ public class Estudiante {
     public String getN_nomEstudiante() {
         return n_nomEstudiante;
     }
+    
 
     public void setN_nomEstudiante(String n_nomEstudiante) {
         this.n_nomEstudiante = n_nomEstudiante;
@@ -117,8 +120,7 @@ public class Estudiante {
 
     public void setD_tipodocumento(String d_tipodocumento) {
         this.d_tipodocumento = d_tipodocumento;
-    }
-        
+    }    
         
     
 }

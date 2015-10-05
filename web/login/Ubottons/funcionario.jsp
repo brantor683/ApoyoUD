@@ -4,7 +4,6 @@
     Author     : LORENA MANZANO
 --%>
 
-<%@page import="Negocio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -55,7 +54,7 @@
                                 <input type="password" class="form-control"  name="frpass" >
                                 <label class="checkbox">
                                     <span class="pull-right">
-                                        <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
+                                        <a data-toggle="modal" href="#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>
@@ -96,7 +95,7 @@
                                 <input type="password" name="flpass" class="form-control" placeholder="Contraseña">
                                 <label class="checkbox">
                                     <span class="pull-right">
-                                        <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
+                                        <a data-toggle="modal" href="#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>

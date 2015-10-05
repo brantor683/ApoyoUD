@@ -25,16 +25,9 @@
         <link href="Ubottons/assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="Ubottons/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
         <!-- Custom styles for this template -->
         <link href="Ubottons/assets/css/style.css" rel="stylesheet">
         <link href="Ubottons/assets/css/style-responsive.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
 
     <body>
@@ -49,8 +42,7 @@
 
                 <table class="table">
                     <td>
-                        <form class="form-login" action="Ubottons/registrarFuncionario.jsp" method="post">
-
+                        <form class="form-login" action="registrarFuncionario.jsp" method="post">
                             <h2 class="form-login-heading">Registrese Aquí</h2>
                             <div class="login-wrap">
                                 <%if (request.getParameter("fruser") != null && request.getParameter("frpass") != null) {
@@ -79,11 +71,11 @@
                                         us.asignarRolFuncionario(user.getUser(), user2);
 
                                 %>
-                                <center><h5>Se registró correctamente, ya puedes iniciar sesión </h5>
+                                <center><h5>Se registró correctamente, ya puedes iniciar sesión </h5></center>
                                  <!--   <button class="bg-success" type="submit" ><a href="Ubottons/funcionario.jsp">Regresar</a></button></center>
 -->
                                 <%} else {%>
-                                <center><h5>No se puede registrar</h5>
+                                <center><h5>No se puede registrar</h5></center>
                                    <!-- <button class="bg-success" type="submit" ><a href="Ubottons/funcionario.jsp">Regresar</a></button></center>
 -->
                                 <%}%>
@@ -93,7 +85,7 @@
                                 <input type="password" class="form-control"  name="frpass" >
                                 <label class="checkbox">
                                     <span class="pull-right">
-                                        <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
+                                        <a data-toggle="modal" href="#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>
@@ -134,7 +126,7 @@
                                 <input type="password" name="flpass" class="form-control" placeholder="Contraseña">
                                 <label class="checkbox">
                                     <span class="pull-right">
-                                        <a data-toggle="modal" href="login.jsp#myModal"> Olvidaste La Contraseña?</a>
+                                        <a data-toggle="modal" href="#myModal"> Olvidaste La Contraseña?</a>
 
                                     </span>
                                 </label>
@@ -174,8 +166,7 @@
         <script src="assets/js/bootstrap.min.js"></script>
 
         <!--BACKSTRETCH-->
-        <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-        <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
         <script>
             $.backstretch("images/body1.jpg", {speed: 500});
         </script>
