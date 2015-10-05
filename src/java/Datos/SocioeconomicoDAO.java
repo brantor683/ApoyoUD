@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Negocio.ItemSocioeconomico;
 import Negocio.Socioeconomico;
 import Negocio.Solicitud;
 import Negocio.Usuario;
@@ -13,6 +14,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,32 +53,7 @@ public class SocioeconomicoDAO {
         return error;
     }
     
-     public Solicitud buscarSolicitudSocioeconomica(String id_estudiante, int id_convocatoria, Usuario user) {
-        Solicitud solicitud = new Solicitud();
-        try {
-
-            //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT k_est_codestudiante, k_conv_convocatoria  FROM S_SOLICITUD s WHERE K_est_codestudiante=? and k_conv_convocatoria=?" ;
-            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
-            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setInt(1, Integer.parseInt(id_estudiante));
-            prepStmt.setInt(2, id_convocatoria);
-            ResultSet rs = prepStmt.executeQuery();
-            while (rs.next()) {
-                solicitud.setK_est_codEstudiante(rs.getInt(1));
-                solicitud.setK_conv_convocatoria(rs.getInt(2));
-             
-
-            }
-            return solicitud;
-        } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, "No Encontrado: " + e, null, JOptionPane.ERROR_MESSAGE);
-        } finally {
-            ServiceLocator.getInstance(user).liberarConexion();
-        }
-        return solicitud;
-    }
+     
     
     
 }

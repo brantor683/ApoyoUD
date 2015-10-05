@@ -74,7 +74,7 @@
                                     <%
                                         Usuario user = new Usuario();
                                         Solicitud solicitud = new Solicitud();
-                                        Solicitud solicitudValidar = new Solicitud();;
+                                        Solicitud solicitudValidar = new Solicitud();
                                         SolicitudDAO solicituddao = new SolicitudDAO();
                                         Socioeconomico socioeconomi = new Socioeconomico();
                                         SocioeconomicoDAO soli_sociDAO = new SocioeconomicoDAO();

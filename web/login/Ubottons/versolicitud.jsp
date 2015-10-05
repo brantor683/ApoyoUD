@@ -4,6 +4,14 @@
     Author     : LORENA MANZANO
 --%>
 
+<%@page import="Datos.SocioeconomicoDAO"%>
+<%@page import="Negocio.Socioeconomico"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Datos.ItemSocioeconomicoDAO"%>
+<%@page import="Negocio.ItemSocioeconomico"%>
+<%@page import="Datos.ConvocatoriaDAO"%>
+<%@page import="Negocio.Convocatoria"%>
 <%@page import="Negocio.Estudiante"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="Negocio.Solicitud"%>
@@ -59,7 +67,7 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-          
+
 
                     <!-- BASIC FORM ELELEMNTS -->
                     <div class="row mt">
@@ -67,29 +75,58 @@
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Informacion solicitud</h4>
                                 <form class="form-horizontal style-form" method="post">
-                                              <%
-                        Usuario user = new Usuario();
-                        UsuarioDAO u = new UsuarioDAO();
+                                    <%
+                                        Usuario user = new Usuario();
+                                        UsuarioDAO u = new UsuarioDAO();
 
-                        user.setUser((String) session.getAttribute("USUARIO"));
-                        user.setPasswd((String) session.getAttribute("CONT"));
+                                        user.setUser((String) session.getAttribute("USUARIO"));
+                                        user.setPasswd((String) session.getAttribute("CONT"));
+                                        int p1, p2, p3, p4 = 0;
+                                        Solicitud solicitud = new Solicitud();
+                                        Solicitud solicitudValidar = new Solicitud();
+                                        SolicitudDAO soliDAO = new SolicitudDAO();
+                                        Estudiante estuser = new Estudiante();
+                                        EstudianteDAO estu = new EstudianteDAO();
+                                        Convocatoria convActual = new Convocatoria();
+                                        ConvocatoriaDAO convDAO = new ConvocatoriaDAO();
 
-                        Solicitud solicitud = new Solicitud();
-                        SolicitudDAO soliDAO = new SolicitudDAO();
-                        Estudiante estuser = new Estudiante();
-                        EstudianteDAO estu = new EstudianteDAO();
-                            
-                        String codEstudiante = user.getUser().substring(1);
-                        estuser = estu.buscarEstudiante(codEstudiante, user);
-                   // solicitud=soliDAO.buscarSolicitud(codEstudiante, user); %>
+                                        ItemSocioeconomicoDAO ItemDAO = new ItemSocioeconomicoDAO();
+                                        ItemSocioeconomico param1 = new ItemSocioeconomico();
+                                        ItemSocioeconomico param2 = new ItemSocioeconomico();
+                                        ItemSocioeconomico param3 = new ItemSocioeconomico();
+                                        ItemSocioeconomico param4 = new ItemSocioeconomico();
+
+                                        convActual = convDAO.buscarConvocatoria("Activa", user);
+                                        solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
+
+                                        String codEstudiante = user.getUser().substring(1);
+                                        estuser = estu.buscarEstudiante(codEstudiante, user);
+
+                                        solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
+                                        solicitudValidar = soliDAO.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
+                                        solicitudValidar.getK_idSolicitud();
+                                        List listaSocioeconomicos = new ArrayList<Integer>();
+                                        listaSocioeconomicos = ItemDAO.buscarSolicitudSocioeconomica(solicitudValidar.getK_idSolicitud(), user);
+
+                                        p1 = (Integer) listaSocioeconomicos.get(0);
+                                        p2 = (Integer) listaSocioeconomicos.get(1);
+                                        p3 = (Integer) listaSocioeconomicos.get(2);
+                                        p4 = (Integer) listaSocioeconomicos.get(3);
+
+                                        param1 = ItemDAO.buscarItemSocioeconomica(p1, user);
+                                        param2 = ItemDAO.buscarItemSocioeconomica(p2, user);
+                                        param3 = ItemDAO.buscarItemSocioeconomica(p3, user);
+                                        param4 = ItemDAO.buscarItemSocioeconomica(p4, user);
+
+                                    %>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getK_codEstudiante());%> >
                                         </div>
                                     </div>
-                                       
-                                       
+
+
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de Identificación</label>
                                         <div class="col-sm-5">
@@ -128,14 +165,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
+                                        <input type="text" class="form-control" readonly="readonly"  value="<%out.print(param1.getD_descSocioeconomica());%>">
                                     </div>
                                 </div>
                                 <br>
                                 <br><div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
+                                        <input type="text" class="form-control" readonly="readonly" value="<%out.print(param2.getD_descSocioeconomica());%>">
                                     </div>
                                 </div>
                                 <br>
@@ -143,7 +180,7 @@
                                 <br><div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
+                                        <input type="text" class="form-control" readonly="readonly" value="<%out.print(param3.getD_descSocioeconomica());%>">
                                     </div>
                                 </div>
 
@@ -153,8 +190,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  >
-                                    </div>
+                                        <input type="text" class="form-control" readonly="readonly" value="<%out.print(param4.getD_descSocioeconomica());%>">
                                 </div>
                                 <br>
                                 <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
@@ -221,7 +257,7 @@
         <script>
             //custom select box
 
-            $(function () {
+            $(function() {
                 $('select.styled').customSelect();
             });
 

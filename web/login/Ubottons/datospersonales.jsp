@@ -110,7 +110,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Direccion</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getD_direccion());%> >
+                                            <input type="text" class="form-control" readonly="readonly" value="<%out.print(estuser.getD_direccion());%>">
                                         </div>
                                     </div>
                                     <div class="form-group">
