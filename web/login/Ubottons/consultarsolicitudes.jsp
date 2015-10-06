@@ -34,6 +34,7 @@
         filtroPC = request.getParameter("FiltroSolicitudPC");
     }
 
+        //out.print(filtroPC+"+"+filtroF);
 
 %>
 
@@ -87,10 +88,10 @@
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
                     <form class="form-group" action="consultarsolicitudes.jsp">
-                        <table class="table-responsive">
+                        <table class="table-condensed">
                             <td>
                         <div class="row mt">
-                            <div class="col-lg-11">
+                            <div class="col-lg-10">
                                 <label >Filtrar por Facultad</label>
                                 <select  name="FiltroSolicitudF"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option>
@@ -100,7 +101,8 @@
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                               
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>consultar Solicitudes</a></button>
+
                             </div><!-- col-lg-12-->
                         </div>
                             </td>
@@ -124,12 +126,12 @@
                                     <option value="Ingenieria Topografica">Ingenieria Topografica</option>
                                     
                                     <option value="Arte Danzario">Arte Danzario</option>		                         
-                                    <option value="Artes Escenicas">Artes Escénicas</option>
+                                    <option value="Artes Escenicas">Artes Escenicas</option>
                                     <option value="Artes Musicales">Artes Musicales</option>
                                     <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
                                     
                                     <option value="Tecnologia Industrial">Tecnología Industrial</option>
-                                    <option value="Tecnologia Electronica">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia Electrónica">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
                                     <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
@@ -149,14 +151,8 @@
                                     
                                 </select>
                             </div><!-- col-lg-12-->
- 
+
                         </div><!-- /row -->
-                        
-                        </td>
-                        <td><br>
-                            <br>
-                            <br>
-                            <button type="submit" href="#" class="btn btn-round"  ><a>Consultar</a></button>
                         </td>
                         </table>
                     </form>
@@ -167,6 +163,9 @@
                                 out.println("<tr>");
                                 out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtroF, filtroPC, user) + "</td>");
                                 out.println("</tr>");
+                                
+                                //String  tablaResult[][]= solicitud.buscarSolicitudFuncionario2(filtroF, filtroPC, user);
+                                //out.println(tablaResult[1][1]+"-"+tablaResult[1][2]);
                             %>
                         </table></div>
 

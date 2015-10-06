@@ -38,7 +38,7 @@ public class SolicitudDAO {
             prepStmt.setInt(1, s.getK_conv_convocatoria());
             prepStmt.setInt(2, s.getK_est_codEstudiante());
 
-            prepStmt.executeUpdate();
+            prepStmt.executeQuery();
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();
 
@@ -1004,5 +1004,48 @@ public class SolicitudDAO {
 
         return error;
     }
+
+    //    public String[][] buscarSolicitudFuncionario2(String consFacultad, String consProyCurri, Usuario user) {
+//        String error="";
+//        int i=0;
+//        ArrayList<ArrayList<String>> tablaResult = new ArrayList<ArrayList<String>>();
+//        ResultSet tabla = null;
+//        if (consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
+//            try {
+//                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+//                        + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
+//                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+//                        + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
+//                        + "s.k_est_codestudiante=e.k_codestudiante AND "
+//                        + "e.k_est_proycurricular=pc.k_proycurricular AND "
+//                        + "pc.k_proy_facultad=f.k_facultad ORDER BY s.k_idsolicitud";
+//
+//                Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+//                PreparedStatement prepStmt;
+//                prepStmt = conexion.prepareStatement(strSQL);
+//                prepStmt.executeQuery();
+//                tabla = prepStmt.getResultSet();
+//                
+//                while (tabla.next()) {
+//                    tablaResult.add(tabla.getInt(1));
+//                    tablaResult.add(tabla.getString(2));
+//                    tablaResult.add(tabla.getInt(3));
+//                    tablaResult.add(tabla.getString(4));
+//                    tablaResult.add(tabla.getString(5));
+//                    tablaResult.add(tabla.getString(6));
+//                    tablaResult.add(tabla.getString(7));
+//                    i++;
+//                }
+//                prepStmt.close();
+//                ServiceLocator.getInstance(user).commit();
+//            } catch (SQLException ex) {
+//                error = "Privilegio DAO " + "Consultar priveligos Sistema" + ex.getMessage();
+//            } finally {
+//                ServiceLocator.getInstance(user).liberarConexion();
+//            }
+//
+//        } 
+//              return tablaResult;
+//    }
 
 }

@@ -78,7 +78,6 @@
                                     <%
                                         Usuario user = new Usuario();
                                         UsuarioDAO u = new UsuarioDAO();
-
                                         user.setUser((String) session.getAttribute("USUARIO"));
                                         user.setPasswd((String) session.getAttribute("CONT"));
                                         int p1, p2, p3, p4 = 0;
@@ -89,35 +88,31 @@
                                         EstudianteDAO estu = new EstudianteDAO();
                                         Convocatoria convActual = new Convocatoria();
                                         ConvocatoriaDAO convDAO = new ConvocatoriaDAO();
-
                                         ItemSocioeconomicoDAO ItemDAO = new ItemSocioeconomicoDAO();
                                         ItemSocioeconomico param1 = new ItemSocioeconomico();
                                         ItemSocioeconomico param2 = new ItemSocioeconomico();
                                         ItemSocioeconomico param3 = new ItemSocioeconomico();
                                         ItemSocioeconomico param4 = new ItemSocioeconomico();
-
                                         convActual = convDAO.buscarConvocatoria("Activa", user);
                                         solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
-
                                         String codEstudiante = user.getUser().substring(1);
                                         estuser = estu.buscarEstudiante(codEstudiante, user);
-
                                         solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
                                         solicitudValidar = soliDAO.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
                                         solicitudValidar.getK_idSolicitud();
-                                        List listaSocioeconomicos = new ArrayList<Integer>();
-                                        listaSocioeconomicos = ItemDAO.buscarSolicitudSocioeconomica(solicitudValidar.getK_idSolicitud(), user);
 
-                                        p1 = (Integer) listaSocioeconomicos.get(0);
-                                        p2 = (Integer) listaSocioeconomicos.get(1);
-                                        p3 = (Integer) listaSocioeconomicos.get(2);
-                                        p4 = (Integer) listaSocioeconomicos.get(3);
+                                        if (solicitudValidar.getK_est_codEstudiante() == Integer.valueOf(codEstudiante)) {
 
-                                        param1 = ItemDAO.buscarItemSocioeconomica(p1, user);
-                                        param2 = ItemDAO.buscarItemSocioeconomica(p2, user);
-                                        param3 = ItemDAO.buscarItemSocioeconomica(p3, user);
-                                        param4 = ItemDAO.buscarItemSocioeconomica(p4, user);
-
+                                            List listaSocioeconomicos = new ArrayList<Integer>();
+                                            listaSocioeconomicos = ItemDAO.buscarSolicitudSocioeconomica(solicitudValidar.getK_idSolicitud(), user);
+                                            p1 = (Integer) listaSocioeconomicos.get(0);
+                                            p2 = (Integer) listaSocioeconomicos.get(1);
+                                            p3 = (Integer) listaSocioeconomicos.get(2);
+                                            p4 = (Integer) listaSocioeconomicos.get(3);
+                                            param1 = ItemDAO.buscarItemSocioeconomica(p1, user);
+                                            param2 = ItemDAO.buscarItemSocioeconomica(p2, user);
+                                            param3 = ItemDAO.buscarItemSocioeconomica(p3, user);
+                                            param4 = ItemDAO.buscarItemSocioeconomica(p4, user);
                                     %>
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
@@ -169,7 +164,8 @@
                                     </div>
                                 </div>
                                 <br>
-                                <br><div class="form-group">
+                                <br>
+                                <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Condiciones Familiares</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" readonly="readonly" value="<%out.print(param2.getD_descSocioeconomica());%>">
@@ -177,7 +173,8 @@
                                 </div>
                                 <br>
 
-                                <br><div class="form-group">
+                                <br>
+                                <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Procedencia y lugar de residencia</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" readonly="readonly" value="<%out.print(param3.getD_descSocioeconomica());%>">
@@ -191,20 +188,24 @@
                                     <label class="col-sm-2 col-sm-2 control-label">Condiciones de salud</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" readonly="readonly" value="<%out.print(param4.getD_descSocioeconomica());%>">
+                                    </div>
                                 </div>
-                                <br>
-                                <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
+                                    <br>
+                                    <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
+                                </div><!-- /form-panel -->
+                            </div><!-- /col-lg-12 -->
+
+                            <% } else {
+                            %>
+                            <center><h3>Ud no tiene solicitudes para esta convocatoria</h3></center>
+                            <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Volver</a></button>
+
+                            <% }%>
 
 
 
-
-                            </div><!-- /form-panel -->
-                        </div><!-- /col-lg-12 -->
-
-
-
-                    </div><!-- /row -->
-
+                        </div><!-- /row -->
+                    
 
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
@@ -256,11 +257,9 @@
 
         <script>
             //custom select box
-
             $(function() {
                 $('select.styled').customSelect();
             });
-
         </script>
 
     </body>
