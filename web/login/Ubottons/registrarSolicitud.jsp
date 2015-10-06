@@ -24,6 +24,7 @@
     String codEstudiante = user.getUser().substring(1);
     estuser = estu.buscarEstudiante(codEstudiante, user);
 
+
 %>
 
 
@@ -72,6 +73,8 @@
             <section id="main-content">
                 <section class="wrapper">
                     <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
+                    <%if(estuser.getEstadoEstudiante().equals("ACTIVO")){
+                    %>
                     <br>
                     Diligencie el formulario para poder acceder al apoyo alimentario
                     <!-- BASIC FORM ELELEMNTS -->
@@ -159,6 +162,10 @@
                         </div><!-- /col-lg-12 -->
                     </div><!-- /row -->
 
+                    <%}else{%>
+                      <center><h3>Ud no es estudiante ACTIVO en la Universidad, comuniquese con su proy. curricular</h3> 
+                                        <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
+             <%     } %>
 
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->

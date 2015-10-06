@@ -22,7 +22,8 @@ public class Estudiante {
 	private int d_promedio;            
 	private int d_materias_perdidas;   
 	private String d_tipodocumento;  
-        private String n_nomProyCurricular;  
+        private int numMatriculas;
+        private String estadoEstudiante;
         
        public  Estudiante(){
             
@@ -121,6 +122,22 @@ public class Estudiante {
     public void setD_tipodocumento(String d_tipodocumento) {
         this.d_tipodocumento = d_tipodocumento;
     }    
+
+    public int getNumMatriculas() {
+        return numMatriculas;
+    }
+
+    public void setNumMatriculas(int numMatriculas) {
+        this.numMatriculas = numMatriculas;
+    }
+
+    public String getEstadoEstudiante() {
+        return estadoEstudiante;
+    }
+
+    public void setEstadoEstudiante(String estadoEstudiante) {
+        this.estadoEstudiante = estadoEstudiante;
+    }
         
     
 }

@@ -20,7 +20,7 @@
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
     UsuarioDAO u = new UsuarioDAO();
-    u.ingresar(user);
+  
    %>
 
 <html lang="en">

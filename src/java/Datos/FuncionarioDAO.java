@@ -30,6 +30,8 @@ public class FuncionarioDAO {
                 funcionario.setK_idFuncionario(rs.getInt(1));
                 funcionario.setN_nomFuncionario(rs.getString(2));
             }
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
             return funcionario;
         } catch (SQLException e) {
             error = "Funcionario DAO " + "Buscar Id Funcionario " + e.getMessage();

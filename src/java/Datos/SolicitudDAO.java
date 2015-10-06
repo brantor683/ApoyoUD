@@ -73,6 +73,9 @@ public class SolicitudDAO {
                 solicitud.setF_solicitud(rs.getString(7));
 
             }
+               prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+       
             return solicitud;
         } catch (SQLException e) {
 
@@ -100,6 +103,8 @@ public class SolicitudDAO {
                 solicitud.setK_idSolicitud(rs.getInt(3));
 
             }
+              prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
             return solicitud;
         } catch (SQLException e) {
 

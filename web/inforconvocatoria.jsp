@@ -20,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.css">
         <link rel="stylesheet" href="css/font-awesome.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/theme.css">
@@ -115,7 +115,7 @@
                         <h3>El apoyo alimentario  para el perioro 2015-III se realizará dentro de las fechas Siguientes:</h3>
                     </div>
                     <form>
-                      <%
+                 <%
                             Usuario userInicial = new Usuario();
                             userInicial.setUser("APOYOUD");
                             userInicial.setPasswd("APOYOUD");
@@ -131,7 +131,6 @@
                             <label for="CedulaInput">Fecha de Inicio:  <%out.print(c.getF_inicioConvocatoria());%></label><br>
                             <label for="CedulaInput">Fecha de finalizacion:  <%out.print(c.getF_finConvocatoria());%></label><br>      
                         </div>
-
                     </form>
 
                 </div>

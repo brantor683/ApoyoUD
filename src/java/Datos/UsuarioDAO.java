@@ -42,8 +42,11 @@ public class UsuarioDAO {
                 sa = tabla.getString(1);
             }
             prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
         } catch (SQLException ex) {
             sa = "Este es el error" + ex.getMessage();
+        }finally {
+            ServiceLocator.getInstance(user).liberarConexion();
         }
 
         return sa;

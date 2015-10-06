@@ -44,6 +44,8 @@ public class ItemSocioeconomicoDAO {
              listaObjetos.add(aux);
                
             }
+         
+            ServiceLocator.getInstance(user).commit();
             return listaObjetos;
         } catch (SQLException e) {
 
@@ -73,6 +75,8 @@ public class ItemSocioeconomicoDAO {
             item.setD_descSocioeconomica(rs.getString(1));
          
             }
+          
+            ServiceLocator.getInstance(user).commit();
             return item;
         } catch (SQLException e) {
 

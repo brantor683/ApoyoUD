@@ -80,18 +80,25 @@
                                         SocioeconomicoDAO soli_sociDAO = new SocioeconomicoDAO();
                                         Convocatoria convActual = new Convocatoria();
                                         ConvocatoriaDAO convDAO = new ConvocatoriaDAO();
-
+                                        Estudiante estadoEST = new Estudiante();
+                                        EstudianteDAO estudianteDAO = new EstudianteDAO();
+                                        String estadoEstudiante="";
+                                        
                                         user.setUser((String) session.getAttribute("USUARIO"));
                                         user.setPasswd((String) session.getAttribute("CONT"));
-
-                                        convActual = convDAO.buscarConvocatoria("Activa", user);
-
-                                        solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
                                         String codEstudiante = user.getUser().substring(1);
-                                        solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
-                                        solicitudValidar = solicituddao.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
-                                        if (solicitudValidar.getK_est_codEstudiante() == Integer.valueOf(codEstudiante)) {
-                                    %> 
+                                        convActual = convDAO.buscarConvocatoria("Activa", user);
+                                        estadoEST = estudianteDAO.buscarEstudiante(codEstudiante, user);
+                                        estadoEstudiante=estadoEST.getEstadoEstudiante();
+                                       
+                 
+
+                                            solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
+
+                                            solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
+                                            solicitudValidar = solicituddao.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
+                                            if (solicitudValidar.getK_est_codEstudiante() == Integer.valueOf(codEstudiante)) {
+                                        %> 
                                     <center><h3>Ud ya tiene un solicitud registrada en esta convocatoria</h3> 
                                         <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
 
@@ -99,68 +106,71 @@
                                     <%
                                     } else {
                                         solicituddao.registrarSolicitud(solicitud, user);%>
-                                         <center><h3>Se registró correctamente</h3> 
+                                    <center><h2>Se registró correctamente</h2> 
                                         <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
 
-                                        
-                                     
+
+
 
 
 
                                     <%    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
-                                            if (!isMultipart) {
-                                            } else {
+                                                if (!isMultipart) {
+                                                } else {
 
-                                                Directorio dir = new Directorio();
-                                                String directorio = "";
-                                                String directorioFinal = "";
+                                                    Directorio dir = new Directorio();
+                                                    String directorio = "";
+                                                    String directorioFinal = "";
 
-                                                FileItemFactory factory = new DiskFileItemFactory();
-                                                ServletFileUpload upload = new ServletFileUpload(factory);
-                                                List items = null;
-                                                try {
-                                                    items = upload.parseRequest(request);
-                                                } catch (FileUploadException e) {
-                                                    e.printStackTrace();
-                                                }
-                                                Iterator itr = items.iterator();
-                                                while (itr.hasNext()) {
-                                                    String name = "";
-
-                                                    FileItem item = (FileItem) itr.next();
-                                                    if (item.isFormField()) {
-
-                                                        name = item.getFieldName();
-
-                                                        String valor = item.getString();
-                                                        directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/";
-                                                        dir.generarDirectorio(directorio);
-
-                                                        socioeconomi.setK_soc_socioeconomica(Integer.parseInt(valor));
-
-                                                    } else {
-
-                                                        try {
-
-                                                            String itemName = item.getName();
-
-                                                            directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/" + itemName;
-
-                                                            File savedFile = new File(directorioFinal);
-                                                            item.write(savedFile);
-
-                                                        } catch (Exception e) {
-                                                            e.printStackTrace();
-                                                        }
+                                                    FileItemFactory factory = new DiskFileItemFactory();
+                                                    ServletFileUpload upload = new ServletFileUpload(factory);
+                                                    List items = null;
+                                                    try {
+                                                        items = upload.parseRequest(request);
+                                                    } catch (FileUploadException e) {
+                                                        e.printStackTrace();
                                                     }
+                                                    Iterator itr = items.iterator();
+                                                    while (itr.hasNext()) {
+                                                        String name = "";
 
-                                                    socioeconomi.setD_soporte(directorioFinal);
-                                                    soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
+                                                        FileItem item = (FileItem) itr.next();
+                                                        if (item.isFormField()) {
+
+                                                            name = item.getFieldName();
+
+                                                            String valor = item.getString();
+                                                            directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/";
+                                                            dir.generarDirectorio(directorioFinal);
+
+                                                            socioeconomi.setK_soc_socioeconomica(Integer.parseInt(valor));
+
+                                                        } else {
+
+                                                            try {
+
+                                                                String itemName = item.getName();
+
+                                                                directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/" + itemName;
+
+                                                                File savedFile = new File(directorioFinal);
+                                                                item.write(savedFile);
+
+                                                            } catch (Exception e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+
+                                                        socioeconomi.setD_soporte(directorioFinal);
+                                                        soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
+                                                    }
                                                 }
                                             }
-                                        }
+                                        
+
                                     %>
+
                                 </div><!-- /border-head -->	
                             </div><!-- /row -->	
                         </div><!-- /col-lg-9 END SECTION MIDDLE -->

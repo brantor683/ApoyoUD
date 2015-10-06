@@ -33,7 +33,7 @@
         <!--logo end--> 
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="../../index.jsp">Cerrar Sesión</a></li>
+                <li><a class="logout" href="../../index.jsp">Cerrar Sesión </a> </li>
             </ul>
         </div>
     </header>
@@ -64,7 +64,7 @@
                 <li class="sub-menu">
                     <a class="" href="versolicitud.jsp" >
                         <i class="fa fa-tasks"></i>
-                        <span>Ver Solicitud</span>
+                        <span>Ver Solicitud Actual</span>
                     </a>
 
                 </li>

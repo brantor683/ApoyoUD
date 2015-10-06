@@ -105,6 +105,9 @@
                                         solicitud.setK_est_codEstudiante(Integer.valueOf(codEstudiante));
                                         solicitudValidar = soliDAO.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
                                         solicitudValidar.getK_idSolicitud();
+                                        if(solicitudValidar.getK_est_codEstudiante()==Integer.parseInt(codEstudiante)){
+                                            
+                                        
                                         List listaSocioeconomicos = new ArrayList<Integer>();
                                         listaSocioeconomicos = ItemDAO.buscarSolicitudSocioeconomica(solicitudValidar.getK_idSolicitud(), user);
 
@@ -194,7 +197,12 @@
                                 </div>
                                 <br>
                                 <br><button type="button" class="btn btn-link"  ><a href="MenuInicial.jsp"> Regresar</a></button>
-
+                                  <% }else
+                                        {
+      %>
+       <center><h3>Ud no tiene solicitudes registradas para esta convocatoria</h3> 
+                                        <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
+      <%}%>
 
 
 

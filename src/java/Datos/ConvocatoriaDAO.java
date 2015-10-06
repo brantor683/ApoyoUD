@@ -38,7 +38,6 @@ public class ConvocatoriaDAO {
             prepStmt.setInt(6, c.getD_cuposCategoriaA());
             prepStmt.setInt(7, c.getD_cuposCategoriaB());
             prepStmt.setInt(8, c.getD_cuposCategoriaC());
-      
 
             prepStmt.executeUpdate();
             prepStmt.close();
@@ -50,6 +49,7 @@ public class ConvocatoriaDAO {
             error = "Convocatoria_DAO " + "Registrar convocatoria " + e.getMessage();
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
+            
         }
 
         return error;
@@ -73,18 +73,20 @@ public class ConvocatoriaDAO {
                 convocatoria.setPeriodo(rs.getInt(5));
                 convocatoria.setE_estadoconvocatoria(rs.getString(6));
             }
-
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
             return convocatoria;
         } catch (SQLException e) {
 
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
+          
         }
         System.out.println(convocatoria.getK_convocatoria());
         return convocatoria;
     }
 
-     public Convocatoria buscarConvocatoriaId(String idConvocatoria, Usuario user) {
+    public Convocatoria buscarConvocatoriaId(String idConvocatoria, Usuario user) {
         Convocatoria convocatoria = new Convocatoria();
         try {
 
@@ -96,14 +98,16 @@ public class ConvocatoriaDAO {
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 convocatoria.setK_convocatoria(rs.getInt(1));
-                
-            }
 
+            }
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
             return convocatoria;
         } catch (SQLException e) {
 
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
+           
         }
         System.out.println(convocatoria.getK_convocatoria());
         return convocatoria;

@@ -130,19 +130,19 @@
                                     
                                     <option value="Tecnologia Industrial">Tecnología Industrial</option>
                                     <option value="Tecnologia Electronica">Ingenieria Mecanica</option>
-                                    <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia en Contrucciones">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
                                     <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
-                                    <option value="Tecnologia en Sistematizacion de Datos">Tecnologia en Sistematizacion de Datos</option>
+                                    <option value="Tecnologia en Sistematizacion">Tecnologia en Sistematizacion de Datos</option>
                                     
                                     <option value="Licenciatura en Biología">Licenciatura en Biología</option>		                         
-                                    <option value="Licenciatura en Ciencias Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
+                                    <option value="Licenciatura en Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
                                     <option value="Licenciatura en Artistica">Licenciatura en Educación Básica con Enfasis en Artistica</option>
                                     <option value="Licenciatura en Humanidades">Licenciatura en Educación Básica con Enfasis en Humanidades y Lengua Castellana</option>		                         
                                     <option value="Licenciatura en Ingles">Licenciatura en Educación Básica con Enfasis en Inglés</option>
                                     <option value="Licenciatura en Matematica">Licenciatura en Educación Básica con Enfasis en Matemática</option> 
                                     <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>		                         
-                                    <option value="Licenciatura en Pedagogia Infantil">Licenciatura en Pedagogia Infantil</option>
+                                    <option value="Licenciatura en Pedagogia">Licenciatura en Pedagogia Infantil</option>
                                     <option value="Licenciatura en Quimica">Licenciatura en Quimica</option> 
                                      <option value="Matematicas">Matemáticas</option> 
                                    

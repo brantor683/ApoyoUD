@@ -45,8 +45,12 @@ public class EstudianteDAO {
                 estudiante.setD_promedio(rs.getInt(9));
                 estudiante.setD_materias_perdidas(rs.getInt(10));
                 estudiante.setK_est_ProyCurricular(rs.getInt(11));
+                estudiante.setNumMatriculas(rs.getInt(12));
+                estudiante.setEstadoEstudiante(rs.getString(13));
              
             }
+              prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
             return estudiante;
         } catch (SQLException e) {
             error = "Estudiante DAO " + "Buscar Id Estudiante " + e.getMessage();
