@@ -33,8 +33,7 @@
     } else {
         filtroPC = request.getParameter("FiltroSolicitudPC");
     }
-
-
+        //out.print(filtroPC+"+"+filtroF);
 %>
 
 
@@ -87,10 +86,10 @@
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
                     <form class="form-group" action="consultarsolicitudes.jsp">
-                        <table class="table-responsive">
+                        <table class="table-condensed">
                             <td>
                         <div class="row mt">
-                            <div class="col-lg-11">
+                            <div class="col-lg-10">
                                 <label >Filtrar por Facultad</label>
                                 <select  name="FiltroSolicitudF"  id="FiltroSolicitud" class="form-control">
                                     <option value="Todos">Todos</option>
@@ -100,7 +99,8 @@
                                     <option value="Medio Ambiente">Vivero</option>
                                     <option value="Tecnologica">Tecnológica</option> 
                                 </select>
-                               
+                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>consultar Solicitudes</a></button>
+
                             </div><!-- col-lg-12-->
                         </div>
                             </td>
@@ -124,39 +124,33 @@
                                     <option value="Ingenieria Topografica">Ingenieria Topografica</option>
                                     
                                     <option value="Arte Danzario">Arte Danzario</option>		                         
-                                    <option value="Artes Escenicas">Artes Escénicas</option>
+                                    <option value="Artes Escenicas">Artes Escenicas</option>
                                     <option value="Artes Musicales">Artes Musicales</option>
                                     <option value="Artes Plasticas y Visuales">Artes Plásticas y visuales</option>
                                     
                                     <option value="Tecnologia Industrial">Tecnología Industrial</option>
-                                    <option value="Tecnologia Electronica">Ingenieria Mecanica</option>
-                                    <option value="Tecnologia en Contrucciones">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia Electrónica">Ingenieria Mecanica</option>
+                                    <option value="Tecnologia en Contrucciones Civiles">Ingenieria Mecanica</option>
                                     <option value="Tecnologia en Electricidad">Tecnologia en Electricidad</option>
                                     <option value="Tecnologia Mecanica">Tecnologia  Mecanica</option>
-                                    <option value="Tecnologia en Sistematizacion">Tecnologia en Sistematizacion de Datos</option>
+                                    <option value="Tecnologia en Sistematizacion de Datos">Tecnologia en Sistematizacion de Datos</option>
                                     
                                     <option value="Licenciatura en Biología">Licenciatura en Biología</option>		                         
-                                    <option value="Licenciatura en Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
+                                    <option value="Licenciatura en Ciencias Sociales">Licenciatura en Educación Básica con Enfasis en Ciencias Sociales</option>
                                     <option value="Licenciatura en Artistica">Licenciatura en Educación Básica con Enfasis en Artistica</option>
                                     <option value="Licenciatura en Humanidades">Licenciatura en Educación Básica con Enfasis en Humanidades y Lengua Castellana</option>		                         
                                     <option value="Licenciatura en Ingles">Licenciatura en Educación Básica con Enfasis en Inglés</option>
                                     <option value="Licenciatura en Matematica">Licenciatura en Educación Básica con Enfasis en Matemática</option> 
                                     <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>		                         
-                                    <option value="Licenciatura en Pedagogia">Licenciatura en Pedagogia Infantil</option>
+                                    <option value="Licenciatura en Pedagogia Infantil">Licenciatura en Pedagogia Infantil</option>
                                     <option value="Licenciatura en Quimica">Licenciatura en Quimica</option> 
                                      <option value="Matematicas">Matemáticas</option> 
                                    
                                     
                                 </select>
                             </div><!-- col-lg-12-->
- 
+
                         </div><!-- /row -->
-                        
-                        </td>
-                        <td><br>
-                            <br>
-                            <br>
-                            <button type="submit" href="#" class="btn btn-round"  ><a>Consultar</a></button>
                         </td>
                         </table>
                     </form>
@@ -167,6 +161,9 @@
                                 out.println("<tr>");
                                 out.print("<td>" + solicitud.buscarSolicitudFuncionario(filtroF, filtroPC, user) + "</td>");
                                 out.println("</tr>");
+                                
+                                //String  tablaResult[][]= solicitud.buscarSolicitudFuncionario2(filtroF, filtroPC, user);
+                                //out.println(tablaResult[1][1]+"-"+tablaResult[1][2]);
                             %>
                         </table></div>
 
@@ -220,11 +217,9 @@
 
         <script>
             //custom select box
-
             $(function() {
                 $('select.styled').customSelect();
             });
-
         </script>
 
     </body>
