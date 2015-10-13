@@ -3,6 +3,8 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
+<%@page import="Datos.ConvocatoriaDAO"%>
+<%@page import="Negocio.Convocatoria"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
@@ -24,7 +26,8 @@
     String codEstudiante = user.getUser().substring(1);
     estuser = estu.buscarEstudiante(codEstudiante, user);
 
-
+    Convocatoria convocatoria = new Convocatoria();
+    ConvocatoriaDAO convocatoriaDAO = new ConvocatoriaDAO();
 %>
 
 
@@ -74,7 +77,12 @@
                 <section class="wrapper">
                     <h3><i class="fa fa-angle-right"></i>Registrar Socilitud</h3>
                     <%if(estuser.getEstadoEstudiante().equals("ACTIVO")){
+                    
+                    convocatoria = convocatoriaDAO.buscarConvocatoria("Activa", user);
+                 
+                    if(convocatoria.getK_convocatoria()!=0){
                     %>
+                    
                     <br>
                     Diligencie el formulario para poder acceder al apoyo alimentario
                     <!-- BASIC FORM ELELEMNTS -->
@@ -161,7 +169,11 @@
                             </div><!-- /form-panel -->
                         </div><!-- /col-lg-12 -->
                     </div><!-- /row -->
-
+                           <%}else{%>
+                           <center><h3>No hay convocatoria ACTIVA para registrar su solicitud</h3> 
+                                        <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
+                    
+                    <%}%>
                     <%}else{%>
                       <center><h3>Ud no es estudiante ACTIVO en la Universidad, comuniquese con su proy. curricular</h3> 
                                         <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>

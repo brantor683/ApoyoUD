@@ -99,7 +99,7 @@
                                             solicitudValidar = solicituddao.buscarSolicitudConvocatoria(codEstudiante, solicitud.getK_conv_convocatoria(), user);
                                             if (solicitudValidar.getK_est_codEstudiante() == Integer.valueOf(codEstudiante)) {
                                         %> 
-                                    <center><h3>Ud ya tiene un solicitud registrada en esta convocatoria</h3> 
+                                    <center><h3>Ud ya tiene una solicitud registrada en esta convocatoria</h3> 
                                         <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
 
 
@@ -133,17 +133,19 @@
                                                     }
                                                     Iterator itr = items.iterator();
                                                     while (itr.hasNext()) {
-                                                        String name = "";
+                                                        
 
                                                         FileItem item = (FileItem) itr.next();
+                                                        String name = "";
                                                         if (item.isFormField()) {
 
                                                             name = item.getFieldName();
-
+                                                                
                                                             String valor = item.getString();
-                                                            directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/";
-                                                            dir.generarDirectorio(directorioFinal);
-
+                                                            directorio = "C:/DatosAPOYO/" + user.getUser() + "/" + convActual.getK_convocatoria() + "/" + name + "/";
+                                                            directorioFinal=directorio;
+                                                            dir.generarDirectorio(directorio);
+                                                            //
                                                             socioeconomi.setK_soc_socioeconomica(Integer.parseInt(valor));
 
                                                         } else {
@@ -151,9 +153,9 @@
                                                             try {
 
                                                                 String itemName = item.getName();
-
-                                                                directorioFinal = "C:/DatosAPOYO/" + user.getUser() + "/" + name + "/" + itemName;
-
+                                                                 directorioFinal =directorioFinal+itemName;
+                                                             
+                                                             
                                                                 File savedFile = new File(directorioFinal);
                                                                 item.write(savedFile);
 
