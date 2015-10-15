@@ -130,7 +130,7 @@
                                         <option value="2">1.0-2.0 SMMLV</option>
                                         <option value="3">2.0-3.0 SMMLV</option>		                         
                                         <option value="4">3.0 SMMLV</option>   
-                                        <option value="15">Otro</option>  
+                                        <option value="15">Otro Ingreso</option>  
                                     </select>
                                     <input type="file" name="file1"/> 
                                     <br>
@@ -140,7 +140,7 @@
                                         <option value="6">Se sotiene a sí mismo</option>
                                         <option value="7">Vive fuera de su núcleo familiar inmediato</option>		                          <option value="4">Tiene conyuge, hijos y/u otras personas a cargo</option>                  	  
                                         <option value="8">Tiene conyuge, hijos y u otras personas a cargo</option>
-                                        <option value="15">Otro</option>  
+                                        <option value="16">Otra condicion</option>  
                                     </select> 
                                     <input type="file" name="file2"/> 
                                     <br>
@@ -150,7 +150,7 @@
                                         <option value="10">Se encuentra en condición de desplazamiento forzado</option>
                                         <option value="11">Proviene de municipios distintos a Bogotá </option>		                          <option value="4">Reside en zonas de alto grado de vulnerabilidad</option>                                      	  
                                         <option value="12">Reside en zonas de alto grado de vulnerabilidad </option>
-                                        <option value="15">Otro</option>  
+                                        <option value="17">Otra procedencia</option>  
                                     </select> 
                                     <input type="file" name="file3"/> 
                                     <br>
@@ -158,7 +158,7 @@
                                     <select  name="salud"  id="salud" class="form-control">
                                         <option value="13">Presenta algún tipo de discapacidad física o mental</option>
                                         <option value="14">Sufre alguna patología o sintomatología asociada con problemas de alimentación</option>                                        	  
-                                        <option value="15">Otro</option>  
+                                        <option value="18">Otra condicion de salud</option>  
                                     </select>
                                     <input type="file" name="file4"/> 
                                     <br><button type="submit" class="btn btn-round btn-success"  >Enviar Solicitud</button>
