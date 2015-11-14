@@ -77,6 +77,13 @@
 
                 </li>
 
+                   <li class="sub-menu">
+                    <a class="" href="registrarSolicitud.jsp" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Registrar Solicitud</span>
+                    </a>
+                </li>
+                
             </ul>
             <!-- sidebar menu end-->
         </div>

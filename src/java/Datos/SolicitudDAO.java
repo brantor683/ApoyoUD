@@ -547,6 +547,7 @@ public class SolicitudDAO {
                             + "     <td style=' border: 1px solid black;'> " + tabla.getString(5) + "</td>"
                             + "     <td style=' border: 1px solid black;'> " + tabla.getString(6) + "</td>"
                             + "     <td style=' border: 1px solid black;'> " + tabla.getString(7) + "</td>"
+                            
                             + "</tr>";
                 }
                 error = error + "</table>";

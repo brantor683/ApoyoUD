@@ -69,6 +69,12 @@
 
                 </li>
 
+                 <li class="sub-menu">
+                    <a class="" href="convocatoria.jsp" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Convocatoria</span>
+                    </a>
+                </li>
             </ul>
             <!-- sidebar menu end-->
         </div>

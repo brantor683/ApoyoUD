@@ -83,7 +83,8 @@
                                         Estudiante estadoEST = new Estudiante();
                                         EstudianteDAO estudianteDAO = new EstudianteDAO();
                                         String estadoEstudiante="";
-                                        
+                                        String[] archivos= new String[4];
+                                          int i =0;
                                         user.setUser((String) session.getAttribute("USUARIO"));
                                         user.setPasswd((String) session.getAttribute("CONT"));
                                         String codEstudiante = user.getUser().substring(1);
@@ -134,7 +135,7 @@
                                                     Iterator itr = items.iterator();
                                                     while (itr.hasNext()) {
                                                         
-
+                                                         
                                                         FileItem item = (FileItem) itr.next();
                                                         String name = "";
                                                         if (item.isFormField()) {
@@ -154,8 +155,7 @@
 
                                                                 String itemName = item.getName();
                                                                  directorioFinal =directorioFinal+itemName;
-                                                             
-                                                             
+                                                           
                                                                 File savedFile = new File(directorioFinal);
                                                                 item.write(savedFile);
 
@@ -163,9 +163,10 @@
                                                                 e.printStackTrace();
                                                             }
                                                         }
-
+                                                        if(item.getName()!=null){
+                                                          
                                                         socioeconomi.setD_soporte(directorioFinal);
-                                                        soli_sociDAO.registrarSocioeconomica(socioeconomi, user);
+                                                        soli_sociDAO.registrarSocioeconomica(socioeconomi, user);}
                                                     }
                                                 }
                                             }
