@@ -115,7 +115,7 @@
                         <h3>El apoyo alimentario  para el perioro 2015-III se realizará dentro de las fechas Siguientes:</h3>
                     </div>
                     <form>
-                      <%
+                      <%       session.invalidate();
                             Usuario userInicial = new Usuario();
                             userInicial.setUser("APOYOUD");
                             userInicial.setPasswd("APOYOUD");

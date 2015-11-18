@@ -80,6 +80,7 @@ public class ConvocatoriaDAO {
 
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
+           // ServiceLocator.getInstance(user).close();
           
         }
         System.out.println(convocatoria.getK_convocatoria());
@@ -107,6 +108,7 @@ public class ConvocatoriaDAO {
 
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
+          
            
         }
         System.out.println(convocatoria.getK_convocatoria());

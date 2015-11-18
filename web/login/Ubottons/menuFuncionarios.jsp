@@ -76,6 +76,17 @@
                     </ul>
 
                 </li>
+                  <li class="sub-menu">
+                    <a class="" href="convocatoria.jsp" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Validar Solicitudes</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="validarSolicitudes.jsp">Validar Solicitud</a></li>
+                      
+                    </ul>
+
+                </li>
 
                    <li class="sub-menu">
                     <a class="" href="registrarSolicitud.jsp" >

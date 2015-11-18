@@ -23,8 +23,18 @@
     Usuario user = new Usuario();
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    UsuarioDAO u = new UsuarioDAO();
- 
+   
+  //  UsuarioDAO u = new UsuarioDAO();
+  // u.ingresar(user);
+// out.print("usuario "+user.getUser());
+       Estudiante estuser = new Estudiante();
+                EstudianteDAO estu = new EstudianteDAO();
+               // out.print("usa"+user.getUser());
+                String codEstudiante = user.getUser().substring(1);
+                estuser = estu.buscarEstudiante(codEstudiante, user);
+            
+     //            out.print(estuser.getD_identificacion());
+           
    %>
 
 <html lang="en">
@@ -57,11 +67,7 @@
             <!-- **********************************************************************************************************************************************************
              MAIN SIDEBAR MENU
              *********************************************************************************************************************************************************** -->
-            <%   Estudiante estuser = new Estudiante();
-                EstudianteDAO estu = new EstudianteDAO();
-
-                String codEstudiante = user.getUser().substring(1);
-                estuser = estu.buscarEstudiante(codEstudiante, user);%>
+           
            
             <%@ include file="menu.jsp" %>  
 
