@@ -14,7 +14,7 @@ public class Convocatoria {
 	private String f_inicioConvocatoria;
 	private String f_finConvocatoria;
 	private int periodo;
-	private String e_estadoconvocatoria;
+	private String e_convocatoria;
 	private int k_convocatoria;
         private int d_cuposCategoriaA;
         private int d_cuposCategoriaB;
@@ -57,12 +57,12 @@ public Convocatoria(){
         this.periodo = periodo;
     }
 
-    public String getE_estadoconvocatoria() {
-        return e_estadoconvocatoria;
+    public String getE_convocatoria() {
+        return e_convocatoria;
     }
 
-    public void setE_estadoconvocatoria(String e_estadoconvocatoria) {
-        this.e_estadoconvocatoria = e_estadoconvocatoria;
+    public void setE_convocatoria(String e_convocatoria) {
+        this.e_convocatoria = e_convocatoria;
     }
 
     public int getK_convocatoria() {

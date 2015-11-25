@@ -30,9 +30,9 @@ public class ValidadorDAO {
         ResultSet tabla = null;
         if (consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
@@ -277,13 +277,13 @@ public class ValidadorDAO {
 
         } else if (consFacultad.equals("Todos") && !consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_nomproycurricular=?"
+                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_proyCurricular=?"
                         + " ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
@@ -501,13 +501,13 @@ public class ValidadorDAO {
         
         else if (!consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND f.n_nomfacultad=?"
+                        + "pc.k_proy_facultad=f.k_facultad AND f.n_Facultad=?"
                         + " ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
@@ -724,14 +724,14 @@ public class ValidadorDAO {
         
         else if (!consFacultad.equals("Todos") && !consProyCurri.equals("Todos")) {
              try { 
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_nomproycurricular=? AND "
-                        + "f.n_nomfacultad=? ORDER BY s.k_idsolicitud";
+                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_proyCurricular=? AND "
+                        + "f.n_Facultad=? ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
                 prepStmt = conexion.prepareStatement(strSQL);
@@ -956,9 +956,9 @@ public class ValidadorDAO {
 //        ResultSet tabla = null;
 //        if (consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
 //            try {
-//                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+//                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
 //                        + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-//                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+//                        + "f.n_Facultad, pc.n_proyCurricular "
 //                        + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
 //                        + "s.k_est_codestudiante=e.k_codestudiante AND "
 //                        + "e.k_est_proycurricular=pc.k_proycurricular AND "

@@ -14,7 +14,7 @@ public class Socioeconomico {
     private int k_soc_socioeconomica;
     private int k_sol_idsolicitud; 
     private String d_soporte ;
-    private String e_estado_validacion ;
+    private String e_validacion ;
     
     public Socioeconomico(){
         
@@ -44,12 +44,12 @@ public class Socioeconomico {
         this.d_soporte = d_soporte;
     }
 
-    public String getE_estado_validacion() {
-        return e_estado_validacion;
+    public String getE_validacion() {
+        return e_validacion;
     }
 
-    public void setE_estado_validacion(String e_estado_validacion) {
-        this.e_estado_validacion = e_estado_validacion;
+    public void setE_validacion(String e_validacion) {
+        this.e_validacion = e_validacion;
     }
 
     

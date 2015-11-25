@@ -23,7 +23,7 @@ public class Estudiante {
 	private int d_materias_perdidas;   
 	private String d_tipodocumento;  
         private int numMatriculas;
-        private String estadoEstudiante;
+        private String e_Estudiante;
         
        public  Estudiante(){
             
@@ -132,11 +132,11 @@ public class Estudiante {
     }
 
     public String getEstadoEstudiante() {
-        return estadoEstudiante;
+        return e_Estudiante;
     }
 
-    public void setEstadoEstudiante(String estadoEstudiante) {
-        this.estadoEstudiante = estadoEstudiante;
+    public void setE_Estudiante(String E_Estudiante) {
+        this.e_Estudiante = E_Estudiante;
     }
         
     

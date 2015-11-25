@@ -12,7 +12,7 @@ package Negocio;
 public class Solicitud {
     
     	private int k_idSolicitud;
-	private String e_estSolicitud;        
+	private String e_Solicitud;        
 	private int k_est_codEstudiante;   
 	private int k_func_idFuncionario; 
 	private int k_conv_convocatoria;  
@@ -31,12 +31,12 @@ public class Solicitud {
         this.k_idSolicitud = k_idSolicitud;
     }
 
-    public String getE_estSolicitud() {
-        return e_estSolicitud;
+    public String getE_Solicitud() {
+        return e_Solicitud;
     }
 
-    public void setE_estSolicitud(String e_estSolicitud) {
-        this.e_estSolicitud = e_estSolicitud;
+    public void setE_Solicitud(String e_Solicitud) {
+        this.e_Solicitud = e_Solicitud;
     }
 
     public int getK_est_codEstudiante() {

@@ -12,7 +12,7 @@ package Negocio;
 public class Funcionario {
 
     private int k_idFuncionario;
-    private String n_nomFuncionario;
+    private String n_Funcionario;
 
      public Funcionario() {
 
@@ -26,12 +26,12 @@ public class Funcionario {
         this.k_idFuncionario = k_idFuncionario;
     }
 
-    public String getN_nomFuncionario() {
-        return n_nomFuncionario;
+    public String getN_Funcionario() {
+        return n_Funcionario;
     }
 
-    public void setN_nomFuncionario(String n_nomFuncionario) {
-        this.n_nomFuncionario = n_nomFuncionario;
+    public void setN_Funcionario(String n_Funcionario) {
+        this.n_Funcionario = n_Funcionario;
     }
 
 }

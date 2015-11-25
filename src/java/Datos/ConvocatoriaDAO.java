@@ -60,7 +60,7 @@ public class ConvocatoriaDAO {
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT * FROM s_convocatoria WHERE e_estadoconvocatoria=?";
+            String strSQL = "SELECT * FROM s_convocatoria WHERE e_convocatoria=?";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, (estado_convocatoria));
@@ -71,7 +71,7 @@ public class ConvocatoriaDAO {
                 convocatoria.setF_inicioConvocatoria(rs.getString(3));
                 convocatoria.setF_finConvocatoria(rs.getString(4));
                 convocatoria.setPeriodo(rs.getInt(5));
-                convocatoria.setE_estadoconvocatoria(rs.getString(6));
+                convocatoria.setE_convocatoria(rs.getString(6));
             }
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();

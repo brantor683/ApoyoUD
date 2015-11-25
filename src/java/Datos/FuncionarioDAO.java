@@ -28,7 +28,7 @@ public class FuncionarioDAO {
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 funcionario.setK_idFuncionario(rs.getInt(1));
-                funcionario.setN_nomFuncionario(rs.getString(2));
+                funcionario.setN_Funcionario(rs.getString(2));
             }
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();

@@ -29,7 +29,7 @@ public class SolicitudDAO {
 
         try {
 
-            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, e_estSolicitud, k_conv_convocatoria, k_est_codEstudiante) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
+            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, d_puntajetotal, e_Solicitud, k_conv_convocatoria, k_est_codEstudiante, k_func_IdFuncionario ) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 
@@ -65,7 +65,7 @@ public class SolicitudDAO {
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 solicitud.setK_idSolicitud(rs.getInt(1));
-                solicitud.setE_estSolicitud(rs.getString(2));
+                solicitud.setE_Solicitud(rs.getString(2));
                 solicitud.setK_est_codEstudiante(rs.getInt(3));
                 solicitud.setK_func_idFuncionario(rs.getInt(4));
                 solicitud.setK_conv_convocatoria(rs.getInt(5));
@@ -120,9 +120,9 @@ public class SolicitudDAO {
         ResultSet tabla = null;
         if (consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
@@ -339,13 +339,13 @@ public class SolicitudDAO {
 
         } else if (consFacultad.equals("Todos") && !consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_nomproycurricular=?"
+                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_proyCurricular=?"
                         + " ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
@@ -563,13 +563,13 @@ public class SolicitudDAO {
         
         else if (!consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
             try {
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND f.n_nomfacultad=?"
+                        + "pc.k_proy_facultad=f.k_facultad AND f.n_Facultad=?"
                         + " ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
@@ -786,14 +786,14 @@ public class SolicitudDAO {
         
         else if (!consFacultad.equals("Todos") && !consProyCurri.equals("Todos")) {
              try { 
-                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
                         + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+                        + "f.n_Facultad, pc.n_proyCurricular "
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
-                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_nomproycurricular=? AND "
-                        + "f.n_nomfacultad=? ORDER BY s.k_idsolicitud";
+                        + "pc.k_proy_facultad=f.k_facultad AND pc.n_proyCurricular=? AND "
+                        + "f.n_Facultad=? ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;
                 prepStmt = conexion.prepareStatement(strSQL);
@@ -1018,9 +1018,9 @@ public class SolicitudDAO {
 //        ResultSet tabla = null;
 //        if (consFacultad.equals("Todos") && consProyCurri.equals("Todos")) {
 //            try {
-//                String strSQL = "SELECT s.k_idsolicitud, s.e_estsolicitud, "
+//                String strSQL = "SELECT s.k_idsolicitud, s.e_Solicitud, "
 //                        + "e.k_codEstudiante,e.n_nomestudiante, e.n_apeestudiante,"
-//                        + "f.n_nomfacultad, pc.n_nomproycurricular "
+//                        + "f.n_Facultad, pc.n_proyCurricular "
 //                        + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
 //                        + "s.k_est_codestudiante=e.k_codestudiante AND "
 //                        + "e.k_est_proycurricular=pc.k_proycurricular AND "
