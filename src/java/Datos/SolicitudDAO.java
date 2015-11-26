@@ -29,7 +29,7 @@ public class SolicitudDAO {
 
         try {
 
-            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, d_puntajetotal, e_Solicitud, k_conv_convocatoria, k_est_codEstudiante, k_func_IdFuncionario ) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
+            String strSQL = "INSERT INTO S_SOLICITUD(k_idSolicitud, f_solicitud, e_Solicitud, k_conv_convocatoria, k_est_codEstudiante ) VALUES(SEQ_SOLICITUD.NEXTVAL,SYSDATE,'Recibida',?,?)";
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 
@@ -58,20 +58,20 @@ public class SolicitudDAO {
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT * FROM S_SOLICITUD WHERE K_est_codestudiante=? and k_idSolicitud=5";
+            String strSQL = "SELECT * FROM S_SOLICITUD WHERE K_est_codestudiante=?";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setInt(1, Integer.parseInt(id_estudiante));
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 solicitud.setK_idSolicitud(rs.getInt(1));
-                solicitud.setE_Solicitud(rs.getString(2));
-                solicitud.setK_est_codEstudiante(rs.getInt(3));
-                solicitud.setK_func_idFuncionario(rs.getInt(4));
-                solicitud.setK_conv_convocatoria(rs.getInt(5));
-                solicitud.setD_diasbeneficio(rs.getInt(6));
-                solicitud.setF_solicitud(rs.getString(7));
-
+                solicitud.setF_solicitud(rs.getString(2));
+                solicitud.setPuntajeTotal(rs.getInt(3));
+                  solicitud.setK_conv_convocatoria(rs.getInt(4));
+                solicitud.setE_Solicitud(rs.getString(5));
+                solicitud.setK_func_idFuncionario(rs.getInt(6));
+              
+                
             }
                prepStmt.close();
             ServiceLocator.getInstance(user).commit();

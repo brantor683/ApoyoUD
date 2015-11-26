@@ -18,6 +18,7 @@ public class Solicitud {
 	private int k_conv_convocatoria;  
 	private int d_diasbeneficio;  
         private String f_solicitud;  
+        private int puntajeTotal;
         
         public Solicitud(){
             
@@ -79,6 +80,14 @@ public class Solicitud {
         this.f_solicitud = f_solicitud;
     }
 
- 
+    public int getPuntajeTotal() {
+        return puntajeTotal;
+    }
+
+    public void setPuntajeTotal(int puntajeTotal) {
+        this.puntajeTotal = puntajeTotal;
+    }
+
+    
     
 }
