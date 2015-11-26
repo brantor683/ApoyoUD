@@ -46,7 +46,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="MenuFuncionario.jsp"><img src="assets/img/fr-02.jpg" class="img-circle" width="60"></a></p>              
-                <h5 class="centered">Hola, <%out.print(func.getN_nomFuncionario());%></h5>
+                <h5 class="centered">Hola, <%out.print(func.getN_Funcionario());%></h5>
 
 
                 <li class="sub-menu">
