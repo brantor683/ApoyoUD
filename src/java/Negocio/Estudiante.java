@@ -24,6 +24,7 @@ public class Estudiante {
 	private String d_tipodocumento;  
         private int numMatriculas;
         private String e_Estudiante;
+        private String d_email;
         
        public  Estudiante(){
             
@@ -137,6 +138,14 @@ public class Estudiante {
 
     public void setE_Estudiante(String E_Estudiante) {
         this.e_Estudiante = E_Estudiante;
+    }
+
+    public String getD_email() {
+        return d_email;
+    }
+
+    public void setD_email(String d_email) {
+        this.d_email = d_email;
     }
         
     

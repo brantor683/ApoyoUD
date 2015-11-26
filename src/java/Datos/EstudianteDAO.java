@@ -47,6 +47,7 @@ public class EstudianteDAO {
                 estudiante.setK_est_ProyCurricular(rs.getInt(11));
                 estudiante.setNumMatriculas(rs.getInt(12));
                 estudiante.setE_Estudiante(rs.getString(13));
+                estudiante.setD_email(rs.getString(14));
              
             }
               prepStmt.close();
