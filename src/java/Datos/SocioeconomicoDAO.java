@@ -29,7 +29,7 @@ public class SocioeconomicoDAO {
 
         try {
 
-            String strSQL = "INSERT INTO S_SOLI_SOCIOECONOMICO VALUES(?,SEQ_SOLICITUD.CURRVAL,?,'N')";
+            String strSQL = "INSERT INTO S_SOLI_SOCIOECONOMICO VALUES(?,SEQ_SOLICITUD.CURRVAL,?,'R')";
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 
@@ -52,38 +52,61 @@ public class SocioeconomicoDAO {
 
         return error;
     }
-    
-     
+
     public Socioeconomico buscarDocumento(int id_itemSocioeconomico, int id_solicitud, Usuario user) {
-   
+
         Socioeconomico socioeconomico = new Socioeconomico();
 
         try {
 
             //Instancia el objeto para retornar los datos del empleado
-            String strSQL = "SELECT d_soporte  FROM S_SOLI_SOCIOECONOMICO  WHERE K_SOC_socioeconomica=? AND K_SOL_IDSOLICITUD=?" ;
+            String strSQL = "SELECT d_soporte  FROM S_SOLI_SOCIOECONOMICO  WHERE K_SOC_socioeconomica=? AND K_SOL_IDSOLICITUD=?";
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setInt(1, (id_itemSocioeconomico));
             prepStmt.setInt(2, (id_solicitud));
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-        
-              
-            socioeconomico.setD_soporte(rs.getString(1));
-            
-         
+
+                socioeconomico.setD_soporte(rs.getString(1));
+
             }
-          
+
             ServiceLocator.getInstance(user).commit();
             return socioeconomico;
         } catch (SQLException e) {
 
-         
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
         }
         return socioeconomico;
     }
-    
+
+    public String validarCondicion(int id_itemSocioeconomico, int id_solicitud, String estado, Usuario user) {
+        String error = "";
+
+        try {
+
+            //Instancia el objeto para retornar los datos del empleado
+            String strSQL = "UPDATE S_SOLI_SOCIOECONOMICO SET E_VALIDACION=? WHERE K_SOC_socioeconomica=? AND K_SOL_IDSOLICITUD=?";
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1, estado);
+            prepStmt.setInt(2, (id_itemSocioeconomico));
+            prepStmt.setInt(3, (id_solicitud));
+
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+
+            ServiceLocator.getInstance(user).commit();
+            return error;
+        } catch (SQLException e) {
+
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        return error;
+    }
+
 }

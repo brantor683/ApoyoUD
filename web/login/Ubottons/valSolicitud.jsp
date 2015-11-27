@@ -130,21 +130,21 @@
                                         param3 = ItemDAO.buscarItemSocioeconomica(p3, user);
                                         param4 = ItemDAO.buscarItemSocioeconomica(p4, user);
                                         
-                                        out.print("p1 "+p1 + "    "+solicitud.getK_idSolicitud());
+                                      
                                           soc1=socioEcoDAO.buscarDocumento(p1, solicitudValidar.getK_idSolicitud(), user);
                                           soc2=socioEcoDAO.buscarDocumento(p2, solicitudValidar.getK_idSolicitud(), user);
                                           soc3=socioEcoDAO.buscarDocumento(p3, solicitudValidar.getK_idSolicitud(), user);
                                           soc4=socioEcoDAO.buscarDocumento(p4, solicitudValidar.getK_idSolicitud(), user);
-                                          out.print(soc3.getD_soporte());
+                                          
 
                                     %>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Código Estudiante</label>
+                                   
+                                     <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Código de estudiante</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getK_codEstudiante());%> >
+                                            <input type="text" class="form-control" readonly="readonly" value=<%out.print(estuser.getK_codEstudiante());%>>
                                         </div>
                                     </div>
-
 
                                     <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de Identificación</label>
@@ -175,8 +175,15 @@
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->
                     <!-- INPUT MESSAGES -->
-                     <form class="form-group" action="registrarValidacion_RTA.jsp" method="post" enctype="multipart/form-data">
-                    <div class="row mt">
+                     <form class="form-group" action="registrarValidacion_RTA.jsp" method="post" >
+             
+                                            <input type="hidden" name="idSolicitud" class="form-control" readonly="readonly" value=<%out.print(solicitudValidar.getK_idSolicitud());%> >
+                                            <input type="hidden" name="idSoc1" class="form-control" readonly="readonly" value=<%out.print(p1);%> >
+                                            <input type="hidden" name="idSoc2" class="form-control" readonly="readonly" value=<%out.print(p2);%> >
+                                            <input type="hidden" name="idSoc3" class="form-control" readonly="readonly" value=<%out.print(p3);%> >
+                                            <input type="hidden" name="idSoc4" class="form-control" readonly="readonly" value=<%out.print(p4);%> >
+                                        
+                         <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i>Ingresos Familiares</h4>
@@ -184,7 +191,7 @@
                                 <div class="form">
                                    
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" readonly="readonly"  value="<%out.print(param1.getD_descSocioeconomica());%>">
+                                        <input type="text" class="form-control" readonly="readonly"   value="<%out.print(param1.getD_descSocioeconomica());%>">
                                     </div>
                                 </div>
                                 <br>
@@ -202,8 +209,8 @@
                                         presentado por el estudiante para el item: Ingresos familiares</label>
                                     <select  name="valIngresosfamiliares"  id="valIngresosfamiliares" class="form-control" required>
                                       <option value="">Seleccione el estado de la condición </option>
-                                        <option value="1">VÁLIDO</option>
-                                        <option value="2">NO VÁLIDO</option>
+                                        <option value="S">VÁLIDO</option>
+                                        <option value="N">NO VÁLIDO</option>
                                      
                                     </select> 
                                 </div></div>
@@ -232,8 +239,8 @@
                                         presentado por el estudiante para el item: Condiciones familiares</label>
                                     <select  name="valCondicionesFamiliares"  id="valCondicionesFamiliares" class="form-control" required>
                                         <option value="">Seleccione el estado de la condición </option>
-                                        <option value="1">VÁLIDO</option>
-                                        <option value="2">NO VÁLIDO</option>
+                                        <option value="S">VÁLIDO</option>
+                                        <option value="N">NO VÁLIDO</option>
                                     
                                     </select> 
                                 </div> </div>
@@ -260,8 +267,8 @@
                                         presentado por el estudiante para el item: Procedencia y lugar de residencia</label>
                                     <select  name="valProcedencia"  id="valProcedencia" class="form-control" required>
                                         <option value="">Seleccione el estado de la condición </option>
-                                        <option value="1">VÁLIDO</option>
-                                        <option value="2">NO VÁLIDO</option>
+                                        <option value="S">VÁLIDO</option>
+                                        <option value="N">NO VÁLIDO</option>
                                      
                                     </select> 
                                 </div></div>
@@ -288,8 +295,8 @@
                                             presentado por el estudiante para el item: Condiciones de salud</label>
                                         <select  name="valCondicionesSalud"  id="valCondicionesSalud" class="form-control">
                                             <option value="">Seleccione el estado de la condición </option>
-                                            <option value="1">VÁLIDO</option>
-                                            <option value="2">NO VÁLIDO</option>
+                                            <option value="S">VÁLIDO</option>
+                                            <option value="N">NO VÁLIDO</option>
                                           
                                         </select> 
                                     </div></div>

@@ -115,6 +115,40 @@ public class SolicitudDAO {
         return solicitud;
     }
 
+    
+    
+    public String validarSolicitud(int id_solicitud, int id_funcionario, Usuario user) {
+        String error = "";
+        
+        try {
+
+            String strSQL = "UPDATE S_SOLICITUD SET E_SOLICITUD='Validada', k_func_idfuncionario=? WHERE K_IDSOLICITUD=?";
+
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+
+            prepStmt.setInt(1, id_funcionario);
+            prepStmt.setInt(2, id_solicitud);
+      
+            prepStmt.executeQuery();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+
+            //  error = error + " Registrar solicitud: " +  s.getK_idSolicitud() ;
+        } catch (SQLException e) {
+
+            error = "Solictud_DAO " + "Validar solicitud " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+
+        return error;
+    }
+
+    
+    
+    
     public String buscarSolicitudFuncionario(String consFacultad, String consProyCurri, Usuario user) {
         String error = "<table  style='font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; '>";
         ResultSet tabla = null;
