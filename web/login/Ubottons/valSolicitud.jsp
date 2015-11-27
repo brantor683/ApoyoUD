@@ -93,12 +93,20 @@
                                         EstudianteDAO estu = new EstudianteDAO();
                                         Convocatoria convActual = new Convocatoria();
                                         ConvocatoriaDAO convDAO = new ConvocatoriaDAO();
+                                        SocioeconomicoDAO socioEcoDAO = new SocioeconomicoDAO();
+                                        
+                                        Socioeconomico soc1 = new Socioeconomico();
+                                        Socioeconomico soc2 = new Socioeconomico();
+                                        Socioeconomico soc3 = new Socioeconomico();
+                                        Socioeconomico soc4 = new Socioeconomico();
 
                                         ItemSocioeconomicoDAO ItemDAO = new ItemSocioeconomicoDAO();
                                         ItemSocioeconomico param1 = new ItemSocioeconomico();
                                         ItemSocioeconomico param2 = new ItemSocioeconomico();
                                         ItemSocioeconomico param3 = new ItemSocioeconomico();
                                         ItemSocioeconomico param4 = new ItemSocioeconomico();
+                                        
+                                      
 
                                         convActual = convDAO.buscarConvocatoria("Activa", user);
                                         solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
@@ -121,6 +129,13 @@
                                         param2 = ItemDAO.buscarItemSocioeconomica(p2, user);
                                         param3 = ItemDAO.buscarItemSocioeconomica(p3, user);
                                         param4 = ItemDAO.buscarItemSocioeconomica(p4, user);
+                                        
+                                        out.print("p1 "+p1 + "    "+solicitud.getK_idSolicitud());
+                                          soc1=socioEcoDAO.buscarDocumento(p1, solicitudValidar.getK_idSolicitud(), user);
+                                          soc2=socioEcoDAO.buscarDocumento(p2, solicitudValidar.getK_idSolicitud(), user);
+                                          soc3=socioEcoDAO.buscarDocumento(p3, solicitudValidar.getK_idSolicitud(), user);
+                                          soc4=socioEcoDAO.buscarDocumento(p4, solicitudValidar.getK_idSolicitud(), user);
+                                          out.print(soc3.getD_soporte());
 
                                     %>
                                     <div class="form-group">
@@ -175,12 +190,18 @@
                                 <br>
                                 <br><div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Documento de respaldo</label>
-                                    <a href=#  >archivo</a> 
+                                  
+                                     <%  if(soc1.getD_soporte().length()>51 ) {%>
+                                     <a href="archivos/ingresosFamiliares.jsp?pam=<%=p1+"&idSol="+solicitudValidar.getK_idSolicitud()%>"  TARGET="_new">Documento Ingresos Familiares</a>
+                                  <%}else{%>
+                                    El estudiante NO adjunto documento de soporte
+                                   <% }%>
                                     <br>    </div>
                                 <br><div class="form-group">
                                     <label class="col-lg-9 col-lg-9 ">Seleccione si es válido o NO es válido el documento
                                         presentado por el estudiante para el item: Ingresos familiares</label>
-                                    <select  name="valIngresosfamiliares"  id="valIngresosfamiliares" class="form-control">
+                                    <select  name="valIngresosfamiliares"  id="valIngresosfamiliares" class="form-control" required>
+                                      <option value="">Seleccione el estado de la condición </option>
                                         <option value="1">VÁLIDO</option>
                                         <option value="2">NO VÁLIDO</option>
                                      
@@ -200,12 +221,17 @@
                                     <br>
                                              <div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de respaldo</label>
-                                    <a href=#  >archivo</a> 
+                                  <%  if(soc2.getD_soporte().length()>54 ) {%>
+                                     <a href="archivos/condicionesFamiliares.jsp?pam=<%=p2+"&idSol="+solicitudValidar.getK_idSolicitud()%>"  TARGET="_new">Documento Condiciones Familiares</a>
+                                  <%}else{%>
+                                    El estudiante NO adjunto documento de soporte
+                                   <% }%>
                                     <br>    </div>
                                 <br><div class="form-group">
                                     <label class="col-lg-9 col-lg-9 ">Seleccione si es válido o NO es válido el documento
                                         presentado por el estudiante para el item: Condiciones familiares</label>
-                                    <select  name="valCondicionesFamiliares"  id="valCondicionesFamiliares" class="form-control">
+                                    <select  name="valCondicionesFamiliares"  id="valCondicionesFamiliares" class="form-control" required>
+                                        <option value="">Seleccione el estado de la condición </option>
                                         <option value="1">VÁLIDO</option>
                                         <option value="2">NO VÁLIDO</option>
                                     
@@ -223,12 +249,17 @@
                                 <br><div class="form-group">
                                     <br>
                                     <label class="col-sm-2 col-sm-2 control-label">Documento de respaldo</label>
-                                    <a href=#  >archivo</a> 
+                                     <%  if(soc3.getD_soporte().length()>44 ) {%>
+                                     <a href="archivos/procedencia.jsp?pam=<%=p3+"&idSol="+solicitudValidar.getK_idSolicitud()%>"  TARGET="_new">Documento Procedencia y lugar de residencia</a>
+                                  <%}else{%>
+                                    El estudiante NO adjunto documento de soporte
+                                   <% }%>
                                     <br>    </div>
                                 <br><div class="form-group">
                                     <label class="col-lg-9 col-lg-9 ">Seleccione si es válido o NO es válido el documento
                                         presentado por el estudiante para el item: Procedencia y lugar de residencia</label>
-                                    <select  name="valProcedencia"  id="valProcedencia" class="form-control">
+                                    <select  name="valProcedencia"  id="valProcedencia" class="form-control" required>
+                                        <option value="">Seleccione el estado de la condición </option>
                                         <option value="1">VÁLIDO</option>
                                         <option value="2">NO VÁLIDO</option>
                                      
@@ -246,12 +277,17 @@
                                     <br><br>
                                     <br><div class="form-group">
                                         <label class="col-sm-2 col-sm-2 control-label">Documento de respaldo</label>
-                                        <a href=#  >archivo</a> 
+                                       <%  if(soc4.getD_soporte().length()>38 ) {%>
+                                     <a href="archivos/condicionesSalud.jsp?pam=<%=p4+"&idSol="+solicitudValidar.getK_idSolicitud()%>"  TARGET="_new">Documento condición de salud</a>
+                                  <%}else{%>
+                                    El estudiante NO adjunto documento de soporte
+                                   <% }%>
                                         <br>    </div>
                                     <br><div class="form-group">
                                         <label class="col-lg-9 col-lg-9 ">Seleccione si es válido o NO es válido el documento
                                             presentado por el estudiante para el item: Condiciones de salud</label>
                                         <select  name="valCondicionesSalud"  id="valCondicionesSalud" class="form-control">
+                                            <option value="">Seleccione el estado de la condición </option>
                                             <option value="1">VÁLIDO</option>
                                             <option value="2">NO VÁLIDO</option>
                                           

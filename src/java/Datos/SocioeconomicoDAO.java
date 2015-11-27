@@ -54,6 +54,36 @@ public class SocioeconomicoDAO {
     }
     
      
-    
+    public Socioeconomico buscarDocumento(int id_itemSocioeconomico, int id_solicitud, Usuario user) {
+   
+        Socioeconomico socioeconomico = new Socioeconomico();
+
+        try {
+
+            //Instancia el objeto para retornar los datos del empleado
+            String strSQL = "SELECT d_soporte  FROM S_SOLI_SOCIOECONOMICO  WHERE K_SOC_socioeconomica=? AND K_SOL_IDSOLICITUD=?" ;
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setInt(1, (id_itemSocioeconomico));
+            prepStmt.setInt(2, (id_solicitud));
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+        
+              
+            socioeconomico.setD_soporte(rs.getString(1));
+            
+         
+            }
+          
+            ServiceLocator.getInstance(user).commit();
+            return socioeconomico;
+        } catch (SQLException e) {
+
+         
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        return socioeconomico;
+    }
     
 }
