@@ -8,15 +8,15 @@
 <%@page import="Datos.FuncionarioDAO"%>
 <!DOCTYPE html>
 
-<%       
+<%
     Usuario userFunc = new Usuario();
     userFunc.setUser((String) session.getAttribute("USUARIO"));
     userFunc.setPasswd((String) session.getAttribute("CONT"));
-    
+
     Funcionario func = new Funcionario();
     FuncionarioDAO funcDAO = new FuncionarioDAO();
-    func=funcDAO.buscarFuncionario(funcDAO.consultarIdFuncionario(userFunc.getUser(), userFunc),userFunc);
-    
+    func = funcDAO.buscarFuncionario(funcDAO.consultarIdFuncionario(userFunc.getUser(), userFunc), userFunc);
+
 %>
 <html lang="en">
 
@@ -62,7 +62,8 @@
                     </a>
                     <ul class="sub">
                         <li><a  href="consultarsolicitudes.jsp">Consultar Información</a></li>
-                        <li><a  href="consultarsolicitudes.jsp">Consultar Solicitudes</a></li>                       
+                        <li><a  href="consultarsolicitudes.jsp">Consultar Solicitudes</a></li>
+                        <li><a  href="verAdmitidos.jsp">Ver Lista de Admitidos</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -76,25 +77,25 @@
                     </ul>
 
                 </li>
-                  <li class="sub-menu">
+                <li class="sub-menu">
                     <a class="" href="convocatoria.jsp" >
                         <i class="fa fa-tasks"></i>
                         <span>Validar Solicitudes</span>
                     </a>
                     <ul class="sub">
                         <li><a  href="validarSolicitudes.jsp">Validar Solicitud</a></li>
-                      
+
                     </ul>
 
                 </li>
 
-                   <li class="sub-menu">
+                <li class="sub-menu">
                     <a class="" href="registrarSolicitud.jsp" >
                         <i class="fa fa-tasks"></i>
                         <span>Registrar Solicitud</span>
                     </a>
                 </li>
-                
+
             </ul>
             <!-- sidebar menu end-->
         </div>
