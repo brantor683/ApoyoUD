@@ -82,7 +82,12 @@
                         <div class="row mt">
                             <div class="col-lg-11">
                                 <label >Prueba</label>
-                                <form action="EnviarCorreoRTA.jsp" method="post">
+                                
+                                <div class="col-sm-10" id="Registrarapor">  
+                                    <div class="page-header text-muted divider">
+                                        Iniciar Sesión Correo Electrónico
+                                    </div>
+                                    <form action="EnviarCorreoRTA.jsp" method="post">
                                         <div class="form-group">
                                             <label for="CedulaInput">Cuenta</label>
                                             <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
@@ -105,7 +110,7 @@
                                             <div align="left"><button class="btn btn-success">Enviar</button></div>
                                         </div>
                                     </form>
-                                
+                                </div>
                             </div><!-- col-lg-12-->
 
                         </div><!-- /row -->
@@ -239,4 +244,4 @@
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
     </body>
-</html>-->s
+</html>-->

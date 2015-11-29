@@ -52,7 +52,7 @@
                         <h3><%out.print(user.getUser());//out.print(session.getAttribute("USUARIO"));%></h3>
                         <ul class="nav">
 
-                            <li class="active"><a href="RegistrarCredito.jsp"><h4>Registrar Credito</h4></a>
+                            <li class="active"><a href="verAdmitidos.jsp"><h4>Lista Admitidos</h4></a>
                             </li>
                             <li class="active">
                             </li>
