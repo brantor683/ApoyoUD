@@ -3,6 +3,7 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
+<%@page import="Datos.BeneficiarioDAO"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
@@ -15,10 +16,9 @@
 
 <%
     Usuario user = new Usuario();
-    UsuarioDAO u = new UsuarioDAO();
     user.setUser((String) session.getAttribute("USUARIO"));
-    user.setPasswd((String) session.getAttribute("CONT"));
- %>
+    user.setPasswd((String) session.getAttribute("CONT"));%>
+%>
 
 
 
@@ -72,28 +72,35 @@
                     <form class="form-group" action="EnviarCorreo.jsp">
                         <table class="table-condensed">
                             <td>
-                        <div class="row mt">
-                            <div class="col-lg-10">
-                                <label ></label>
-                                
-                                <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
-
-                            </div><!-- col-lg-12-->
-                        </div>
+                                <div class="row mt">
+                                    <div class="col-lg-10">  
+                                        <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
+                                    </div><!-- col-lg-12-->
+                                </div>
                             </td>
                             <td>
-                        <div class="row mt">
-                            <div class="col-lg-11">
-                                <label >Ver Listado Admitidos</label>
-                                
-                            </div><!-- col-lg-12-->
-
-                        </div><!-- /row -->
-                        </td>
+                                <div class="row mt">
+                                    <div class="col-lg-11">
+                                    <%
+                                    BeneficiarioDAO beneficiario = new BeneficiarioDAO();
+                                    out.println("<tr>");
+                                    out.print("<td>" + beneficiario.consultar_Beneficiarios(user) + "</td>");
+                                    out.println("</tr><br><br>");
+                                    %>
+                                        <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Generar Listado de Admitidos</a></button>
+                                    </div><!-- col-lg-12-->
+                                     <form action="MenuFuncionario.jsp#" method="post">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-info"> Aceptar</button>
+                                        </div>
+                                    </form>
+                                </div><!-- /row -->
+                            </td>
                         </table>
                     </form>
-                
+                    <label >Ver Listado Admitidos</label>
                 </section><! --/wrapper -->
+                
             </section><!-- /MAIN CONTENT -->
 
             <!--main content end-->
