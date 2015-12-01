@@ -24,7 +24,7 @@ public class ConvocatoriaDAO {
 
         try {
 
-            String strSQL = "INSERT INTO S_convocatoria VALUES(?,?,?,?,?,'Inactiva',?,?,?)";
+            String strSQL = "INSERT INTO S_convocatoria VALUES(?,?,?,?,?,'Inactiva',?,?,?,null,null,null)";
 
             Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
 

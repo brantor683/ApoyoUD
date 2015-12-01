@@ -72,7 +72,7 @@
                         <span>Asignar</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="convocatoria.jsp">Asignar Puntaje</a></li>
+                        <li><a  href="asignarPuntaje.jsp">Asignar Puntaje</a></li>
                         <li><a  href="convocatoria.jsp">Asignar Actividad</a></li>
                     </ul>
 

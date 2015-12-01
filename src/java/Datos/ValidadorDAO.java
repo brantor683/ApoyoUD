@@ -36,6 +36,7 @@ public class ValidadorDAO {
                         + "FROM solicitud s,estudiante e, facultad f, proyectocurricular pc WHERE "
                         + "s.k_est_codestudiante=e.k_codestudiante AND "
                         + "e.k_est_proycurricular=pc.k_proycurricular AND "
+                        + "s.e_solicitud='Recibida' AND "
                         + "pc.k_proy_facultad=f.k_facultad ORDER BY s.k_idsolicitud";
                 Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
                 PreparedStatement prepStmt;

@@ -117,11 +117,15 @@
                             </div>
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->                    
+                 
+                    
                     <!-- INPUT MESSAGES -->
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
                                 <form class="form-horizontal style-form" action="registrarSolicitud_RTA.jsp" method="post" enctype="multipart/form-data">
+                                  
+                                  
                                     <h4 class="mb"><i class="fa fa-angle-right"></i>Datos Socioeconómicos</h4>
                                     <br>
                                     <label class="col-sm-2 col-sm-2 control-label">Ingresos Familiares</label>
