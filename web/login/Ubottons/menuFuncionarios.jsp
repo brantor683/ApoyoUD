@@ -63,7 +63,7 @@
                     <ul class="sub">
                         <li><a  href="consultarsolicitudes.jsp">Consultar Información</a></li>
                         <li><a  href="consultarsolicitudes.jsp">Consultar Solicitudes</a></li>
-                        <li><a  href="verAdmitidos.jsp">Ver Lista de Admitidos</a></li>
+                        <li><a  href="verAdmitidos.jsp">Lista de Admitidos</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
