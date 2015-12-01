@@ -25,7 +25,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Carlos Suarez  tomado de http://www.forosdelweb.com/f45/enviar-correo-con-archivos-adjuntos-716775/
+ * @author tomado de
+ * http://www.forosdelweb.com/f45/enviar-correo-con-archivos-adjuntos-716775/
  */
 public class Email {
 
@@ -70,10 +71,10 @@ public class Email {
         return msg;
     }
 
-   public String SendMail3(String url) {
+    public String SendMail3(String url) {
         String msg = "";
         try {
-            String archivos_adjuntos = "C:/" + url;
+            String archivos_adjuntos = "C:/MIDIRECTORIO" + url;
             String archivos_adjuntos_nombre = url;
             String patron = ";";
             String[] dividido_adj, dividido_adj_nom;

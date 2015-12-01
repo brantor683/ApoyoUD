@@ -74,7 +74,13 @@
                         <i class="fa fa-tasks"></i>
                         <span>Convocatoria</span>
                     </a>
-                     <ul class="sub">
+                </li>
+                <li class="sub-menu">
+                    <a class="" href="#.jsp" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Consultar</span>
+                    </a>
+                    <ul class="sub">
                         <li><a  href="verAdmitidos.jsp">Lista de Admitidos</a></li>
                     </ul>
                 </li>

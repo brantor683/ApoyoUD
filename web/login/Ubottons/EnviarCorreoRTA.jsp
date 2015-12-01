@@ -12,89 +12,100 @@
 <%@page import="Negocio.Solicitud"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="java.sql.*"%>
+<%@page import="Datos.ValidadorDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    Usuario user = new Usuario();
-    UsuarioDAO u = new UsuarioDAO();
+<% Usuario user = new Usuario();
+
     user.setUser((String) session.getAttribute("USUARIO"));
     user.setPasswd((String) session.getAttribute("CONT"));
-    
-     Email email = new Email();
+
+    Email email = new Email();
     email.setUsername(request.getParameter("cuenta"));
     email.setPassWord(request.getParameter("pass"));
- %>
 
 
-
+%>
 <html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>Registrar Socio</title>
-        <meta name="generator" content="Bootply" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-                <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <link href="css/styles1.css" rel="stylesheet">
-    </head>
-    <body>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="">
+            <meta name="author" content="Dashboard">
+            <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
+            <title>Panel Apoyo Alimentario</title>
 
-        <div class="wrapper">
-            <div class="box">
-                <div class="row">
+            <!-- Bootstrap core CSS -->
+            <link href="assets/css/bootstrap.css" rel="stylesheet">
+            <!--external css-->
+            <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+            <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css" />
+            <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker.css" />
 
-                    <!-- sidebar -->
-                    <div class="column col-sm-3 sidebar-offcanvas" id="sidebar">
-                        <h3><%out.print(user.getUser());//out.print(session.getAttribute("USUARIO"));%></h3>
-                        <ul class="nav">
+            <!-- Custom styles for this template -->
+            <link href="assets/css/style.css" rel="stylesheet">
+            <link href="assets/css/style-responsive.css" rel="stylesheet">
 
-                            <li class="active"><a href="verAdmitidos.jsp"><h4>Lista Admitidos</h4></a>
-                            </li>
-                            <li class="active">
-                            </li>
-                        </ul>
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </head>
+        <body>
 
-                        <div id="cerrar" align="center"><a class="btn btn-primary" href="../../index.jsp" role="button">Cerrar Sesion</a>
-                            <a class="btn btn-primary" href="MenuFuncionario.jsp" role="button">Volver</a>
-                        </div>
-                    </div>
-                    <!-- /sidebar -->
+            <section id="container" >
+                <!-- **********************************************************************************************************************************************************
+                TOP BAR CONTENT & NOTIFICATIONS
+                *********************************************************************************************************************************************************** -->
 
-                    <!-- main -->
-                    <div class="column col-sm-9" id="main">
-                        <div class="padding">
+                <%@ include file="menuFuncionarios.jsp" %>  
+                <!-- **********************************************************************************************************************************************************
+                MAIN CONTENT
+                *********************************************************************************************************************************************************** -->
+                <section id="main-content">
+                    <section class="wrapper">
 
-                            <div class="full col-sm-9">
+                        <div class="wrapper">
+                            <div class="box">
+                                <div class="row">
+                                    <!-- main -->
+                                    <div class="column col-sm-9" id="main">
+                                        <div class="padding">
 
-                                <!--/Registrar Credito-->
-                                <div class="col-sm-10" id="Registrarapor">  
-                                    <div class="page-header text-muted divider">
-                                        Registrar Credito Socios
-                                    </div>
-                                    <form method="post">
-                                        <div class="form-group">
-                                            <%email.setTo(request.getParameter("to"));
-                                                email.setSubject(request.getParameter("subjet"));
-                                                email.setMensage(request.getParameter("msg"));
-                                                out.print(email.SendMail3(request.getParameter("archivo")));
-                                            %>
-                                            <br><div align="left"><a class="btn btn-success" href="MenuFuncionario.jsp" role="button">Aceptar</a></div>
+                                            <div class="full col-sm-9">
+
+                                                <!--/Registrar Credito-->
+                                                <div class="col-sm-10" id="Registrarapor">  
+                                                    <div class="page-header text-muted divider">
+                                                        Envio de notificación de Admitidos
+                                                    </div>
+                                                    <form method="post">
+                                                        <div class="form-group">
+                                                            <%email.setTo(request.getParameter("to"));
+                                                                email.setSubject(request.getParameter("subjet"));
+                                                                email.setMensage(request.getParameter("msg"));
+                                                                out.print(email.SendMail3(request.getParameter("archivo")));
+                                                            %>
+                                                            <br><div align="left"><a class="btn btn-success" href="menuFuncionarios.jsp" role="button">Aceptar</a></div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="row divider">  
+                                                </div><!-- /col-9 -->
+                                            </div><!-- /padding -->
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="row divider">  
-                                </div><!-- /col-9 -->
-                            </div><!-- /padding -->
-                        </div>
-                        <!-- /main -->
+                                        <!-- /main -->
 
-                    </div>
-                </div>
-            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
 
 
 
@@ -105,5 +116,5 @@
             <!-- script references -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+        </body>
+    </html>
