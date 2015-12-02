@@ -26,7 +26,7 @@
     ConvocatoriaDAO convocatoriaDAO = new ConvocatoriaDAO();
     Convocatoria convocatoria = new Convocatoria();
     
-    convocatoria = convocatoriaDAO.buscarConvocatoria("Activa", user);
+    convocatoria = convocatoriaDAO.buscarConvocatoria("Pendiente", user);
    
 
 
@@ -79,7 +79,7 @@
                 <section class="wrapper">
                     <h3><i class="fa fa-angle-right"></i>Asinar Puntajes</h3>
                     <br>
-                    <form  action="abrirconvocatoria.jsp" method="post" >
+                    <form  action="asignarPuntajes_RTA.jsp" method="post" >
                     <!-- BASIC FORM ELELEMNTS -->
 
                     <br>

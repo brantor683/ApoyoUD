@@ -9,10 +9,12 @@ package Datos;
 import Negocio.Funcionario;
 import Negocio.Usuario;
 import Util.ServiceLocator;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import oracle.jdbc.OracleTypes;
 
 public class FuncionarioDAO {
     
@@ -70,5 +72,29 @@ public class FuncionarioDAO {
 
         //   System.out.println(error);
         return error;
+    }
+    
+    public String asignar_Puntajes(Usuario user) {
+
+        String respuesta="";
+        try {
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            CallableStatement cstmt = conexion.prepareCall("{call PR_ASIGNARPUNTAJES()}");
+           
+            cstmt.execute();
+            
+                        
+            cstmt.close();
+            cstmt=null;
+            ServiceLocator.getInstance(user).commit();
+            
+        } catch (SQLException e) {
+            //throw new RHException("Socio_DAO", "No pudo crear el Socio" + e.getMessage());
+            respuesta = "FuncionarioDAO " + " Asignacion de puntajes:  " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        
+        return respuesta;
     }
 }

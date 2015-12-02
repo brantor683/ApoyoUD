@@ -117,7 +117,7 @@
                                      
                                      
                                     %>
-                                    <center><h2>La validación ha sido registrada automaticamente</h2> 
+                                    <center><h2>La validación ha sido registrada exitosamente</h2> 
                                         <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
 
 

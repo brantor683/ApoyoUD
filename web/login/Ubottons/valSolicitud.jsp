@@ -108,7 +108,7 @@
                                         
                                       
 
-                                        convActual = convDAO.buscarConvocatoria("Activa", user);
+                                        convActual = convDAO.buscarConvocatoria("Pendiente", user);
                                         solicitud.setK_conv_convocatoria(convActual.getK_convocatoria());
 
                                         estuser = estu.buscarEstudiante(codEstudiante, user);
