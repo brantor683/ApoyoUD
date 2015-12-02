@@ -48,6 +48,7 @@ public class BeneficiarioDAO {
                                   + "<td style='width:40%; border: 1px solid black;'>" + "<span style='font-weight:bold;'>NOMBRES</span>" + "</td>"
                                   + "<td style='width:40%; border: 1px solid black;'>" + "<span style='font-weight:bold;'>APELLIDOS</span>" + "</td>"
                                   + "<td style='width:40%; border: 1px solid black;'> " + "<span style='font-weight:bold;'>PUNTAJE TOTAL</span>" + "</td>"
+                                  + "<td style='width:40%; border: 1px solid black;'> " + "<span style='font-weight:bold;'>CATEGORIA</span>" + "</td>"
                                   + "<td style='width:40%; border: 1px solid black;'> " + "<span style='font-weight:bold;'>PROMEDIO</span>" + "</td>"
                                   + "<td style='width:40%; border: 1px solid black;'> " + "<span style='font-weight:bold;'>MATRICULAS</span>" + "</td>"
                                   + "<td style='width:40%; border: 1px solid black;'> " + "<span style='font-weight:bold;'>ESTADO</span>" + "</td>";
@@ -59,9 +60,11 @@ public class BeneficiarioDAO {
                                           + "<td style='width:40%; border: 1px solid black;'>" + tabla.getString("NOMBRE")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'>" + tabla.getString("APELLIDO")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'> " + tabla.getString("PUNTAJETOTAL")+"</td>"
+                                          + "<td style='width:40%; border: 1px solid black;'> " + tabla.getString("CATEGORIA")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'> " + tabla.getString("PROMEDIO")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'> " + tabla.getString("MATRICULAS")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'> " + tabla.getString("ESTADO")+"</td>";
+                                          
                    respuesta = respuesta + "</tr>";
             }
             respuesta = respuesta + "</table>";

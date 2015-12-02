@@ -3,8 +3,6 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <html lang="en">
@@ -56,7 +54,7 @@
                                                 <!--/-->
                                                 <div class="col-sm-10" id="Registrarapor">  
                                                     <div class="page-header text-muted divider">
-                                                        Iniciar Sesi贸n Correo Electr贸nico GMAIL
+                                                        Iniciar Sesi髇 Correo Electr髇ico GMAIL
                                                         
                                                     </div>
                                                     <form action="EnviarCorreoRTA.jsp" method="post">
@@ -64,7 +62,7 @@
                                                             <label for="CedulaInput">Cuenta</label>
                                                             <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
 
-                                                            <label for="CedulaInput">Contrase帽a</label>
+                                                            <label for="CedulaInput">Contrase馻</label>
                                                             <input name="pass" style="width:200px;height:25px" type="password" class="form-control" id="cedulaInput">
 
                                                             <label for="CedulaInput">Para:</label>
@@ -139,14 +137,14 @@
     <!--/Registrar aportes-
     <div class="col-sm-10" id="Registrarapor">  
         <div class="page-header text-muted divider">
-            Iniciar Sesi贸n Correo Electr贸nico
+            Iniciar Sesi髇 Correo Electr髇ico
         </div>
         <form action="EnviarCorreoRTA.jsp" method="post">
             <div class="form-group">
                 <label for="CedulaInput">Cuenta</label>
                 <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
                 
-                <label for="CedulaInput">Contrase帽a</label>
+                <label for="CedulaInput">Contrase馻</label>
                 <input name="pass" style="width:200px;height:25px" type="password" class="form-control" id="cedulaInput">
                 
                 <label for="CedulaInput">Para:</label>

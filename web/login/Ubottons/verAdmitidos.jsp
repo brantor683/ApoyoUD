@@ -17,7 +17,7 @@
 <%
     Usuario user = new Usuario();
     user.setUser((String) session.getAttribute("USUARIO"));
-    user.setPasswd((String) session.getAttribute("CONT"));%>
+    user.setPasswd((String) session.getAttribute("CONT"));
 %>
 
 
@@ -69,38 +69,40 @@
                     <br>
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
-                    <form class="form-group" action="EnviarCorreo.jsp">
+                    <div class="form-group">
                         <table class="table-condensed">
                             <td>
                                 <div class="row mt">
-                                    <div class="col-lg-10">  
-                                        <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
-                                    </div><!-- col-lg-12-->
+                                    <form action="EnviarCorreo.jsp" method="post">
+                                        <div class="form-group">  
+                                            <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
+                                        </div><!-- col-lg-12-->
+                                    </form>
                                 </div>
                             </td>
                             <td>
                                 <div class="row mt">
                                     <div class="col-lg-11">
-                                    <%
-                                    BeneficiarioDAO beneficiario = new BeneficiarioDAO();
-                                    out.println("<tr>");
-                                    out.print("<td>" + beneficiario.consultar_Beneficiarios(user) + "</td>");
-                                    out.println("</tr><br><br>");
-                                    %>
-                                        <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Generar Listado de Admitidos</a></button>
+                                        <%
+                                            BeneficiarioDAO beneficiario = new BeneficiarioDAO();
+                                            out.println("<tr>");
+                                            out.print("<td>" + beneficiario.consultar_Beneficiarios(user) + "</td>");
+                                            out.println("</tr><br><br>");
+                                        %>
                                     </div><!-- col-lg-12-->
-                                     <form action="MenuFuncionario.jsp#" method="post">
+                                    <form action="GenerarArchivoRTA.jsp" method="post">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-info"> Aceptar</button>
+                                            <button type="submit" class="btn btn-round btn-success"> Generar Listado de Admitidos</button>
                                         </div>
                                     </form>
+
                                 </div><!-- /row -->
                             </td>
                         </table>
-                    </form>
+                    </div>
                     <label >Ver Listado Admitidos</label>
                 </section><! --/wrapper -->
-                
+
             </section><!-- /MAIN CONTENT -->
 
             <!--main content end-->

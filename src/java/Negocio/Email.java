@@ -40,7 +40,8 @@ public class Email {
         String msg = "";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.starttls.enable", "true");      
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
@@ -74,7 +75,7 @@ public class Email {
     public String SendMail3(String url) {
         String msg = "";
         try {
-            String archivos_adjuntos = "C:/MIDIRECTORIO" + url;
+            String archivos_adjuntos = "C:/prueba" + url;
             String archivos_adjuntos_nombre = url;
             String patron = ";";
             String[] dividido_adj, dividido_adj_nom;
@@ -83,7 +84,9 @@ public class Email {
             // se obtiene el objeto Session. La configuración es para 
             // una cuenta de gmail. 
             Properties props = new Properties();
+
             props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.port", "587");

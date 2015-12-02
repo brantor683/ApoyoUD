@@ -4,6 +4,7 @@
     Author     : LORENA MANZANO
 --%>
 <%@page import="Negocio.Email"%>
+<%@page import="Datos.BeneficiarioDAO"%>
 <%@page import="Datos.UsuarioDAO"%>
 <%@page import="Util.RHException"%>
 <%@page import="java.io.IOException"%>
@@ -12,20 +13,15 @@
 <%@page import="Negocio.Solicitud"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="java.sql.*"%>
-<%@page import="Datos.ValidadorDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<% Usuario user = new Usuario();
-
-    user.setUser((String) session.getAttribute("USUARIO"));
-    user.setPasswd((String) session.getAttribute("CONT"));
-
+<%
     Email email = new Email();
     email.setUsername(request.getParameter("cuenta"));
     email.setPassWord(request.getParameter("pass"));
 
-
 %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <html lang="en">
     <html lang="en">
         <head>
@@ -61,7 +57,7 @@
                 TOP BAR CONTENT & NOTIFICATIONS
                 *********************************************************************************************************************************************************** -->
 
-                <%@ include file="menuFuncionarios.jsp" %>  
+                <%@ include file="MenuFuncionario.jsp" %>  
                 <!-- **********************************************************************************************************************************************************
                 MAIN CONTENT
                 *********************************************************************************************************************************************************** -->
@@ -89,7 +85,7 @@
                                                                 email.setMensage(request.getParameter("msg"));
                                                                 out.print(email.SendMail3(request.getParameter("archivo")));
                                                             %>
-                                                            <br><div align="left"><a class="btn btn-success" href="menuFuncionarios.jsp" role="button">Aceptar</a></div>
+                                                            <br><div align="left"><a class="btn btn-success" href="EnviarCorreoRTA.jsp" role="button">Aceptar</a></div>
                                                         </div>
                                                     </form>
                                                 </div>
