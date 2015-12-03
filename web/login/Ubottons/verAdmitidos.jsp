@@ -65,42 +65,41 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Ver Socilitudes</h3>
+                    <h3><i class="fa fa-angle-right"></i>Generación de Lista de Admitidos</h3>
                     <br>
-                    Selecciona como quiere filtrar la solicitud
+                    Primero genera el listado para poder luego notificar via EMAIL a los Beneficiaros
                     <!-- BASIC FORM ELELEMNTS -->
                     <div class="form-group">
-                        <table class="table-condensed">
-                            <td>
-                                <div class="row mt">
-                                    <form action="EnviarCorreo.jsp" method="post">
-                                        <div class="form-group">  
-                                            <button type="submit" href="#" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
-                                        </div><!-- col-lg-12-->
-                                    </form>
+                        <!-- BASIC FORM ELELEMNTS<table class="table-condensed"> --> 
+                        <!--      <td> -->
+                        <!--     </td> -->
+                        <!--   <td> -->
+                        <div class="row mt">
+                            <div class="col-lg-11">
+                                <%
+                                    BeneficiarioDAO beneficiario = new BeneficiarioDAO();
+                                    out.println("<tr>");
+                                    out.print("<td>" + beneficiario.consultar_Beneficiarios(2,user) + "</td>");
+                                    out.println("</tr><br><br>");
+                                %>
+                            </div><!-- col-lg-12-->
+                            <form action="GenerarArchivoRTA.jsp" method="post">
+                                <div class="form-group">
+                                    <center> <button type="submit" class="btn btn-round btn-success"> Generar Listado de Admitidos</button></center>
                                 </div>
-                            </td>
-                            <td>
-                                <div class="row mt">
-                                    <div class="col-lg-11">
-                                        <%
-                                            BeneficiarioDAO beneficiario = new BeneficiarioDAO();
-                                            out.println("<tr>");
-                                            out.print("<td>" + beneficiario.consultar_Beneficiarios(user) + "</td>");
-                                            out.println("</tr><br><br>");
-                                        %>
-                                    </div><!-- col-lg-12-->
-                                    <form action="GenerarArchivoRTA.jsp" method="post">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-round btn-success"> Generar Listado de Admitidos</button>
-                                        </div>
-                                    </form>
+                            </form>
 
-                                </div><!-- /row -->
-                            </td>
-                        </table>
+                            <form action="EnviarCorreo.jsp" method="post">
+                                <div class="form-group">  
+                                    <center><button type="submit" href="#" class="btn btn-round btn-success"  >Enviar Correos de Notificación</button></center>
+                                </div><!-- col-lg-12-->
+                            </form>
+
+
+                        </div><!-- /row -->
+                        <!--</td>-->
+                        <!--  </table>-->
                     </div>
-                    <label >Ver Listado Admitidos</label>
                 </section><! --/wrapper -->
 
             </section><!-- /MAIN CONTENT -->

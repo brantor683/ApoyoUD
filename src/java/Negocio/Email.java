@@ -30,18 +30,24 @@ import javax.swing.JOptionPane;
  */
 public class Email {
 
-    private String Username = "";
-    private String PassWord = "";
-    private String Mensage = "";
-    private String To = "";
-    private String Subject = "";
+    /* private String Username = "";
+     private String PassWord = "";
+     private String Mensage = "";
+     private String To = "";
+     private String Subject = "";*/
+    public String Username = "";
+    public String PassWord = "";
+    String Mensage = "";
+    String To = "";
+    String Subject = "";
 
+    //  public String SendMail() {
     public String SendMail() {
         String msg = "";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        props.put("mail.smtp.starttls.enable", "true");      
+        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
@@ -70,18 +76,56 @@ public class Email {
             msg = "Error Enviando Correo " + e.getMessage();
         }
         return msg;
+
     }
 
+
+    /*
+     String msg = "";
+     Properties props = new Properties();
+     props.put("mail.smtp.auth", "true");
+     props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+     props.put("mail.smtp.starttls.enable", "true");
+     props.put("mail.smtp.host", "smtp.gmail.com");
+     props.put("mail.smtp.port", "587");
+
+     Session session = Session.getInstance(props,
+     new javax.mail.Authenticator() {
+     protected PasswordAuthentication getPasswordAuthentication() {
+     return new PasswordAuthentication(Username, PassWord);
+     }
+     });
+
+     try {
+
+     Message message = new MimeMessage(session);
+     message.setFrom(new InternetAddress(Username));
+     message.setRecipients(Message.RecipientType.TO,
+     InternetAddress.parse(To));
+     message.setSubject(Subject);
+     message.setText(Mensage);
+
+     Transport.send(message);
+     //JOptionPane.showMessageDialog(null, "Su mensaje ha sido enviado");
+     msg = " Su mensaje ha sido enviado!!!";
+     return msg;
+     } catch (MessagingException e) {
+     //throw new RuntimeException(e);
+     msg = "Error Enviando Correo " + e.getMessage();
+     }
+     return msg;*/
+    
+    /*
     public String SendMail3(String url) {
         String msg = "";
         try {
-            String archivos_adjuntos = "C:/prueba" + url;
+            String archivos_adjuntos = "C:/MIDIRECTORIO" + url;
             String archivos_adjuntos_nombre = url;
             String patron = ";";
             String[] dividido_adj, dividido_adj_nom;
             dividido_adj = archivos_adjuntos.split(patron);
             dividido_adj_nom = archivos_adjuntos_nombre.split(patron);
-            // se obtiene el objeto Session. La configuración es para 
+ // se obtiene el objeto Session. La configuración es para 
             // una cuenta de gmail. 
             Properties props = new Properties();
 
@@ -94,7 +138,7 @@ public class Email {
             props.setProperty("mail.smtp.auth", "true");
 
             Session session = Session.getDefaultInstance(props, null);
-            // session.setDebug(true); 
+ // session.setDebug(true); 
 
             // Se compone la parte del texto 
             BodyPart texto = new MimeBodyPart();
@@ -120,7 +164,7 @@ public class Email {
                 multiParte.addBodyPart(attach);//<-----------------finalmente lo añadimos al mensaje 
             }
 
-            // Se compone el correo, dando to, from, subject y el 
+ // Se compone el correo, dando to, from, subject y el 
             // contenido. 
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(getUsername()));
@@ -142,7 +186,7 @@ public class Email {
             msg = "Error Enviando Correo " + e.getMessage();
         }
         return msg;
-    }
+    }*/
 
     public String getUsername() {
         return Username;

@@ -21,8 +21,11 @@ import oracle.jdbc.OracleTypes;
  * @author LORENA MANZANO
  */
 public class BeneficiarioDAO {
-    String correos = "";
-    public String consultar_Beneficiarios(Usuario user) {
+    String correos = "apoyoudLBM@gmail.com";
+    public String consultar_Beneficiarios(int retorno, Usuario user) {
+        //retorno es uno cuando se requiere los correos de los estudiantes,
+        //y cuando sea dos se retornara la tabla de los beneficiarios.
+        
         String respuesta = "<table style='border: 2px solid black;'>";
         ResultSet tabla = null;
         String pmerror = null;
@@ -55,6 +58,7 @@ public class BeneficiarioDAO {
                    respuesta = respuesta + "</tr>";
             //------------------------------------------------------------------
             while (tabla.next()) {
+                    correos=correos+", "+tabla.getString("EMAIL");
                     respuesta = respuesta + "<tr style='width:80%;  border: 1px solid black;'>"     
                                           + "<td style='width:40%; border: 1px solid black;'>" + tabla.getString("CODIGO")+"</td>"
                                           + "<td style='width:40%; border: 1px solid black;'>" + tabla.getString("NOMBRE")+"</td>"
@@ -80,7 +84,15 @@ public class BeneficiarioDAO {
         } finally {
             ServiceLocator.getInstance(user).liberarConexion();
         }
-        
+        if (retorno==1){
+            respuesta=correos;
+        }
+        else if (retorno==2){
+            respuesta=respuesta;
+        }
+        else{
+            respuesta="ERROR de Opcion debe ser 1 o 2";
+        }
         return respuesta;
     }
     

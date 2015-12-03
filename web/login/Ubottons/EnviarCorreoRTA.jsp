@@ -13,7 +13,10 @@
 <%@page import="Negocio.Solicitud"%>
 <%@page import="Datos.SolicitudDAO"%>
 <%@page import="java.sql.*"%>
-<%
+<%    Usuario user1 = new Usuario();
+    user1.setUser((String) session.getAttribute("USUARIO"));
+    user1.setPasswd((String) session.getAttribute("CONT"));
+
     Email email = new Email();
     email.setUsername(request.getParameter("cuenta"));
     email.setPassWord(request.getParameter("pass"));
@@ -57,7 +60,7 @@
                 TOP BAR CONTENT & NOTIFICATIONS
                 *********************************************************************************************************************************************************** -->
 
-                <%@ include file="MenuFuncionario.jsp" %>  
+                <%@ include file="menuFuncionarios.jsp" %>  
                 <!-- **********************************************************************************************************************************************************
                 MAIN CONTENT
                 *********************************************************************************************************************************************************** -->
@@ -83,9 +86,11 @@
                                                             <%email.setTo(request.getParameter("to"));
                                                                 email.setSubject(request.getParameter("subjet"));
                                                                 email.setMensage(request.getParameter("msg"));
-                                                                out.print(email.SendMail3(request.getParameter("archivo")));
+                                                                out.print(email.SendMail());
+                                                             //   out.print(email.SendMail3(request.getParameter("archivo")));
                                                             %>
-                                                            <br><div align="left"><a class="btn btn-success" href="EnviarCorreoRTA.jsp" role="button">Aceptar</a></div>
+
+                                                            <br><div align="left"><a class="btn btn-success" href="MenuFuncionario.jsp" role="button">Volver</a></div>
                                                         </div>
                                                     </form>
                                                 </div>

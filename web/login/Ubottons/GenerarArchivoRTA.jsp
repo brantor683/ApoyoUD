@@ -86,8 +86,8 @@
                                             
                                             BeneficiarioDAO beneficiario = new BeneficiarioDAO();
                                             out.println("SE A CREADO EL ARCHIVO CON EXITO");
-                                            Correos=beneficiario.Generar_Beneficiario_Archivo(user);
-                                            out.print(Correos);
+                                            beneficiario.Generar_Beneficiario_Archivo(user);
+                                            
           
                                         %>
                                     </div><!-- col-lg-12-->

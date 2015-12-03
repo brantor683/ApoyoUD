@@ -3,6 +3,24 @@
     Created on : 27/09/2015, 07:20:48 PM
     Author     : LORENA MANZANO
 --%>
+<%@page import="Datos.BeneficiarioDAO"%>
+<%@page import="Datos.UsuarioDAO"%>
+<%@page import="Util.RHException"%>
+<%@page import="java.io.IOException"%>
+<%@page import="Util.ServiceLocator"%>
+<%@page import="Negocio.Usuario"%>
+<%@page import="Negocio.Solicitud"%>
+<%@page import="Datos.SolicitudDAO"%>
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    Usuario user = new Usuario();
+    user.setUser((String) session.getAttribute("USUARIO"));
+    user.setPasswd((String) session.getAttribute("CONT"));
+    String Correos = "";
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <html lang="en">
@@ -41,55 +59,54 @@
                 <section id="main-content">
                     <section class="wrapper">
 
-
+                        <h3><i class="fa fa-angle-right"></i>Iniciar Sesi贸n</h3>
                         <div class="wrapper">
-                            <div class="box">
-                                <div class="row">
-                                    <!-- main -->
-                                    <div class="column col-sm-9" id="main">
-                                        <div class="padding">
+                            <div class="form-group">
+                                <div class="full col-sm-9">
 
-                                            <div class="full col-sm-9">
+                                    <!--/-->
+                                    <div class="col-sm-10" id="Registrarapor">  
+                                        <div class="page-header text-muted divider">
 
-                                                <!--/-->
-                                                <div class="col-sm-10" id="Registrarapor">  
-                                                    <div class="page-header text-muted divider">
-                                                        Iniciar Sesi髇 Correo Electr髇ico GMAIL
-                                                        
-                                                    </div>
-                                                    <form action="EnviarCorreoRTA.jsp" method="post">
-                                                        <div class="form-group">
-                                                            <label for="CedulaInput">Cuenta</label>
-                                                            <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
-
-                                                            <label for="CedulaInput">Contrase馻</label>
-                                                            <input name="pass" style="width:200px;height:25px" type="password" class="form-control" id="cedulaInput">
-
-                                                            <label for="CedulaInput">Para:</label>
-                                                            <input name="to" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
-
-                                                            <label for="CedulaInput">Asunto</label>
-                                                            <input name="subjet" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
-
-                                                            <label for="CedulaInput">Mensaje</label>
-                                                            <input name="msg" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
-
-                                                            <label for="CedulaInput">Adjunto</label>
-                                                            <input name="archivo" style="width:500px;height:35px" type="file" class="form-control" id="cedulaInput"><br><br>
-
-                                                            <div align="left"><button class="btn btn-success">Enviar</button></div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="row divider">  
-                                                </div><!-- /col-9 -->
-                                            </div><!-- /padding -->
+                                            Inicia Sesi贸n con tu cuenta de GMAIL
                                         </div>
-                                        <!-- /main -->
+                                        <form action="EnviarCorreoRTA.jsp" method="post">
+                                            <div class="form-group">
+                                                <label for="CedulaInput">Cuenta</label>
+                                                <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
 
-                                    </div>
+                                                <label for="CedulaInput">Contrase帽a</label>
+                                                <input name="pass" style="width:200px;height:25px" type="password" class="form-control" id="cedulaInput">
+
+                                                <label for="CedulaInput">Para:</label>
+                                                <%
+                                                    BeneficiarioDAO beneficiario = new BeneficiarioDAO();
+                                                    Correos = beneficiario.consultar_Beneficiarios(1,user);
+                                                    out.print(Correos);
+
+                                                %>
+                                                <textarea name="to"  class="form-control" id="cedulaInput"><%out.print(Correos);%></textarea>
+                                               
+                                                <br>
+                                                <label for="CedulaInput">Asunto</label>
+                                                <input name="subjet" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
+
+                                                <label for="CedulaInput">Mensaje</label>
+                                                <input name="msg" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
+
+                                             <!--   <label for="CedulaInput">Adjunto</label>
+                                                <input name="archivo" style="width:500px;height:35px" type="file" class="form-control" id="cedulaInput"><br><br>
+-->
+                                                <div align="left"><button class="btn btn-success">Enviar</button></div>
+                                            </div>
+                                        </form>
+                                    </div>                            
+
                                 </div>
                             </div>
+
+                        </div>
+
                     </section>
                 </section>
                 <footer class="site-footer">
@@ -137,14 +154,14 @@
     <!--/Registrar aportes-
     <div class="col-sm-10" id="Registrarapor">  
         <div class="page-header text-muted divider">
-            Iniciar Sesi髇 Correo Electr髇ico
+            Iniciar Sesi贸n Correo Electr贸nico
         </div>
         <form action="EnviarCorreoRTA.jsp" method="post">
             <div class="form-group">
                 <label for="CedulaInput">Cuenta</label>
                 <input name="cuenta" style="width:200px;height:25px" type="text" class="form-control" id="cedulaInput">
                 
-                <label for="CedulaInput">Contrase馻</label>
+                <label for="CedulaInput">Contrase帽a</label>
                 <input name="pass" style="width:200px;height:25px" type="password" class="form-control" id="cedulaInput">
                 
                 <label for="CedulaInput">Para:</label>
