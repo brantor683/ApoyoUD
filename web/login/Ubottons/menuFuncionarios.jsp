@@ -97,12 +97,12 @@
                 </li>
 
                   <li class="sub-menu">
-                    <a class="" href="descargarLista.jsp" >
+                    <a class="" href="descargarPDF.jsp" >
                         <i class="fa fa-tasks"></i>
                         <span>Listado Admitidos</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="descargarLista.jsp">Descargar Lista</a></li>
+                        <li><a  href="descargarPDF.jsp">Descargar Lista</a></li>
 
                     </ul>
 

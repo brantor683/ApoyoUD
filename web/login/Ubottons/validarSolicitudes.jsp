@@ -82,11 +82,11 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Ver Socilitudes</h3>
+                    <h3><i class="fa fa-angle-right"></i>Vaidar Socilitudes</h3>
                     <br>
                     Selecciona como quiere filtrar la solicitud
                     <!-- BASIC FORM ELELEMNTS -->
-                    <form class="form-group" action="consultarsolicitudes.jsp">
+                    <form class="form-group" action="validarSolicitudes.jsp">
                         <table class="table-condensed">
                             <td>
                         <div class="row mt">
