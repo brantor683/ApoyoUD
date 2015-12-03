@@ -7,11 +7,6 @@
 <%@page import="Datos.ConvocatoriaDAO"%>
 <%@page import="Negocio.Convocatoria"%>
 <%@page import="java.io.FileInputStream"%>
-<%-- 
-    Document   : form_component
-    Created on : 27/09/2015, 07:20:48 PM
-    Author     : LORENA MANZANO
---%>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -59,7 +54,7 @@
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
 
-            <%@ include file="menuFuncionarios.jsp" %> 
+            <%@ include file="menu.jsp" %> 
 
             <!-- **********************************************************************************************************************************************************
             MAIN CONTENT
@@ -82,7 +77,7 @@
                                         Convocatoria convocatoria = new Convocatoria();
                                         ConvocatoriaDAO ConvDAO = new ConvocatoriaDAO();
 
-                                        convocatoria = ConvDAO.buscarFListado("Pendiente", user);
+                                        convocatoria = ConvDAO.buscarFListado("Actual", user);
                                         if (convocatoria.getF_listado() != null) {
 %><center><h2>La lista ha sido descargada</h2> </center>
 <%
@@ -102,7 +97,7 @@
                                     <center><h2>No se encuentra disponible el archivo del listado</h2></center>
 
     <%}%>
-    <center>   <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
+    <center>   <button class="btn btn-link" type="button"><a href="MenuInicial.jsp">Volver</a></button></center>
                                 </div><!-- /border-head -->	
                             </div><!-- /row -->	
                         </div><!-- /col-lg-9 END SECTION MIDDLE -->

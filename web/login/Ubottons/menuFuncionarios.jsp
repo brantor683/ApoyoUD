@@ -97,7 +97,7 @@
                 </li>
 
                   <li class="sub-menu">
-                    <a class="" href="convocatoria.jsp" >
+                    <a class="" href="descargarLista.jsp" >
                         <i class="fa fa-tasks"></i>
                         <span>Listado Admitidos</span>
                     </a>

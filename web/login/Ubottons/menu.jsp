@@ -84,6 +84,18 @@
                         <li><a  href="verAdmitidos.jsp">Lista de Admitidos</a></li>
                     </ul>
                 </li>
+                
+                    <li class="sub-menu">
+                    <a class="" href="descargarLista.jsp" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Listado Admitidos</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="descargarLista.jsp">Descargar Lista</a></li>
+
+                    </ul>
+
+                </li>
             </ul>
             <!-- sidebar menu end-->
         </div>
