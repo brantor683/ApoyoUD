@@ -72,6 +72,7 @@ public class ConvocatoriaDAO {
                 convocatoria.setF_finConvocatoria(rs.getString(4));
                 convocatoria.setPeriodo(rs.getInt(5));
                 convocatoria.setE_convocatoria(rs.getString(6));
+              
             }
             prepStmt.close();
             ServiceLocator.getInstance(user).commit();
@@ -114,4 +115,36 @@ public class ConvocatoriaDAO {
         System.out.println(convocatoria.getK_convocatoria());
         return convocatoria;
     }
+    
+     public Convocatoria buscarFListado(String estado_convocatoria, Usuario user) {
+        Convocatoria convocatoria = new Convocatoria();
+        try {
+
+            //Instancia el objeto para retornar los datos del empleado
+            String strSQL = "SELECT k_convocatoria, e_convocatoria, f_listado FROM s_convocatoria WHERE e_convocatoria=?";
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1, (estado_convocatoria));
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                convocatoria.setK_convocatoria(rs.getInt(1));
+               
+                convocatoria.setE_convocatoria(rs.getString(2));
+                convocatoria.setF_listado(rs.getString(3));
+              
+            }
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+            return convocatoria;
+        } catch (SQLException e) {
+
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+           // ServiceLocator.getInstance(user).close();
+          
+        }
+        System.out.println(convocatoria.getK_convocatoria());
+        return convocatoria;
+    }
+
 }

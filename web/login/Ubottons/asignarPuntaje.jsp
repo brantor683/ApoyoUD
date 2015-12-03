@@ -93,10 +93,10 @@
                     
 
                     <center> <button type="submit"  class="btn btn-round btn-success"  >Asignar Puntajes</button></center>
-<%}else{
- out.print("El proceso se asignacion de puntajes no es posible ya que la convocatoria no esta ACTIVA");
+<%}else{ %>
+                    <center><h2>El proceso se asignacion de puntajes no se puede realizar en el momento</h2></center>
  
-} %>
+<%} %>
   </form>
 
 <center><button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>

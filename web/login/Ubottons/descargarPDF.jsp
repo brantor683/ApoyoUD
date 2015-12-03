@@ -1,35 +1,26 @@
 <%-- 
-    Document   : asignarPuntajes_RTA
-    Created on : 30/11/2015, 07:09:35 PM
+    Document   : descargarLista
+    Created on : 2/12/2015, 05:39:04 PM
     Author     : Brandon
 --%>
 
-
-
 <%@page import="Datos.ConvocatoriaDAO"%>
 <%@page import="Negocio.Convocatoria"%>
-<%@page import="Datos.UsuarioDAO"%>
-<%@page import="Util.RHException"%>
-<%@page import="java.io.IOException"%>
-<%@page import="Util.ServiceLocator"%>
-<%@page import="Negocio.Usuario"%>
-<%@page import="Negocio.Solicitud"%>
-<%@page import="Datos.SolicitudDAO"%>
-<%@page import="java.sql.*"%>
+<%@page import="java.io.FileInputStream"%>
+<%-- 
+    Document   : form_component
+    Created on : 27/09/2015, 07:20:48 PM
+    Author     : LORENA MANZANO
+--%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%
-    Usuario user = new Usuario();
-    UsuarioDAO u = new UsuarioDAO();
-    user.setUser((String) session.getAttribute("USUARIO"));
-    user.setPasswd((String) session.getAttribute("CONT"));
-    String respuesta="";
-    
-
-
-%>
-
-
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import= "java.io.*" %>
+<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+<%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@ page import="org.apache.commons.fileupload.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,49 +53,70 @@
 
     <body>
 
+
         <section id="container" >
             <!-- **********************************************************************************************************************************************************
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
 
-            <%@ include file="menuFuncionarios.jsp" %>  
+            <%@ include file="menu.jsp" %> 
+
             <!-- **********************************************************************************************************************************************************
             MAIN CONTENT
             *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i>Asinar Puntajes</h3>
-                    <br>
-                   <% 
-                   FuncionarioDAO FuncDAO = new FuncionarioDAO();
-                   respuesta =FuncDAO.asignar_Puntajes(user);
-                   out.print(respuesta);
-                  
-                   
-    
-                   %>
-                    <!-- BASIC FORM ELELEMNTS -->
-                    <h2>  <center>El proceso de asignacion de puntajes ha sido ejecutado</center></h2>
-                    <br>
-                    <br>
-        
-                    <br>
-                    <br><br>
-                    
 
-         
+                    <div class="row">
+                        <div class="col-lg-9 main-chart">                         
+                            <div class="row mt">
+                                <!--CUSTOM CHART START -->
+                                <div class="border-head">
+                                    <%
+                                        Usuario user = new Usuario();
 
-<center><button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
-                </section><! --/wrapper -->
-            </section><!-- /MAIN CONTENT -->
+                                        user.setUser((String) session.getAttribute("USUARIO"));
+                                        user.setPasswd((String) session.getAttribute("CONT"));
+
+                                        Convocatoria convocatoria = new Convocatoria();
+                                        ConvocatoriaDAO ConvDAO = new ConvocatoriaDAO();
+
+                                        convocatoria = ConvDAO.buscarFListado("Actual", user);
+                                        if (convocatoria.getF_listado() != null) {
+%><center><h2>La lista ha sido descargada</h2> </center>
+<%
+                                            String filename = "Beneficiarios_ApoyoUD.pdf";
+
+                                            response.setContentType("application/pdf");
+                                            response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+
+                                            FileInputStream fileInputStream = new FileInputStream("C:/MIDIRECTORIO/Beneficiarios_ApoyoUD.pdf");
+
+                                            int i;
+                                            while ((i = fileInputStream.read()) != -1) {
+                                                out.write(i);
+                                            }
+                                            fileInputStream.close();
+                                   } else {%>
+                                    <center><h2>No se encuentra disponible el archivo del listado</h2></center>
+
+    <%}%>
+    <center>   <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
+                                </div><!-- /border-head -->	
+                            </div><!-- /row -->	
+                        </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                    </div><!--/row -->
+                </section>
+            </section>
+
 
             <!--main content end-->
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
-                    2015 
-                    <a href="MenuFuncionario.jsp#" class="go-top">
+                    2015 - Apoyo Alimentario Universidad Distrital
+                    <a href="form_component.html#" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>
@@ -118,7 +130,7 @@
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script type="text/javascript" src="bootstrap-datepicker.de.js" charset="UTF-8"></script>
+
 
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
@@ -144,6 +156,15 @@
         <script src="assets/js/form-component.js"></script>    
 
 
+        <script>
+            //custom select box
+
+            $(function() {
+                $('select.styled').customSelect();
+            });
+
+        </script>
 
     </body>
 </html>
+

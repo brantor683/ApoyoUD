@@ -19,6 +19,10 @@ public class Convocatoria {
         private int d_cuposCategoriaA;
         private int d_cuposCategoriaB;
         private int d_cuposCategoriaC;
+        private int d_cuposTotal;
+        private String f_puntajes;
+        private String f_listado;
+        
 
 public Convocatoria(){
     
@@ -95,6 +99,30 @@ public Convocatoria(){
 
     public void setD_cuposCategoriaC(int d_cuposCategoriaC) {
         this.d_cuposCategoriaC = d_cuposCategoriaC;
+    }
+
+    public int getD_cuposTotal() {
+        return d_cuposTotal;
+    }
+
+    public void setD_cuposTotal(int d_cuposTotal) {
+        this.d_cuposTotal = d_cuposTotal;
+    }
+
+    public String getF_puntajes() {
+        return f_puntajes;
+    }
+
+    public void setF_puntajes(String f_puntajes) {
+        this.f_puntajes = f_puntajes;
+    }
+
+    public String getF_listado() {
+        return f_listado;
+    }
+
+    public void setF_listado(String f_listado) {
+        this.f_listado = f_listado;
     }
 
 
