@@ -84,8 +84,7 @@
 
                                         convocatoria = ConvDAO.buscarFListado("Actual", user);
                                         if (convocatoria.getF_listado() != null) {
-%><center><h2>La lista ha sido descargada</h2> </center>
-<%
+
                                             String filename = "Beneficiarios_ApoyoUD.pdf";
 
                                             response.setContentType("application/pdf");
@@ -98,11 +97,14 @@
                                                 out.write(i);
                                             }
                                             fileInputStream.close();
-                                   } else {%>
+                                    %>
+                                    <center><h2>La lista ha sido descargada</h2> </center>
+                                        <%
+} else {%>
                                     <center><h2>No se encuentra disponible el archivo del listado</h2></center>
 
-    <%}%>
-    <center>   <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
+                                    <%}%>
+                                    <center>   <button class="btn btn-link" type="button"><a href="MenuFuncionario.jsp">Volver</a></button></center>
                                 </div><!-- /border-head -->	
                             </div><!-- /row -->	
                         </div><!-- /col-lg-9 END SECTION MIDDLE -->

@@ -147,6 +147,35 @@ public class SolicitudDAO {
     }
 
     
+    public String rechazarSolicitud(int id_convocatoria,  Usuario user) {
+        String error = "";
+        
+        try {
+
+            String strSQL = "UPDATE S_SOLICITUD SET E_SOLICITUD='Rechazada',  WHERE K_conv_convocatoria=?";
+
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+
+            prepStmt.setInt(1, id_convocatoria);
+          
+      
+            prepStmt.executeQuery();
+            prepStmt.close();
+            ServiceLocator.getInstance(user).commit();
+
+            //  error = error + " Registrar solicitud: " +  s.getK_idSolicitud() ;
+        } catch (SQLException e) {
+
+            error = "Solictud_DAO " + "Validar solicitud " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+
+        return error;
+    }
+
     
     
     public String buscarSolicitudFuncionario(String consFacultad, String consProyCurri, Usuario user) {

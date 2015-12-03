@@ -74,9 +74,7 @@
                         <table class="table-condensed">
                             <td>
                                 <div class="row mt">
-                                    <div class="col-lg-10">  
-                                        <button type="submit" href="EnviarCorreo.jsp" class="btn btn-round btn-success"  ><a>Enviar Correos de Notificación</a></button>
-                                    </div><!-- col-lg-12-->
+                                  
                                 </div>
                             </td>
                             <td>
@@ -87,8 +85,8 @@
                                             BeneficiarioDAO beneficiario = new BeneficiarioDAO();
                                             out.println("SE A CREADO EL ARCHIVO CON EXITO");
                                             beneficiario.Generar_Beneficiario_Archivo(user);
-                                            
-          
+                                          
+                                                     
                                         %>
                                     </div><!-- col-lg-12-->
                                     <form action="MenuFuncionario.jsp" method="post">

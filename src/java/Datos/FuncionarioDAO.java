@@ -97,4 +97,28 @@ public class FuncionarioDAO {
         
         return respuesta;
     }
+    
+     public String cerrarConvocatoria(Usuario user) {
+
+        String respuesta="";
+        try {
+            Connection conexion = ServiceLocator.getInstance(user).tomarConexion();
+            CallableStatement cstmt = conexion.prepareCall("{call PR_FINALIZAR_CONVOCATORIA()}");
+           
+            cstmt.execute();
+            
+                        
+            cstmt.close();
+            cstmt=null;
+            ServiceLocator.getInstance(user).commit();
+            
+        } catch (SQLException e) {
+            //throw new RHException("Socio_DAO", "No pudo crear el Socio" + e.getMessage());
+            respuesta = "FuncionarioDAO " + " Cerrar convocatoria:  " + e.getMessage();
+        } finally {
+            ServiceLocator.getInstance(user).liberarConexion();
+        }
+        
+        return respuesta;
+    }
 }

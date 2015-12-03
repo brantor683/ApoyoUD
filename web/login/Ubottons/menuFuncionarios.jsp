@@ -54,6 +54,10 @@
                         <i class="fa fa-tasks"></i>
                         <span>Convocatoria</span>
                     </a>
+                    <ul class="sub">
+                        <li><a  href="cerrarConvocatoria.jsp">Cerrar convocatoria</a></li>
+                      
+                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a class="" href="consultarsolicitudes.jsp" >
